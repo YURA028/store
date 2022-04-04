@@ -1,6 +1,7 @@
 package com.spring.website.model;
 
 import javax.persistence.*;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -52,6 +53,19 @@ public class Product {
                 ", maker=" + maker +
                 ", productType=" + productType +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return price == product.price && availability == product.availability && quantity == product.quantity && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(color, product.color) && Objects.equals(description, product.description) && Objects.equals(serialNumber, product.serialNumber) && Objects.equals(basketProducts, product.basketProducts) && Objects.equals(maker, product.maker) && Objects.equals(productType, product.productType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, availability, quantity, color, description, serialNumber, basketProducts, maker, productType);
     }
 
     public Long getId() {
@@ -142,16 +156,5 @@ public class Product {
         this.productType = productType;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return price == product.price && availability == product.availability && quantity == product.quantity && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(color, product.color) && Objects.equals(description, product.description) && Objects.equals(serialNumber, product.serialNumber) && Objects.equals(basketProducts, product.basketProducts) && Objects.equals(maker, product.maker) && Objects.equals(productType, product.productType);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, price, availability, quantity, color, description, serialNumber, basketProducts, maker, productType);
-    }
 }

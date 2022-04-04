@@ -6,16 +6,20 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long Id;
+    @Column(name = "email")
     private String email;
+    @Column(name = "password")
     private String password;
     @Column(name = "first_name")
-    private String FirstName;
+    private String firstName;
     @Column(name = "last_name")
-    private String LastName;
+    private String lastName;
     @Transient
     private String confirmPassword;
 
@@ -31,14 +35,36 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "email='" + email + '\'' +
+                "Id=" + Id +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", FirstName='" + FirstName + '\'' +
-                ", LastName='" + LastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", roles=" + roles +
                 ", address=" + address +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(Id, user.Id) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(confirmPassword, user.confirmPassword) && Objects.equals(roles, user.roles) && Objects.equals(address, user.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id, email, password, firstName, lastName, confirmPassword, roles, address);
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 
     public String getEmail() {
@@ -58,19 +84,19 @@ public class User {
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getConfirmPassword() {
@@ -95,18 +121,5 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(FirstName, user.FirstName) && Objects.equals(LastName, user.LastName) && Objects.equals(confirmPassword, user.confirmPassword) && Objects.equals(roles, user.roles) && Objects.equals(address, user.address);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(email, password, FirstName, LastName, confirmPassword, roles, address);
     }
 }

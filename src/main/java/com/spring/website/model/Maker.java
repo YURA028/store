@@ -1,6 +1,7 @@
 package com.spring.website.model;
 
 import javax.persistence.*;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,6 +24,19 @@ public class Maker {
                 ", name='" + name + '\'' +
                 ", product=" + product +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Maker maker = (Maker) o;
+        return Objects.equals(id, maker.id) && Objects.equals(name, maker.name) && Objects.equals(product, maker.product);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, product);
     }
 
     public Long getId() {
@@ -49,16 +63,5 @@ public class Maker {
         this.product = product;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Maker maker = (Maker) o;
-        return Objects.equals(id, maker.id) && Objects.equals(name, maker.name) && Objects.equals(product, maker.product);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, product);
-    }
 }

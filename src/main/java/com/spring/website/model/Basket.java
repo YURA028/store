@@ -2,6 +2,7 @@ package com.spring.website.model;
 
 import javax.persistence.*;
 import java.util.Date;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -33,6 +34,19 @@ public class Basket {
                 ", comment='" + comment + '\'' +
                 ", basketProducts=" + basketProducts +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Basket basket = (Basket) o;
+        return price == basket.price && status == basket.status && Objects.equals(id, basket.id) && Objects.equals(date, basket.date) && Objects.equals(comment, basket.comment) && Objects.equals(basketProducts, basket.basketProducts);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, price, status, comment, basketProducts);
     }
 
     public Long getId() {
@@ -83,16 +97,4 @@ public class Basket {
         this.basketProducts = basketProducts;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Basket basket = (Basket) o;
-        return price == basket.price && status == basket.status && Objects.equals(id, basket.id) && Objects.equals(date, basket.date) && Objects.equals(comment, basket.comment) && Objects.equals(basketProducts, basket.basketProducts);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, date, price, status, comment, basketProducts);
-    }
 }

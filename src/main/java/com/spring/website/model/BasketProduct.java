@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "basket_product")
 public class BasketProduct {
@@ -35,6 +36,19 @@ public class BasketProduct {
                 ", basket=" + basket +
                 ", product=" + product +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BasketProduct that = (BasketProduct) o;
+        return price == that.price && quantity == that.quantity && Objects.equals(id, that.id) && Objects.equals(createDate, that.createDate) && Objects.equals(basket, that.basket) && Objects.equals(product, that.product);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, createDate, price, quantity, basket, product);
     }
 
     public Long getId() {
@@ -85,16 +99,4 @@ public class BasketProduct {
         this.product = product;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BasketProduct that = (BasketProduct) o;
-        return price == that.price && quantity == that.quantity && Objects.equals(id, that.id) && Objects.equals(createDate, that.createDate) && Objects.equals(basket, that.basket) && Objects.equals(product, that.product);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, createDate, price, quantity, basket, product);
-    }
 }

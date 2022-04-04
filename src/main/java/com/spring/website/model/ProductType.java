@@ -1,6 +1,7 @@
 package com.spring.website.model;
 
 import javax.persistence.*;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ public class ProductType {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "product_type")
+    @OneToMany(mappedBy = "productType")
     private Set<Product> product;
 
     @Override
@@ -23,6 +24,19 @@ public class ProductType {
                 ", name='" + name + '\'' +
                 ", product=" + product +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductType that = (ProductType) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(product, that.product);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, product);
     }
 
     public Long getId() {
@@ -49,16 +63,5 @@ public class ProductType {
         this.product = product;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ProductType that = (ProductType) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(product, that.product);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, product);
-    }
 }
