@@ -32,6 +32,31 @@ public class User {
     @PrimaryKeyJoinColumn
     private Address address;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Basket> basket;
+
+
+    public Set<Basket> getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Set<Basket> basket) {
+        this.basket = basket;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(Id, user.Id) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(confirmPassword, user.confirmPassword) && Objects.equals(roles, user.roles) && Objects.equals(address, user.address) && Objects.equals(basket, user.basket);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id, email, password, firstName, lastName, confirmPassword, roles, address, basket);
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -43,20 +68,8 @@ public class User {
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", roles=" + roles +
                 ", address=" + address +
+                ", basket=" + basket +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(Id, user.Id) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(confirmPassword, user.confirmPassword) && Objects.equals(roles, user.roles) && Objects.equals(address, user.address);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(Id, email, password, firstName, lastName, confirmPassword, roles, address);
     }
 
     public Long getId() {

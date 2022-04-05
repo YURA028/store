@@ -24,6 +24,23 @@ public class Basket {
     @OneToMany(mappedBy = "basket")
     private Set<BasketProduct> basketProducts;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Basket basket = (Basket) o;
+        return price == basket.price && status == basket.status && Objects.equals(id, basket.id) && Objects.equals(date, basket.date) && Objects.equals(comment, basket.comment) && Objects.equals(basketProducts, basket.basketProducts) && Objects.equals(user, basket.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, price, status, comment, basketProducts, user);
+    }
+
     @Override
     public String toString() {
         return "Basket{" +
@@ -33,20 +50,16 @@ public class Basket {
                 ", status=" + status +
                 ", comment='" + comment + '\'' +
                 ", basketProducts=" + basketProducts +
+                ", user=" + user +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Basket basket = (Basket) o;
-        return price == basket.price && status == basket.status && Objects.equals(id, basket.id) && Objects.equals(date, basket.date) && Objects.equals(comment, basket.comment) && Objects.equals(basketProducts, basket.basketProducts);
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, date, price, status, comment, basketProducts);
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {

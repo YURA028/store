@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-<%--    <%@ page contentType="text/html;charset=utf-8" %>--%>
-    <meta charset="utf-8">
-    <title>Spring MVC 5 - form handling | Java Guides</title>
+    <meta charset="UTF-8">
+    <title>Spring MVC 5 - form handling | Java Guides Привт</title>
     <link href="<c:url value="/resources/css/bootstrap.min.css" />"
           rel="stylesheet">
     <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
@@ -18,7 +18,7 @@
 <div class="container">
     <div class="col-md-offset-2 col-md-7">
         <h2 class="text-center">Spring MVC 5 + Hibernate 5 + JSP + MySQL
-            Example</h2>
+            Example  ПРИВЕТ</h2>
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">Add User</div>

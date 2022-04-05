@@ -16,15 +16,15 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <spring.version>5.1.0.RELEASE</spring.version>
-    <hibernate.version>5.3.5.Final</hibernate.version>
-    <hibernate.validator>5.4.1.Final</hibernate.validator>
-    <c3p0.version>0.9.5.2</c3p0.version>
-    <jstl.version>1.2.1</jstl.version>
+    <spring.version>5.3.17</spring.version>
+    <hibernate.version>5.6.7.Final</hibernate.version>
+    <hibernate.validator>6.2.3.Final</hibernate.validator>
+    <jstl.version>1.2.2</jstl.version>
     <tld.version>1.1.2</tld.version>
-    <servlets.version>3.1.0</servlets.version>
-    <jsp.version>2.3.1</jsp.version>
-    <hsqldb.version>1.8.0.10</hsqldb.version>
+    <servlets.version>4.0.1</servlets.version>
+    <jsp.version>2.3.3</jsp.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -44,7 +44,7 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>5.2.17.Final</version>
+      <version>${hibernate.version}</version>
     </dependency>
     <!-- Hibernate Validator -->
     <dependency>
@@ -58,6 +58,7 @@
       <artifactId>javax.servlet.jsp.jstl-api</artifactId>
       <version>${jstl.version}</version>
     </dependency>
+
     <dependency>
       <groupId>taglibs</groupId>
       <artifactId>standard</artifactId>
@@ -80,7 +81,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.47</version>
+      <version>8.0.28</version>
     </dependency>
 
   </dependencies>
@@ -120,15 +121,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>7</source>
-          <target>7</target>
-        </configuration>
-      </plugin>
-    </plugins>
+
   </build>
 </project>
