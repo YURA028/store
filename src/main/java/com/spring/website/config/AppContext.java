@@ -26,7 +26,9 @@ public class AppContext {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.spring.website.model");
+        sessionFactory.setPackagesToScan(new String[] {
+                "com.spring.website.model"
+        });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

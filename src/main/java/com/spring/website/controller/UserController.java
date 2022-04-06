@@ -24,14 +24,14 @@ public class UserController {
     public String listCustomers(Model theModel) {
         List <User> theUser = userService.getUser();
         theModel.addAttribute("users", theUser);
-        return "list-users";
+        return "list-customers";
     }
 
     @GetMapping("/showForm")
     public String showFormForAdd(Model theModel) {
         User theUser = new User();
         theModel.addAttribute("user", theUser);
-        return "user-form";
+        return "customer-form";
     }
 
     @PostMapping("/saveUser")
@@ -45,7 +45,7 @@ public class UserController {
                                     Model theModel) {
         User theUser = userService.getUser(theId);
         theModel.addAttribute("user", theUser);
-        return "user-form";
+        return "customer-form";
     }
 
     @GetMapping("/delete")

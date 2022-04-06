@@ -18,16 +18,16 @@
 <div class="container">
     <div class="col-md-offset-2 col-md-7">
         <h2 class="text-center">Spring MVC 5 + Hibernate 5 + JSP + MySQL
-            Example  ПРИВЕТ</h2>
+            Example</h2>
         <div class="panel panel-info">
             <div class="panel-heading">
-                <div class="panel-title">Add User</div>
+                <div class="panel-title">Add Customer</div>
             </div>
             <div class="panel-body">
-                <form:form action="saveUser" cssClass="form-horizontal"
-                           method="post" modelAttribute="user">
+                <form:form action="saveCustomer" cssClass="form-horizontal"
+                           method="post" modelAttribute="customer">
 
-                    <!-- need to associate this data with user id -->
+                    <!-- need to associate this data with customer id -->
                     <form:hidden path="id" />
 
                     <div class="form-group">
