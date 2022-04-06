@@ -1,10 +1,13 @@
 package com.spring.website.model;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
-import java.util.Objects;
+
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "user")
 public class User {
@@ -35,104 +38,4 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Basket> basket;
 
-
-    public Set<Basket> getBasket() {
-        return basket;
-    }
-
-    public void setBasket(Set<Basket> basket) {
-        this.basket = basket;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(Id, user.Id) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(confirmPassword, user.confirmPassword) && Objects.equals(roles, user.roles) && Objects.equals(address, user.address) && Objects.equals(basket, user.basket);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(Id, email, password, firstName, lastName, confirmPassword, roles, address, basket);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "Id=" + Id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                ", roles=" + roles +
-                ", address=" + address +
-                ", basket=" + basket +
-                '}';
-    }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }
