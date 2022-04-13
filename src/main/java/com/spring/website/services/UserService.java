@@ -1,10 +1,10 @@
-//package com.spring.website.dao;
+//package com.spring.website.service;
 //
 //import com.spring.website.model.User;
 //
 //import java.util.List;
 //
-//public interface UserDAO {
+//public interface UserService {
 //
 //    public List<User> getUser();
 //

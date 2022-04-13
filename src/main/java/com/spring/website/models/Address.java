@@ -1,8 +1,9 @@
-package com.spring.website.model;
+package com.spring.website.models;
 
 import lombok.Data;
 
 import javax.persistence.*;
+
 @Data
 @Entity
 @Table(name = "address")
@@ -18,6 +19,8 @@ public class Address {
     private String street;
     @Column
     private int building;
+    @Column
+    private int building1;
 
     @OneToOne
     @MapsId

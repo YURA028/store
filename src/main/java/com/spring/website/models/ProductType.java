@@ -1,4 +1,4 @@
-package com.spring.website.model;
+package com.spring.website.models;
 
 import lombok.Data;
 
@@ -7,15 +7,15 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "product_type")
+public class ProductType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    @OneToMany(mappedBy = "productType")
+    private Set<Product> product;
 
 }

@@ -1,4 +1,4 @@
-package com.spring.website.model;
+package com.spring.website.models;
 
 import lombok.Data;
 
