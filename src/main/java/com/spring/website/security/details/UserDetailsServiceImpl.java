@@ -1,7 +1,7 @@
 package com.spring.website.security.details;
 
 import com.spring.website.models.User;
-import com.spring.website.repositories.UsersRepository;
+import com.spring.website.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,14 +14,16 @@ import java.util.Optional;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository usersRepository;
 
-    @Override
+
+        @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 //        Optional<User> userCandidate = usersRepository.findOneByLogin(login);
 //        if (userCandidate.isPresent()){
 //            return new UserDetailsImpl(userCandidate.get());
 //        }else throw new IllegalArgumentException("User not found");
+
         return new
                 UserDetailsImpl(usersRepository.findOneByLogin(login)
                 .orElseThrow(IllegalArgumentException::new));

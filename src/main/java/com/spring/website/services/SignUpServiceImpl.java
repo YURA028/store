@@ -1,10 +1,10 @@
 package com.spring.website.services;
 
-import com.spring.website.forms.UserForm;
+import com.spring.website.dto.UserFormDto;
 import com.spring.website.models.Role;
 import com.spring.website.models.State;
 import com.spring.website.models.User;
-import com.spring.website.repositories.UsersRepository;
+import com.spring.website.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class SignUpServiceImpl implements SignUpService{
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository usersRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public void signUp(UserForm userForm) {
+    public void signUp(UserFormDto userForm) {
         String hashPassword = passwordEncoder.encode(userForm.getPassword());
 
         User user = User.builder()
@@ -27,11 +27,15 @@ public class SignUpServiceImpl implements SignUpService{
                 .lastName(userForm.getLastName())
                 .hashPassword(hashPassword)
                 .login(userForm.getLogin())
+                .email(userForm.getEmail())
                 .role(Role.USER)
                 .state(State.ACTIVE)
                 .build();
-
         usersRepository.save(user);
+    }
 
+    @Override
+    public User findByLogin(String login) {
+        return usersRepository.findByLogin(login);
     }
 }

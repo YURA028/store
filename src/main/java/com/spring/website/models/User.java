@@ -19,7 +19,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     @Column
     private String email;
     @Column
@@ -35,6 +35,7 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
     @Enumerated(value = EnumType.STRING)
     private State state;
 

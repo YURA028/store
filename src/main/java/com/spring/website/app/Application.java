@@ -20,7 +20,8 @@ public class Application {
         return new BCryptPasswordEncoder();
     }
 
+
     public static void main(String[] args) {
-        SpringApplication.run(Application.class);
+        SpringApplication.run(Application.class, args);
     }
 }
