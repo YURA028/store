@@ -21,11 +21,47 @@
         <jsp:include page="../blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="py-5 text-center">
-                <div class="form-style-2-heading">${user.firstName}</div>
-                <div class="form-style-2-heading">${user.lastName}</div>
-                <a href="/logout">Выход</a>
+                <h2>
+                <span style="vertical-align: inherit;">
+                    <span
+                            style="vertical-align: inherit;">Кобинет пользователя</span>
+                </span>
+                </h2>
             </div>
+            <div  class="bd-example">
+            <table class="table table-sm table-bordered">
+                <colgroup>
+                    <col span="1" style="background:Khaki"><!-- С помощью этой конструкции задаем цвет фона для первых двух столбцов таблицы-->
+                    <col style="background-color:#ff0000">
+                    <col style="background-color:#0b58dc">
+                    <col style="background-color:#33d1ff">
+                    <col style="background-color:#23c01b">
+                    <col style="background-color:#efe309">
+                </colgroup>
+                <thead>
+                <tr class="py-5 text-center">
+                    <th scope="col">Id</th>
+                    <th scope="col">Login</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Email</th>
 
+                </tr>
+                </thead>
+                <tbody>
+                         <tr>
+                                <td>${user.id}</td>
+                                <td>${user.login}</td>
+                                <td>${user.firstName}</td>
+                                <td>${user.lastName}</td>
+                                <td>${user.email}</td>
+                        </tr>
+                </tbody>
+
+            </table>
+<%--            <a href="${pageContext.request.contextPath}/logout">Выход</a>--%>
+                <button type="button" href="${pageContext.request.contextPath}/logout" class="btn btn-outline-danger">Выход</button>
+            </div>
 
         </main>
 

@@ -122,33 +122,34 @@
 <!--      <artifactId>c3p0</artifactId>-->
 <!--      <version>${c3p0.version}</version>-->
 <!--    </dependency>-->
+
     <!-- JSTL Dependency -->
-<!--    <dependency>-->
-<!--      <groupId>javax.servlet.jsp.jstl</groupId>-->
-<!--      <artifactId>javax.servlet.jsp.jstl-api</artifactId>-->
-<!--      <version>1.2.2</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>javax.servlet.jsp.jstl</groupId>
+      <artifactId>javax.servlet.jsp.jstl-api</artifactId>
+      <version>1.2.2</version>
+    </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>taglibs</groupId>-->
-<!--      <artifactId>standard</artifactId>-->
-<!--      <version>1.1.2</version>-->
-<!--    </dependency>-->
-<!--&lt;!&ndash;    &lt;!&ndash; Servlet Dependency &ndash;&gt;&ndash;&gt;-->
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+<!--    &lt;!&ndash; Servlet Dependency &ndash;&gt;-->
 
-<!--    <dependency>-->
-<!--      <groupId>javax.servlet</groupId>-->
-<!--      <artifactId>javax.servlet-api</artifactId>-->
-<!--      <scope>provided</scope>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
 
-<!--&lt;!&ndash;    &lt;!&ndash; JSP Dependency &ndash;&gt;&ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>javax.servlet.jsp</groupId>-->
-<!--      <artifactId>javax.servlet.jsp-api</artifactId>-->
-<!--      <version>2.3.3</version>-->
-<!--      <scope>provided</scope>-->
-<!--    </dependency>-->
+<!--    &lt;!&ndash; JSP Dependency &ndash;&gt;-->
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.3</version>
+      <scope>provided</scope>
+    </dependency>
 
 
     <dependency>

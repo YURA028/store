@@ -18,6 +18,7 @@ public class ProfileController {
             return "security/login";
         }
         UserDetailsImpl details = (UserDetailsImpl)authentication.getPrincipal();
+
         UserDto user = form(details.getUser());
         model.addAttribute("user", user);
         return "security/profile";
