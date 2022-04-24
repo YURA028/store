@@ -25,12 +25,12 @@ public class ProductController2 {
         public String blogMain(Model model) {
             List<Product> products = productRepository.findAll();
             model.addAttribute("posts", products);
-            return "product-main";
+            return "product/product-main";
         }
 
         @GetMapping("product/add")
         public String blogAdd(Model model) {
-            return "product-add";
+            return "product/product-add";
         }
 
         @PostMapping("product/add")
@@ -50,7 +50,7 @@ public class ProductController2 {
             ArrayList<Product> res = new ArrayList<>();
             product.ifPresent(res::add);
             model.addAttribute("post", res);
-            return "product-details";
+            return "product/product-details";
         }
 
         @GetMapping("/product/{id}/edit")
@@ -62,7 +62,7 @@ public class ProductController2 {
             ArrayList<Product> res = new ArrayList<>();
             product.ifPresent(res::add);
             model.addAttribute("post", res);
-            return "product-edit";
+            return "product/product-edit";
         }
 
         @PostMapping("/product/{id}/edit")

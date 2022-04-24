@@ -21,10 +21,11 @@
         <jsp:include page="../blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="col-md-10 mx-auto col-lg-5">
-                <form class="p-4 p-md-5 border rounded-3 bg-light" action="/signUp" method="post">
+                <form class="p-4 p-md-5 border rounded-3 bg-light" action="${pageContext.request.contextPath}/signUp" method="post">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="login" name="login" placeholder="Login">
                         <label for="login">Логин</label>
+                        <small class="form-text text-danger">Validation error</small>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="firstName" name="firstName" placeholder="FirstName">
@@ -41,6 +42,7 @@
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         <label for="password">Password</label>
+                        <small class="form-text text-danger">Validation error</small>
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit" value="signUp">Sign up</button>
                     <hr class="my-4">

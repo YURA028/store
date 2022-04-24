@@ -16,16 +16,18 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<jsp:include page="blocks/header.jsp"/>
+<jsp:include page="../blocks/header.jsp"/>
                 <div class="container-fluid" >
                     <div class="row">
-                        <jsp:include page="blocks/aside.jsp"/>
+                        <jsp:include page="../blocks/aside.jsp"/>
                         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div class="container mt-5">
 
                         <h1>product сайта</h1>
                         <a href="${pageContext.request.contextPath}/product/add" class="btn btn-primary">add</a>
                         <div class="alert alert_info mt-2">
+
+
                             <c:forEach items="${posts}" var="thePosts" >
                                 <h3 >${thePosts.name}</h3>
                                 <p >${thePosts.color}</p>
@@ -35,10 +37,7 @@
 
                         </div>
                     </div>
-
         </main>
-
-
         <div class="goog-te-spinner-pos">
             <div class="goog-te-spinner-animation">
                 <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
@@ -48,6 +47,6 @@
         </div>
     </div>
 </div>
-<jsp:include page="blocks/footer.jsp"/>
+<jsp:include page="../blocks/footer.jsp"/>
 </body>
 </html>

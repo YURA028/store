@@ -14,6 +14,7 @@
                 <li><a href="/orderItem" class="nav-link px-2 text-white">orderItem</a></li>
                 <li><a href="/product" class="nav-link px-2 text-white">product</a></li>
                 <li><a href="/product/add" class="nav-link px-2 text-white">productAdd</a></li>
+                <li><a href="/product2/list" class="nav-link px-2 text-white">product2</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

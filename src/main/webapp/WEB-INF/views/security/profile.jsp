@@ -59,9 +59,8 @@
                 </tbody>
 
             </table>
-<%--            <a href="${pageContext.request.contextPath}/logout">Выход</a>--%>
-                <button type="button" href="${pageContext.request.contextPath}/logout" class="btn btn-outline-danger">Выход</button>
-            </div>
+            <a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/logout">Выход</a>
+           </div>
 
         </main>
 

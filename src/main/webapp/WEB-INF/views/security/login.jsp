@@ -25,6 +25,7 @@
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="login" name="login" placeholder="Login">
                     <label for="login">Login address</label>
+                    <small class="form-text text-danger">Некорректное имя пользователя или пароль</small>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">

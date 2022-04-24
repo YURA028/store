@@ -15,10 +15,10 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<jsp:include page="blocks/header.jsp"/>
+<jsp:include page="../blocks/header.jsp"/>
 <div class="container-fluid" >
     <div class="row">
-        <jsp:include page="blocks/aside.jsp"/>
+        <jsp:include page="../blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="container mt-5 mb-5">
                 <h1>Добавление product</h1>
@@ -31,7 +31,7 @@
                         <input type="text" name="color" placeholder="Введите анонс статьи" class="form-control">
                     </label><br>
                     <label>
-                        <input type="text" name="serialNumber" placeholder="Введите анонс статьи" class="form-control">
+                        <input type="number" name="serialNumber" placeholder="Введите анонс статьи" class="form-control">
                     </label><br>
 <%--                    <label>--%>
 <%--                        <textarea name="serialNumber" placeholder="Введите полный текст статьи" class="form-control"></textarea>--%>
@@ -52,6 +52,6 @@
         </div>
     </div>
 </div>
-<jsp:include page="blocks/footer.jsp"/>
+<jsp:include page="../blocks/footer.jsp"/>
 </body>
 </html>

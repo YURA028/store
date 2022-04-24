@@ -24,7 +24,7 @@
                 <h2>
                 <span style="vertical-align: inherit;">
                     <span
-                            style="vertical-align: inherit;">Форма оформления заказа</span>
+                            style="vertical-align: inherit;">Список всех пользователей</span>
 
                 </span>
                 </h2>
@@ -57,6 +57,7 @@
                         <th>Role</th>
                         <th>Status</th>
                         <th>Login</th>
+
                     </tr>
                     <c:forEach items="${usersFromServer}" var="user">
                         <tr>
