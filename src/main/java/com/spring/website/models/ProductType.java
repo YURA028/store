@@ -19,7 +19,7 @@ public class ProductType {
     @Column
     private String name;
 
-//    @OneToMany(mappedBy = "productType", cascade = CascadeType.ALL)
-//    private Set<Product> product;
+    @OneToMany(mappedBy = "productType")
+    private Set<Product> product;
 
 }

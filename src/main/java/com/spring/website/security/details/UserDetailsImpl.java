@@ -1,6 +1,6 @@
 package com.spring.website.security.details;
 
-import com.spring.website.models.State;
+import com.spring.website.models.enums.State;
 import com.spring.website.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,7 +35,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getLogin();
+        return user.getEmail();
     }
 
     @Override

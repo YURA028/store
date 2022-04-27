@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
 
@@ -51,7 +52,12 @@
                                 <div class="mb-1 text-muted">Цвет: ${thePosts.color}</div>
                                 <p class="card-text mb-auto">Описание: ${thePosts.serialNumber}</p>
                                 <div>
-
+<%--                                    <sec:authorize access="hasRole('ADMIN')">--%>
+<%--                                        <td><a href="<c:url value='/product/${thePosts.id}/edit' />" type="submit" class="btn btn-success custom-width">Редактировать</a></td>--%>
+<%--                                    </sec:authorize>--%>
+<%--                                    <sec:authorize access="hasRole('ADMIN')">--%>
+<%--                                        <td><a href="<c:url value='/product/${thePosts.id}/remove' />" type="submit" class="btn btn-danger custom-width">Удалить</a></td>--%>
+<%--                                    </sec:authorize>--%>
                                     <a href="/product/${thePosts.id}/edit">
                                         <button type="submit">Редактировать</button>
                                     </a>

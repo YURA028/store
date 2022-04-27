@@ -18,9 +18,9 @@ import java.util.Optional;
 @Controller
 public class ProductController2 {
 
-
     @Autowired
     private ProductService productService;
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -37,7 +37,8 @@ public class ProductController2 {
     }
 
     @PostMapping("product/add")
-    public String blogPostAdd(@RequestParam String name, @RequestParam String serialNumber,
+    public String blogPostAdd(@RequestParam String name,
+                              @RequestParam String serialNumber,
                               @RequestParam String color, Model model) {
         Product product = new Product(name, color, serialNumber);
         productRepository.save(product);

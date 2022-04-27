@@ -46,10 +46,14 @@
                         <label for="password">Password</label>
                         <small class="form-text text-danger">Validation error</small>
                     </div>
+<%--                    <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
                     <button class="w-100 btn btn-lg btn-primary" type="submit" value="signUp">Sign up</button>
                     <hr class="my-4">
                     <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
                 </form>
+                <c:if test="${errorMessage != null}">
+                <h2 style="color: red">${errorMessage}</h2>
+            </c:if>
             </div>
         </main>
         <div class="goog-te-spinner-pos">

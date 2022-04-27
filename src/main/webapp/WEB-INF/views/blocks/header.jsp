@@ -13,7 +13,7 @@
                 <li><a href="/users" class="nav-link px-2 text-white">users</a></li>
                 <li><a href="/orderItem" class="nav-link px-2 text-white">orderItem</a></li>
                 <li><a href="/product" class="nav-link px-2 text-white">product</a></li>
-                <li><a href="/product/add" class="nav-link px-2 text-white">productAdd</a></li>
+                <li><a href="/main/product" class="nav-link px-2 text-white">product3</a></li>
                 <li><a href="/product2/list" class="nav-link px-2 text-white">product2</a></li>
             </ul>
 <%--            <form action="/" method="get">--%>

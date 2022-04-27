@@ -1,6 +1,8 @@
 package com.spring.website.models;
 
 
+import com.spring.website.models.enums.Role;
+import com.spring.website.models.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,8 +11,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import java.awt.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -34,12 +38,15 @@ public class User {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Transient
-    private String confirmPassword;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "imageProduct_id")
     private ImageProduct avatar;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    private List<Product> products = new ArrayList<>();
+
+    //date
     private LocalDateTime dateOfCreated;
     @PrePersist
     private void init() {
@@ -48,6 +55,10 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+//    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+//    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+//    @Enumerated(EnumType.STRING)
+//    private Set<Role> roles = new HashSet<>();
 
     @Enumerated(value = EnumType.STRING)
     private State state;
@@ -58,7 +69,7 @@ public class User {
     @PrimaryKeyJoinColumn
     private Address address;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Basket> basket;
 
 }

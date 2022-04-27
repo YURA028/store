@@ -20,7 +20,7 @@ public class Maker {
     @Column
     private String name;
 
-//    @OneToMany(mappedBy = "maker", cascade = CascadeType.ALL)
-//    private Set<Product> product;
+    @OneToMany(mappedBy = "maker")
+    private Set<Product> product;
 
 }

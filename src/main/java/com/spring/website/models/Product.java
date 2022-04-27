@@ -40,14 +40,17 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<BasketProduct> basketProducts;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "maker_id")
+    private Maker maker;
 
-//    @ManyToOne
-//    @JoinColumn(name = "maker_id")
-//    private Maker maker;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "product_type_id")
-//    private ProductType productType;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_type_id")
+    private ProductType productType;
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private User user;
 
     //загрузка фото в бд
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")

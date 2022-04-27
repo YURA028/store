@@ -32,8 +32,8 @@
         <div class="col-md-10 mx-auto col-lg-5">
             <form class="p-4 p-md-5 border rounded-3 bg-light" action="/login" method="post">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="login" name="login" placeholder="Login">
-                    <label for="login">Login address</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                    <label for="email">Email address</label>
                     <lu>
                         <c:if test="${error != null}">
 <%--                            ${error} eror--%>

@@ -14,8 +14,7 @@ public class ProductFormDto {
     private String color;
     private String description;
     private String serialNumber;
-    private String nameProductType;
-    private String nameMaker;
+
 
 
 //    public static ProductFormDto form(Product product){

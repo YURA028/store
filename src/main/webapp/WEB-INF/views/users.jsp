@@ -57,6 +57,7 @@
                         <th>Role</th>
                         <th>Status</th>
                         <th>Login</th>
+                        <th>Email</th>
 
                     </tr>
                     <c:forEach items="${usersFromServer}" var="user">
@@ -67,6 +68,7 @@
                             <td>${user.role}</td>
                             <td>${user.state}</td>
                             <td>${user.login}</td>
+                            <td>${user.email}</td>
                         </tr>
                     </c:forEach>
 
