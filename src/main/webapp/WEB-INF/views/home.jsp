@@ -1,5 +1,6 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
 
@@ -16,14 +17,14 @@
 </head>
 <body class="bg-light">
 <jsp:include page="blocks/header.jsp"/>
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row">
         <jsp:include page="blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
             <div>
 
-                    <h1 href="${title}"></h1>
+                <h1 href="${title}"></h1>
                 <h2>hello</h2>
 
             </div>
@@ -32,8 +33,10 @@
 
         <div class="goog-te-spinner-pos">
             <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
+                     viewBox="0 0 66 66">
+                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
+                            cy="33" r="30"></circle>
                 </svg>
             </div>
         </div>

@@ -21,18 +21,18 @@ public class SignUpController {
 
 
     @GetMapping("/signUp")
-    public String getSignUpPage(Model model){
+    public String getSignUpPage(Model model) {
         model.addAttribute("formUser", new UserFormDto());
         return "security/signUp";
     }
 
     @PostMapping("/signUp")
-    public String signUp(UserFormDto userForm, User user, Model model){
-        if (service.findByLogin(user.getLogin()) == null){
-            service.signUp(userForm);
-            return "security/login";
+    public String signUp(UserFormDto userForm, User user, Model model) {
+        if (service.findByLogin(user.getLogin()) != null ) {
+            return "security/signUp";
         }
-        return "security/signUp";
+        service.signUp(userForm);
+        return "security/login";
     }
 
 }

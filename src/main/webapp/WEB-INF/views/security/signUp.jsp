@@ -1,4 +1,4 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,12 +16,13 @@
 </head>
 <body class="bg-light">
 <jsp:include page="../blocks/header.jsp"/>
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row">
         <jsp:include page="../blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="col-md-10 mx-auto col-lg-5">
-                <form class="p-4 p-md-5 border rounded-3 bg-light" action="${pageContext.request.contextPath}/signUp" method="post">
+                <form class="p-4 p-md-5 border rounded-3 bg-light" action="${pageContext.request.contextPath}/signUp"
+                      method="post">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="login" name="login" placeholder="Login">
                         <label for="login">Логин</label>
@@ -40,7 +41,8 @@
                         <label for="email">почта</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Password">
                         <label for="password">Password</label>
                         <small class="form-text text-danger">Validation error</small>
                     </div>
@@ -52,14 +54,16 @@
         </main>
         <div class="goog-te-spinner-pos">
             <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
+                     viewBox="0 0 66 66">
+                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
+                            cy="33" r="30"></circle>
                 </svg>
             </div>
         </div>
     </div>
 </div>
-    <jsp:include page="../blocks/footer.jsp"/>
+<jsp:include page="../blocks/footer.jsp"/>
 </body>
 </html>
 

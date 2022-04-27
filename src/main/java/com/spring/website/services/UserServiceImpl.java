@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;;
 
 import java.util.List;
+
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> getUser() {
-         userRepository.findAll();
+        userRepository.findAll();
         return null;
     }
 

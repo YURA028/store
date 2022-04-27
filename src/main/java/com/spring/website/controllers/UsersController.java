@@ -14,18 +14,20 @@ public class UsersController {
 
 
     @GetMapping("/users")
-    public String getUsersPage(ModelMap model){
+    public String getUsersPage(ModelMap model) {
 
         model.addAttribute("usersFromServer", usersRepository.findAll());
 
         return "users";
     }
+
     @GetMapping("/test")
-    public String getSignUpPage2222(){
+    public String getSignUpPage2222() {
         return "test/test";
     }
+
     @GetMapping("/orderItem")
-    public String getSignUpPage22(){
+    public String getSignUpPage22() {
         return "orderItem";
     }
 }

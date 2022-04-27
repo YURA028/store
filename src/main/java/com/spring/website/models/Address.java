@@ -26,6 +26,4 @@ public class Address {
     @MapsId
     @JoinColumn(name = "user_id")
     private User user;
-
-
 }

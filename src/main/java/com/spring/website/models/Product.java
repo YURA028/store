@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -19,23 +22,24 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(unique = true)
     private String name;
     @Column
     private Integer price;
-//    @Column
-//    private Boolean availability;
+    @Column
+    private Boolean availability;
     @Column
     private Integer quantity;
     @Column
     private String color;
-    @Column
+    @Column(name = "description", columnDefinition = "text")
     private String description;
     @Column(name = "serial_number")
     private String serialNumber;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<BasketProduct> basketProducts;
+
 
 //    @ManyToOne
 //    @JoinColumn(name = "maker_id")
@@ -45,6 +49,20 @@ public class Product {
 //    @JoinColumn(name = "product_type_id")
 //    private ProductType productType;
 
+    //загрузка фото в бд
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+    private List<ImageProduct> imageProducts = new ArrayList<>();
+    private Long previewImageId;
+    private LocalDateTime dateOfCreated;
+
+    @PrePersist
+    private void init(){
+        dateOfCreated = LocalDateTime.now();
+    }
+    public void addImageToProduct(ImageProduct imageProduct){
+        imageProduct.setProduct(this);
+        imageProducts.add(imageProduct);
+    }
 
 
     public Product(String name, String color, String serialNumber) {

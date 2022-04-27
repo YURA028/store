@@ -26,35 +26,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-        private DataSource dataSource;
+    private DataSource dataSource;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
 //                    .antMatchers("/users/**").authenticated()
-                    .antMatchers("/users/**").hasAuthority("ADMIN")
-                    .antMatchers("/signUp/**").permitAll()
-                    .antMatchers("/product/**").permitAll()
-                    .antMatchers("/css/**").permitAll()
-                    .antMatchers("/").authenticated()
-                    .anyRequest().permitAll()
+                .antMatchers("/users/**").hasAuthority("ADMIN")
+                .antMatchers("/signUp/**").permitAll()
+                .antMatchers("/product/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/").authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                    .usernameParameter("login")
-                    .defaultSuccessUrl("/")
-                    .loginPage("/login")
-                    .permitAll()
+                .usernameParameter("login")
+                .defaultSuccessUrl("/")
+                .loginPage("/login")
+                .permitAll()
                 .and()
                 .rememberMe()
-                    .rememberMeParameter("remember-me")
-                    .tokenRepository(tokenRepository());
+                .rememberMeParameter("remember-me")
+                .tokenRepository(tokenRepository());
 
         http.csrf().disable();
     }
 
     @Bean
-    public PersistentTokenRepository tokenRepository(){
+    public PersistentTokenRepository tokenRepository() {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
         return tokenRepository;

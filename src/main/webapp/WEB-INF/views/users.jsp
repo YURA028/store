@@ -1,4 +1,4 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,7 +16,7 @@
 </head>
 <body class="bg-light">
 <jsp:include page="blocks/header.jsp"/>
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row">
         <jsp:include page="blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -30,20 +30,20 @@
                 </h2>
             </div>
 
-<%--            <div class="form-style-2">--%>
-<%--                <div class="form-style-2-heading">--%>
-<%--                    Please Sign Up!--%>
-<%--                </div>--%>
-<%--                <form method="post" action="/users">--%>
-<%--                    <label for="firstName">First Name--%>
-<%--                        <input class="input-field" type="text" id="firstName" name="firstName">--%>
-<%--                    </label>--%>
-<%--                    <label for="lastName">Last Name--%>
-<%--                        <input class="input-field" type="text" id="lastName" name="lastName">--%>
-<%--                    </label>--%>
-<%--                    <input type="submit" value="Add user">--%>
-<%--                </form>--%>
-<%--            </div>--%>
+            <%--            <div class="form-style-2">--%>
+            <%--                <div class="form-style-2-heading">--%>
+            <%--                    Please Sign Up!--%>
+            <%--                </div>--%>
+            <%--                <form method="post" action="/users">--%>
+            <%--                    <label for="firstName">First Name--%>
+            <%--                        <input class="input-field" type="text" id="firstName" name="firstName">--%>
+            <%--                    </label>--%>
+            <%--                    <label for="lastName">Last Name--%>
+            <%--                        <input class="input-field" type="text" id="lastName" name="lastName">--%>
+            <%--                    </label>--%>
+            <%--                    <input type="submit" value="Add user">--%>
+            <%--                </form>--%>
+            <%--            </div>--%>
 
             <div class="form-style-2">
                 <div class="form-style-2-heading">
@@ -77,8 +77,10 @@
 
         <div class="goog-te-spinner-pos">
             <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
+                     viewBox="0 0 66 66">
+                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
+                            cy="33" r="30"></circle>
                 </svg>
             </div>
         </div>

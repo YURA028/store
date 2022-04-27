@@ -17,7 +17,7 @@ public class UserDto {
     private String lastName;
     private String email;
 
-    public static UserDto form(User user){
+    public static UserDto form(User user) {
         return UserDto.builder()
                 .id(user.getId())
                 .login(user.getLogin())

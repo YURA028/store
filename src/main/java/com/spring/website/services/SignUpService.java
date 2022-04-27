@@ -5,6 +5,7 @@ import com.spring.website.models.User;
 
 public interface SignUpService {
     void signUp(UserFormDto userForm);
+
     User findByLogin(String login);
 
 }

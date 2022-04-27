@@ -1,6 +1,6 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
 
@@ -17,7 +17,7 @@
 </head>
 <body class="bg-light">
 <jsp:include page="../blocks/header.jsp"/>
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row">
         <jsp:include page="../blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -30,68 +30,83 @@
                             <div class="panel-title">Add Customer</div>
                         </div>
                         <div class="panel-body">
-                            <form:form action="saveProduct" cssClass="form-horizontal"
-                                       method="post" modelAttribute="product">
+                            <form:form action="/product2/saveProduct" cssClass="form-horizontal"
+                                       method="post" modelAttribute="product" enctype="multipart/form-data">
 
                                 <!-- need to associate this data with customer id -->
-                                <form:hidden path="id" />
+                                <form:hidden path="id"/>
 
                                 <div class="form-group">
                                     <label for="name" class="col-md-3 control-label">Name</label>
                                     <div class="col-md-9">
-                                        <form:input path="name" cssClass="form-control" />
+                                        <form:input path="name" cssClass="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="price" type="number" class="col-md-3 control-label">Price
-                                        </label>
+                                    <label for="price"  class="col-md-3 control-label">Price
+                                    </label>
                                     <div class="col-md-9">
                                         <form:input type="number" path="price" maxlength="3" cssClass="form-control"/>
                                     </div
                                 </div>
 
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="availability" class="col-md-3 control-label">Availability</label>--%>
-<%--                                    <div class="col-md-9">--%>
-<%--                                        <form:input path="availability" cssClass="form-control" />--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
+                                <%--                                <div class="form-group">--%>
+                                <%--                                    <label for="availability" class="col-md-3 control-label">Availability</label>--%>
+                                <%--                                    <div class="col-md-9">--%>
+                                <%--                                        <form:input path="availability" cssClass="form-control" />--%>
+                                <%--                                    </div>--%>
+                                <%--                                </div>--%>
                                 <div class="form-group">
-                                    <label for="quantity"  type="number" class="col-md-3 control-label">Quantity</label>
+                                    <label for="quantity" type="number" class="col-md-3 control-label">Quantity</label>
                                     <div class="col-md-9">
-                                        <form:input path="quantity" type="number" cssClass="form-control" />
+                                        <form:input path="quantity" type="number" cssClass="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="color" class="col-md-3 control-label">Color</label>
                                     <div class="col-md-9">
-                                        <form:input path="color" cssClass="form-control" />
+                                        <form:input path="color" cssClass="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description" class="col-md-3 control-label">Description</label>
                                     <div class="col-md-9">
-                                        <form:input path="description" cssClass="form-control" />
+                                        <form:input path="description" cssClass="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="serialNumber" class="col-md-3 control-label">SerialNumber</label>
                                     <div class="col-md-9">
-                                        <form:input path="serialNumber" cssClass="form-control" />
+                                        <form:input path="serialNumber" cssClass="form-control"/>
                                     </div>
                                 </div>
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="saveProduct.maker.name" class="col-md-3 control-label">Maker</label>--%>
-<%--                                    <div class="col-md-9">--%>
-<%--                                        <form:input path="saveProduct.maker.name" cssClass="form-control" />--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="saveProduct.productType.name" class="col-md-3 control-label">ProductType</label>--%>
-<%--                                    <div class="col-md-9">--%>
-<%--                                        <form:input path="saveProduct.productType.name" cssClass="form-control" />--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
+
+                                <div class="form-group">
+                            <c:if test="${product.imageProducts.size() != null}">
+                                    <%--                            ${error} eror--%>
+                                    Первое фото:<input type="file" name="file1"/><br>
+                                </c:if>
+
+                                </div>
+
+
+<%--                                    Первое фото1:<input type="file" name="file1"/><br>--%>
+<%--                                    Первое фото2:<input type="file" name="file2"/><br>--%>
+<%--                                    Первое фото3:<input type="file" name="file3"/><br>--%>
+
+
+                                <%--                                <div class="form-group">--%>
+                                <%--                                    <label for="saveProduct.maker.name" class="col-md-3 control-label">Maker</label>--%>
+                                <%--                                    <div class="col-md-9">--%>
+                                <%--                                        <form:input path="saveProduct.maker.name" cssClass="form-control" />--%>
+                                <%--                                    </div>--%>
+                                <%--                                </div>--%>
+                                <%--                                <div class="form-group">--%>
+                                <%--                                    <label for="saveProduct.productType.name" class="col-md-3 control-label">ProductType</label>--%>
+                                <%--                                    <div class="col-md-9">--%>
+                                <%--                                        <form:input path="saveProduct.productType.name" cssClass="form-control" />--%>
+                                <%--                                    </div>--%>
+                                <%--                                </div>--%>
 
                                 <div class="form-group">
                                     <!-- Button -->
@@ -111,8 +126,10 @@
 
         <div class="goog-te-spinner-pos">
             <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
+                     viewBox="0 0 66 66">
+                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
+                            cy="33" r="30"></circle>
                 </svg>
             </div>
         </div>

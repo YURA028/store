@@ -5,18 +5,19 @@ import com.spring.website.models.Role;
 import com.spring.website.models.State;
 import com.spring.website.models.User;
 import com.spring.website.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class SignUpServiceImpl implements SignUpService{
-    @Autowired
-    private UserRepository usersRepository;
+@RequiredArgsConstructor
+public class SignUpServiceImpl implements SignUpService {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository usersRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void signUp(UserFormDto userForm) {

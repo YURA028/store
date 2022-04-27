@@ -16,9 +16,13 @@
                 <li><a href="/product/add" class="nav-link px-2 text-white">productAdd</a></li>
                 <li><a href="/product2/list" class="nav-link px-2 text-white">product2</a></li>
             </ul>
+<%--            <form action="/" method="get">--%>
+<%--                Поиск по названию объявления: <input type="text" name="title"><br>--%>
+<%--                <input type="submit" value="Поиск"/>--%>
+<%--            </form>--%>
 
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="${pageContext.request.contextPath}/product2/list" method="get">
+                Поиск: <input type="search"  name="name"  placeholder="Search..." aria-label="Search">
             </form>
 
             <div class="text-end">

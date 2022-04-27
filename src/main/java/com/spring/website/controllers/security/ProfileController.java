@@ -13,11 +13,11 @@ import static com.spring.website.dto.UserDto.form;
 public class ProfileController {
 
     @GetMapping("/")
-    public String getProfilePage(ModelMap model, Authentication authentication){
-        if (authentication == null){
+    public String getProfilePage(ModelMap model, Authentication authentication) {
+        if (authentication == null) {
             return "security/login";
         }
-        UserDetailsImpl details = (UserDetailsImpl)authentication.getPrincipal();
+        UserDetailsImpl details = (UserDetailsImpl) authentication.getPrincipal();
 
         UserDto user = form(details.getUser());
         model.addAttribute("user", user);

@@ -1,4 +1,4 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,7 +16,7 @@
 </head>
 <body class="bg-light">
 <jsp:include page="../blocks/header.jsp"/>
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row">
         <jsp:include page="../blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -28,47 +28,50 @@
                 </span>
                 </h2>
             </div>
-            <div  class="bd-example">
-            <table class="table table-sm table-bordered">
-                <colgroup>
-                    <col span="1" style="background:Khaki"><!-- С помощью этой конструкции задаем цвет фона для первых двух столбцов таблицы-->
-                    <col style="background-color:#ff0000">
-                    <col style="background-color:#0b58dc">
-                    <col style="background-color:#33d1ff">
-                    <col style="background-color:#23c01b">
-                    <col style="background-color:#efe309">
-                </colgroup>
-                <thead>
-                <tr class="py-5 text-center">
-                    <th scope="col">Id</th>
-                    <th scope="col">Login</th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Фамилия</th>
-                    <th scope="col">Email</th>
+            <div class="bd-example">
+                <table class="table table-sm table-bordered">
+                    <colgroup>
+                        <col span="1" style="background:Khaki">
+                        <!-- С помощью этой конструкции задаем цвет фона для первых двух столбцов таблицы-->
+                        <col style="background-color:#ff0000">
+                        <col style="background-color:#0b58dc">
+                        <col style="background-color:#33d1ff">
+                        <col style="background-color:#23c01b">
+                        <col style="background-color:#efe309">
+                    </colgroup>
+                    <thead>
+                    <tr class="py-5 text-center">
+                        <th scope="col">Id</th>
+                        <th scope="col">Login</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Email</th>
 
-                </tr>
-                </thead>
-                <tbody>
-                         <tr>
-                                <td>${user.id}</td>
-                                <td>${user.login}</td>
-                                <td>${user.firstName}</td>
-                                <td>${user.lastName}</td>
-                                <td>${user.email}</td>
-                        </tr>
-                </tbody>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.login}</td>
+                        <td>${user.firstName}</td>
+                        <td>${user.lastName}</td>
+                        <td>${user.email}</td>
+                    </tr>
+                    </tbody>
 
-            </table>
-            <a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/logout">Выход</a>
-           </div>
+                </table>
+                <a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/logout">Выход</a>
+            </div>
 
         </main>
 
 
         <div class="goog-te-spinner-pos">
             <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
+                     viewBox="0 0 66 66">
+                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
+                            cy="33" r="30"></circle>
                 </svg>
             </div>
         </div>
