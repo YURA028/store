@@ -1,4 +1,4 @@
-package com.spring.website.controllers.security;
+package com.spring.website.controllers.sec;
 
 import com.spring.website.security.details.UserDetailsImpl;
 import com.spring.website.dto.UserDto;

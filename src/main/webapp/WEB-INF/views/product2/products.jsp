@@ -32,6 +32,9 @@
             <h1>BUYSELL</h1>
             <hr>
             <h3>
+                <c:if test="${user.role.name() == 'ADMIN'}">
+                    <a href="/admin">Админ</a>
+                </c:if>
                 <c:choose>
                     <c:when test="${user.email != null}">
                         <h3>Имя пользователя: <i>${user.firstName}</i></h3>

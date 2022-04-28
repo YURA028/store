@@ -29,22 +29,23 @@
                 </h2>
             </div>
 
-            <h1>BUYSELL</h1><hr>
+            <h1>BUYSELL</h1>
+            <hr>
             <h4>Подробная информация о товаре</h4>
             <c:forEach items="${images}" var="img">
-            <img src="/images/${img.id}" height="60px" alt="no img"/><br><br>
+                <img src="/images/${img.id}" height="60px" alt="no img"/><br><br>
             </c:forEach>
 
-        <b>Название товара: </b>${product.name}<br>
-        <b>Описание товара: </b>${product.description}<br>
-        <b>Цена: </b>${product.price}<br>
-        <b>Автор: </b>${product.user.firstName}<br>
-        <b>производитель: </b>${product.maker.name}<br>
-        <b>Тип продукта: </b>${product.productType.name}<br>
-        <hr>
-        <form action="/main/product/delete/${product.id}" method="post">
-            <input type="submit" value="Удалить товар"/>
-        </form>
+            <b>Название товара: </b>${product.name}<br>
+            <b>Описание товара: </b>${product.description}<br>
+            <b>Цена: </b>${product.price}<br>
+            <b>производитель: </b>${product.maker.name}<br>
+            <b>Тип продукта: </b>${product.productType.name}<br>
+            <b>Автор: </b><a href="/user/${product.user.id}"> ${product.user.firstName}</a><br>
+            <hr>
+            <form action="/main/product/delete/${product.id}" method="post">
+                <input type="submit" value="Удалить товар"/>
+            </form>
         </main>
 
 

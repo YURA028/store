@@ -6,13 +6,16 @@ import com.spring.website.models.enums.State;
 import com.spring.website.models.User;
 import com.spring.website.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
@@ -22,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean emailVerification(UserFormDto userForm) {
-        if (usersRepository.findByEmail(userForm.getEmail()) != null ) {
+        if (usersRepository.findByEmail(userForm.getEmail()) != null) {
             return false;
         }
         return true;
@@ -34,7 +37,6 @@ public class UserServiceImpl implements UserService {
 
         User user = User.builder()
                 .firstName(userForm.getFirstName())
-                .lastName(userForm.getLastName())
                 .hashPassword(hashPassword)
                 .login(userForm.getLogin())
                 .email(userForm.getEmail())
@@ -50,8 +52,42 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getUser() {
-        usersRepository.findAll();
-        return null;
+    public List<User> getUserList() {
+        return usersRepository.findAll();
+    }
+
+    @Override
+    public void banUser(Long id) {
+        User user = usersRepository.findById(id).orElse(null);
+        if (user != null) {
+            if (user.getId() != 1 & user.getRole().equals(Role.USER)) {
+                if (user.getState().equals(State.ACTIVE)) {
+                    user.setState(State.BANNED);
+                    log.info("Ban user with id = {}; email: {}", user.getId(), user.getEmail());
+                } else {
+                    user.setState(State.ACTIVE);
+                    log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
+                }
+                usersRepository.save(user);
+            }
+        }
+    }
+
+    @Override
+    public void roleUser(Long id) {
+        User user = usersRepository.findById(id).orElse(null);
+
+        if (user != null) {
+            if (user.getId() != 1) {
+                if (user.getRole().equals(Role.USER)) {
+                    user.setRole(Role.ADMIN);
+                    log.info("Ban user with id = {}; email: {}", user.getId(), user.getEmail());
+                } else {
+                    user.setRole(Role.USER);
+                    log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
+                }
+                usersRepository.save(user);
+            }
+        }
     }
 }

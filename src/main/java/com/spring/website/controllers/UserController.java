@@ -22,36 +22,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/login")
-    public String getLoginPage(Authentication authentication, Model model, HttpServletRequest request) {
-        if (authentication != null) {
-            return "redirect:/";
-        }
-        if (request.getParameterMap().containsKey("error")) {
-            model.addAttribute("error", true);
-        }
-        return "security/login";
-    }
-
-    @GetMapping("/signUp")
-    public String getSignUpPage(Model model) {
-        model.addAttribute("formUser", new UserFormDto());
-        return "security/signUp";
-    }
-
-    @PostMapping("/signUp")
-    public String signUp(UserFormDto userForm, User user, Model model) {
-        if (!userService.emailVerification(userForm)) {
-            model.addAttribute("errorMessage", "Пользователь с email: " + user.getEmail() + " уже существует");
-            return "security/signUp";
-        }
-        userService.signUp(userForm);
-        return "redirect:/login";
-    }
 
     @GetMapping("/user/{user}")
     public String userInfo(@PathVariable("user") User user, Model model){
         model.addAttribute("user", user);
+        model.addAttribute("products", user.getProducts());
         return "security/user-info";
     }
 }

@@ -33,10 +33,6 @@
                         <label for="firstName">Имя</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="LastName">
-                        <label for="lastName">Фамилия</label>
-                    </div>
-                    <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                         <label for="email">почта</label>
                     </div>

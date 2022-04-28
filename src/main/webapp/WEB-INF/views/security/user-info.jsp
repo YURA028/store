@@ -28,66 +28,21 @@
                 </span>
                 </h2>
             </div>
-
-            <h1>BUYSELL</h1>
-            <hr>
-            <h3>
-                <c:choose>
-                    <c:when test="${user.email != null}">
-                        <h3>Имя пользователя: <i>${user.firstName}</i></h3>
-                        <form action="${pageContext.request.contextPath}/logout" method="post">
-                                <%--                            <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
-                            <input type="submit" value="Выйти"/>
-                        </form>
-                    </c:when>
-                    <c:when test="${user.email == null}">
-                        <a href="${pageContext.request.contextPath}/login">Войти</a></h1>
-                    </c:when>
-                </c:choose>
-            </h3>
-            <h4>Товары со всей Беларуси</h4>
-            <form action="${pageContext.request.contextPath}/main/product" method="get">
-                Поиск по названию объявления: <input type="text" name="name"><br>
-                <input type="submit" value="Поиск"/>
-            </form>
+            <h3>Подробная информация о пользователе ${user.firstName}</h3>
+            <b>Email:</b> ${user.email}<br>
+            <b>Login:</b> ${user.login}<br>
+            <b>Login:</b> ${user.dateOfCreated}<br>
+            <h4>Товары пользователя ${user.login}</h4>
             <c:forEach items="${products}" var="product">
-                <div>
-                    <p><b>${product.name}</b> ${product.price} руб. | <a type="submit"
-                                                                         href="/main/product/${product.id}">Подробнее...</a></p>
-                </div>
+                        <div>
+                            <p>Название товара: <b>${product.name}</b><br>
+                              Дата добавления:  <b>${product.dateOfCreated}</b><br>
+                                Цена:${product.price} руб. |
+                                <a type="submit" href="/main/product/${product.id}">Подробнее...</a>
+                            </p>
+                        </div>
             </c:forEach>
 
-            <h3>Товаров нет</h3>
-        </
-        <c:if test="${user.email != null}">
-            <hr>
-            <h3>Создать новый товар</h3>
-            <form action="${pageContext.request.contextPath}/main/product/create" method="post"
-                  enctype="multipart/form-data">
-                Название товара: <label>
-                <input type="text" name="name"/>
-            </label><br><br>
-                Описание товара: <label>
-                <input type="text" name="description"/>
-            </label><br><br>
-                Цена: <label>
-                <input type="number" size="6" name="price"/>
-            </label><br><br>
-                Производитель: <label>
-                <input type="text" name="maker.name"/>
-            </label><br><br>
-                Тип продукта: <label>
-                <input type="text"  name="productType.name"/>
-            </label><br><br>
-                Цвет: <label>
-                <input type="text" name="color"/>
-            </label><br><br>
-                Первая фотография: <input type="file" name="file1"/><br><br>
-                Вторая фотография: <input type="file" name="file2"/><br><br>
-                Третья фотография: <input type="file" name="file3"/><br><br>
-                <input type="submit" value="Добавить товар"/>
-            </form>
-        </c:if>
         </main>
 
 

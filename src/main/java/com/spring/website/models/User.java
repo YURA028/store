@@ -36,39 +36,28 @@ public class User {
     private String hashPassword;
     @Column(name = "first_name")
     private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "imageProduct_id")
     private ImageProduct avatar;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private List<Product> products = new ArrayList<>();
-
     //date
     private LocalDateTime dateOfCreated;
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
-
     @Enumerated(value = EnumType.STRING)
     private Role role;
 //    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 //    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
 //    @Enumerated(EnumType.STRING)
 //    private Set<Role> roles = new HashSet<>();
-
     @Enumerated(value = EnumType.STRING)
     private State state;
-
-
-
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Address address;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Basket> basket;
 

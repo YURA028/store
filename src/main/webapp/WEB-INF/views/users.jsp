@@ -53,7 +53,6 @@
                     <tr>
                         <th>Id</th>
                         <th>First Name</th>
-                        <th>Last Name</th>
                         <th>Role</th>
                         <th>Status</th>
                         <th>Login</th>
@@ -64,7 +63,6 @@
                         <tr>
                             <td>${user.id}</td>
                             <td>${user.firstName}</td>
-                            <td>${user.lastName}</td>
                             <td>${user.role}</td>
                             <td>${user.state}</td>
                             <td>${user.login}</td>

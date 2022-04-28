@@ -14,7 +14,6 @@ public class UserDto {
     private Long id;
     private String login;
     private String firstName;
-    private String lastName;
     private String email;
 
     public static UserDto form(User user) {
@@ -22,7 +21,6 @@ public class UserDto {
                 .id(user.getId())
                 .login(user.getLogin())
                 .firstName(user.getFirstName())
-                .lastName(user.getLastName())
                 .email(user.getEmail())
                 .build();
 

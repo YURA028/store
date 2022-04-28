@@ -4,6 +4,7 @@ import com.spring.website.dto.UserFormDto;
 import com.spring.website.models.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -13,5 +14,9 @@ public interface UserService {
 
     User findByEmail(String email);
 
-    List<User> getUser();
+    List<User> getUserList();
+
+    void banUser(Long id);
+
+    void roleUser(Long id);
 }

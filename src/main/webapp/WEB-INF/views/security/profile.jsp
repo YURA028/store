@@ -36,7 +36,6 @@
                         <col style="background-color:#ff0000">
                         <col style="background-color:#0b58dc">
                         <col style="background-color:#33d1ff">
-                        <col style="background-color:#23c01b">
                         <col style="background-color:#efe309">
                     </colgroup>
                     <thead>
@@ -44,7 +43,6 @@
                         <th scope="col">Id</th>
                         <th scope="col">Login</th>
                         <th scope="col">Имя</th>
-                        <th scope="col">Фамилия</th>
                         <th scope="col">Email</th>
 
                     </tr>
@@ -54,7 +52,6 @@
                         <td>${user.id}</td>
                         <td>${user.login}</td>
                         <td>${user.firstName}</td>
-                        <td>${user.lastName}</td>
                         <td>${user.email}</td>
                     </tr>
                     </tbody>

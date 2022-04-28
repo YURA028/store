@@ -14,8 +14,6 @@ public class UserFormDto {
     @NotBlank(message = "Имя является обязательным входным параметром.")
     private String firstName;
 
-    @NotBlank(message = "Фамилия является обязательным входным параметром.")
-    private String lastName;
 
     @NotBlank(message = "Имя является обязательным входным параметром.")
     @NotNull
