@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 
@@ -19,13 +20,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository usersRepository;
+    private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    public User getUserByPrincipal(Principal principal) {
+        if (principal == null) return new User();
+        return userRepository.findByEmail(principal.getName());
+    }
+
+    @Override
     public boolean emailVerification(UserFormDto userForm) {
-        if (usersRepository.findByEmail(userForm.getEmail()) != null) {
+        if (userRepository.findByEmail(userForm.getEmail()) != null) {
             return false;
         }
         return true;
@@ -43,22 +50,22 @@ public class UserServiceImpl implements UserService {
                 .role(Role.USER)
                 .state(State.ACTIVE)
                 .build();
-        usersRepository.save(user);
+        userRepository.save(user);
     }
 
     @Override
     public User findByEmail(String email) {
-        return usersRepository.findByEmail(email);
+        return userRepository.findByEmail(email);
     }
 
     @Override
     public List<User> getUserList() {
-        return usersRepository.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     public void banUser(Long id) {
-        User user = usersRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElse(null);
         if (user != null) {
             if (user.getId() != 1 & user.getRole().equals(Role.USER)) {
                 if (user.getState().equals(State.ACTIVE)) {
@@ -68,14 +75,14 @@ public class UserServiceImpl implements UserService {
                     user.setState(State.ACTIVE);
                     log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
                 }
-                usersRepository.save(user);
+                userRepository.save(user);
             }
         }
     }
 
     @Override
     public void roleUser(Long id) {
-        User user = usersRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElse(null);
 
         if (user != null) {
             if (user.getId() != 1) {
@@ -86,7 +93,7 @@ public class UserServiceImpl implements UserService {
                     user.setRole(Role.USER);
                     log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
                 }
-                usersRepository.save(user);
+                userRepository.save(user);
             }
         }
     }

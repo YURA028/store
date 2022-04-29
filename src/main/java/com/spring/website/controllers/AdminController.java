@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.Map;
 
 
@@ -23,8 +24,9 @@ public class AdminController {
     private final UserService userService;
 
     @GetMapping("/admin")
-    public String admin(Model model){
+    public String admin(Model model, Principal principal){
         model.addAttribute("users", userService.getUserList());
+        model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
         return "security/admin";
     }
 

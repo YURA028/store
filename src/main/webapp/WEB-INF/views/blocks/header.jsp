@@ -31,19 +31,28 @@
             <%--                <input type="submit" value="Поиск"/>--%>
             <%--            </form>--%>
 
+
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
-                  action="${pageContext.request.contextPath}/product2/list" method="get">
+                  action="${pageContext.request.contextPath}/main/product" method="get">
                 Поиск: <input type="search" name="name" placeholder="Search..." aria-label="Search">
             </form>
 
-            <div class="text-end">
-                <a href="/login">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                </a>
-                <a href="/signUp">
-                    <button type="button" class="btn btn-warning">Sign-up</button>
-                </a>
-            </div>
+            <c:if test="${userPrincipal.email != null}">
+                <div class="text-end">
+                    <a href="/login">
+                        <button type="button" class="btn btn-outline-light me-2">${userPrincipal.login}</button>
+                    </a>
+                </div>
+            </c:if>
+            <c:if test="${userPrincipal.email == null}">
+                <div class="text-end">
+                    <a href="/login">
+                        <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    </a>
+                </div>
+            </c:if>
+
+
         </div>
     </div>
 </header>
