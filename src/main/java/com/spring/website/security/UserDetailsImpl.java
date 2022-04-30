@@ -1,4 +1,4 @@
-package com.spring.website.security.details;
+package com.spring.website.security;
 
 import com.spring.website.models.enums.State;
 import com.spring.website.models.User;

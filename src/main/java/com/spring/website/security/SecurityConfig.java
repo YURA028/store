@@ -1,4 +1,4 @@
-package com.spring.website.security.config;
+package com.spring.website.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,8 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasAuthority('ADMIN')")
                 .antMatchers("/signUp/**").permitAll()
                 .antMatchers("/product/**").permitAll()
+                .antMatchers("/profile/**").permitAll()
                 .antMatchers("/main/**").permitAll()
                 .antMatchers("/css/**").permitAll()
+                .antMatchers("/resources/**").permitAll()
                 .antMatchers("/").permitAll()
                 .anyRequest().permitAll()
                 .and()

@@ -1,4 +1,4 @@
-package com.spring.website.dto;
+package com.spring.website.services.dto;
 
 
 import com.spring.website.models.User;

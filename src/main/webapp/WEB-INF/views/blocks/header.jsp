@@ -12,16 +12,14 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="/users" class="nav-link px-2 text-white">users</a></li>
-                <li><a href="/orderItem" class="nav-link px-2 text-white">orderItem</a></li>
-                <li><a href="/product" class="nav-link px-2 text-white">product</a></li>
-                <li><a href="/main/product" class="nav-link px-2 text-white">product3</a></li>
-                <li><a href="/product2/list" class="nav-link px-2 text-white">product2</a></li>
+                <li><a href="../" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="../basket" class="nav-link px-2 text-white">orderItem</a></li>
+
+
 
                 <sec:authorize access="hasAnyAuthority('ADMIN')">
                     <li>
-                        <a href="/admin" class="nav-link px-2 text-white">admin</a>
+                        <a href="../admin" class="nav-link px-2 text-white">admin</a>
                     </li>
                 </sec:authorize>
 
@@ -33,26 +31,24 @@
 
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
-                  action="${pageContext.request.contextPath}/main/product" method="get">
-                Поиск: <input type="search" name="name" placeholder="Search..." aria-label="Search">
+                  action="../" method="get">
+                Поиск: <input type="search" name="nameProduct" placeholder="Search..." aria-label="Search">
             </form>
 
             <c:if test="${userPrincipal.email != null}">
                 <div class="text-end">
-                    <a href="/login">
+                    <a href="../profile">
                         <button type="button" class="btn btn-outline-light me-2">${userPrincipal.login}</button>
                     </a>
                 </div>
             </c:if>
             <c:if test="${userPrincipal.email == null}">
                 <div class="text-end">
-                    <a href="/login">
+                    <a href="../login">
                         <button type="button" class="btn btn-outline-light me-2">Login</button>
                     </a>
                 </div>
             </c:if>
-
-
         </div>
     </div>
 </header>

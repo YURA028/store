@@ -61,4 +61,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Basket> basket;
 
+    public boolean isAdmin() {
+        return role.equals(Role.ADMIN);
+    }
 }

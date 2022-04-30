@@ -1,8 +1,5 @@
-package com.spring.website.dto;
+package com.spring.website.services.dto;
 
-import com.spring.website.models.Product;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 

@@ -1,4 +1,4 @@
-package com.spring.website.app;
+package com.spring.website;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@ComponentScan("com.spring.website")
-@EnableJpaRepositories(basePackages = "com.spring.website.repositories")
-@EntityScan(basePackages = "com.spring.website.models")
+//@ComponentScan("com.spring")
+//@EnableJpaRepositories(basePackages = "com.spring.website.repositories")
+//@EntityScan(basePackages = "com.spring.website.models")
 public class Application {
 
     @Bean

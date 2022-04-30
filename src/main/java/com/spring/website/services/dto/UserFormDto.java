@@ -1,4 +1,4 @@
-package com.spring.website.dto;
+package com.spring.website.services.dto;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

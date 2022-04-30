@@ -1,7 +1,6 @@
 package com.spring.website.config;
 
-import com.spring.website.app.Application;
-import com.spring.website.security.config.SecurityConfig;
+import com.spring.website.Application;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

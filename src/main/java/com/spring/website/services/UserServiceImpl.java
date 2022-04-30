@@ -1,6 +1,6 @@
 package com.spring.website.services;
 
-import com.spring.website.dto.UserFormDto;
+import com.spring.website.services.dto.UserFormDto;
 import com.spring.website.models.enums.Role;
 import com.spring.website.models.enums.State;
 import com.spring.website.models.User;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
-
 
 @Service
 @Slf4j
@@ -53,10 +52,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+//    @Override
+//    public User findByEmail(String email) {
+//        return userRepository.findByEmail(email);
+//    }
 
     @Override
     public List<User> getUserList() {
