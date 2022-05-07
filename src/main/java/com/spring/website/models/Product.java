@@ -27,8 +27,6 @@ public class Product {
     @Column
     private Integer price;
     @Column
-    private Boolean availability;
-    @Column
     private Integer quantity;
     @Column
     private String color;

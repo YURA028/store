@@ -68,15 +68,19 @@ public class ProductController3 {
     }
 
         @GetMapping("/product/{id}/edit")
-    public String blogEdit(@PathVariable(value = "id") long id, Model model) {
+    public String blogEdit(@PathVariable(value = "id") long id, Model model, Principal principal) {
         if (!productRepository.existsById(id)) {
             return "redirect:/product";
         }
+        Product products = productService.getProductById(id);
+
         Optional<Product> product = productRepository.findById(id);
         ArrayList<Product> res = new ArrayList<>();
         product.ifPresent(res::add);
         model.addAttribute("post", res);
-        return "product-edit";
+        model.addAttribute("images", products.getImageProducts());
+            model.addAttribute("userPrincipal", productService.getUserByPrincipal(principal));
+            return "product-edit";
     }
 
     @PostMapping("/product/{id}/edit")

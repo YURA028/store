@@ -32,23 +32,27 @@
                 <hr>
                 <div class="card-columns">
                     <c:forEach items="${products}" var="product">
-                        <a href="/product/${product.id}" class="product-link">
-                            <div class="card text-white bg-dark my-3 product">
-
+                        <%--                        <a href="/product/${product.id}" class="product-link">--%>
+                        <div class="card text-dark bg-white my-3 product">
+                            <a href="/product/${product.id}" class="product-link">
                                 <img src="/images/${product.previewImageId}"
                                      class="card-img-top">
+
                                 <div class="card-body">
                                     <h5 class="card-title">${product.name}</h5>
-                                    <p class="card-text">${product.price} ₽</p>
+                                    <p class="card-text">Цена: ${product.price} $</p>
                                 </div>
-                                <div class="card-footer">
-                                        ${product.maker.name}
+                            </a>
+                            <a href="/user/${product.user.id}" class="product-link text-white">
+                                <div class="card-footer bg-dark">
+                                    хозяин
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                        <%--                        </a>--%>
                     </c:forEach>
                     <c:if test="${products == null}">
-                    <h1 style="text-align: center">Не найдено</h1>
+                        <h1 style="text-align: center">Не найдено</h1>
                     </c:if>
                 </div>
             </div>

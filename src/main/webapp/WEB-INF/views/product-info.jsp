@@ -4,7 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -26,56 +25,89 @@
     <div class="row">
         <jsp:include page="blocks/aside.jsp"/>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <c:forEach items="${images}" var="image">
-                        <li data-target="myCarousel" data-slide-to="0" class=""></li>
-                    </c:forEach>
-                </ol>
-                <div class="carousel-inner">
-                    <c:forEach items="${images}" var="image">
-                        <div class="carousel-item <c:if test="${image.previewImage}" >active</c:if>">
-                            <svg class="bd-placeholder-img" width="100%" height="100%"
-                                 xmlns="http://www.w3.org/2000/svg"
-                                 role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title></title>
-                                <rect width="100%" height="100%" fill="#777"></rect>
-                                <text x="50%" y="50%" fill="#777" dy=".3em"></text>
-                            </svg>
+            <%--                        <div id="myCarousel" class="carousel "  data-ride="carousel">--%>
+            <%--                            <ol class="carousel-indicators">--%>
+            <%--                                <c:forEach items="${images}" var="image">--%>
+            <%--                                    <li data-target="myCarousel" data-slide-to="0" class=""></li>--%>
+            <%--                                </c:forEach>--%>
+            <%--                            </ol>--%>
+            <%--                            <br>--%>
+            <%--                            <div class="carousel-inner">--%>
+            <%--                                <c:forEach items="${images}" var="image">--%>
+            <%--                                    <div class="carousel-item <c:if test="${image.previewImage}" >active</c:if>">--%>
+            <%--                                        <svg class="bd-placeholder-img " width="100%" height="50%"--%>
+            <%--                                             xmlns="http://www.w3.org/2000/svg"--%>
+            <%--                                             role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false">--%>
+            <%--                                            <title></title>--%>
+            <%--                                            <rect width="100%" height="100%" fill="#7777"></rect>--%>
+            <%--                                            <text x="50%" y="50%" fill="#777" dy=".3em"></text>--%>
+            <%--                                        </svg>--%>
 
-                            <div class="container">
-                                <div class="carousel-caption">
-                                    <a href="/images/${image.id}">
-                                        <img class="product" style="height: 100px" src="/images/${image.id}">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
+            <%--                                        <div class="container">--%>
+            <%--                                            <div class="carousel-caption">--%>
+            <%--                                                <a href="/images/${image.id}">--%>
+            <%--                                                    <img class="product" style="height: 200px" src="/images/${image.id}"--%>
+            <%--                                                         height="100px">--%>
+            <%--                                                </a>--%>
+            <%--                                            </div>--%>
+            <%--                                        </div>--%>
+            <%--                                    </div>--%>
+            <%--                                </c:forEach>--%>
 
+
+            <%--                            </div>--%>
+            <%--                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">--%>
+            <%--                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
+            <%--                                <span class="sr-only">Previous</span>--%>
+            <%--                            </a>--%>
+            <%--                            <a class="carousel-control-next " href="#myCarousel" role="button" data-slide="next">--%>
+            <%--                                <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
+            <%--                                <span class="sr-only ">Next</span>--%>
+            <%--                            </a>--%>
+            <%--                        </div>--%>
+            <div class="card-header nav">
+                <br>
+                <div class="m-3">
+                    <c:forEach items="${images}" var="image">
+                        <img src="/images/${image.id}" height="200px" alt="${image.name}"><br>
+                    </c:forEach>
                 </div>
-                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <hr>
-            <p>
-            <h1 style="text-align: center">${product.name} | ${product.price} ₽</h1></p>
-            <p style="text-align: center">${product.description}</p>
-            <p style="text-align: center">Номер Имя продавца: <b>${authorProduct.firstName}</b></p>
+<hr>
+                <div class="m-3">
+                    <h1>Описание</h1>
+                    <p>Название товара: ${product.name}</p>
+                    <p>Цена товара: ${product.price} $</p>
+                    <p>Цвет товара: ${product.color}</p>
+                    <p>Описание товара: ${product.description}</p>
+                    <p>Производитель товара: ${product.maker.name}</p>
+                    <p>Тип товара: ${product.productType.name}</p>
+                    <p>Дата добавления товара: ${product.dateOfCreated}</p>
 
-            <hr>
-            <p style="text-align: center">
-                <a href="/user/${authorProduct.id}">
-                    <img src="../resources/images/avatar.png" alt="mdo" width="32" height="32"
-                         class="rounded-circle"> ${authorProduct.firstName}
-                </a>
-            </p>
+                    <%--            <p>--%>
+                    <%--            <h1 style="text-align: center">--%>
+                    <%--                 | ${product.price} ₽--%>
+                    <%--            </h1>--%>
+                    <%--            </p>--%>
+                    <%--            <p style="text-align: center">${product.description}</p>--%>
+                    <%--            <p style="text-align: center">Номер Имя продавца:--%>
+                    <%--                <b>${authorProduct.firstName}</b>--%>
+                    <%--            </p>--%>
+                    <%--                <div class="form-group align-content-center">--%>
+                    <%--                    <label type="color" value="${product.color}"  class="form-label">Цвет--%>
+                    <%--                        <input type="color" value="${product.color}">--%>
+                    <%--                    </label>--%>
+                    <%--                </div>--%>
+
+                    <hr>
+                    <p style="text-align: center">
+                        <a href="/user/${authorProduct.id}">
+                            <img src="../resources/images/avatar.png" alt="mdo" width="32" height="32"
+                                 class="rounded-circle"> ${authorProduct.firstName}
+                        </a>
+                    </p>
+                </div>
+            </div>
+
         </main>
 
 

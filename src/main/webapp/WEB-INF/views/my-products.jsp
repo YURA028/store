@@ -36,50 +36,79 @@
             <div class="collapse mb-3" id="collapseExample" style="">
                 <form action="../product/create" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="productName">Название товара</label>
+                        <label for="name">Название товара</label>
                         <input type="text" required class="form-control"
-                               id="productName" name="title">
+                               id="name" name="name">
                     </div>
                     <div class="form-group">
                         <label for="price">Цена товара</label>
                         <div class="input-group mb-3">
                             <input type="number" required class="form-control" id="price" name="price">
                             <div class="input-group-append">
-                                <span class="input-group-text">₽</span>
+                                <span class="input-group-text">$</span>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="searchCity">Город</label>
-                        <select id="searchCity" required name="city" class="form-control">
-                            <option value="">Город не выбран</option>
+                        <label for="quantity">Количество на складе товара</label>
+                        <div class="input-group mb-3">
+                            <input type="number" required class="form-control" id="quantity" name="quantity">
+                            <div class="input-group-append">
+                                <span class="input-group-text">шт</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="serialNumber">Серийный номер товара</label>
+                        <input type="number" required class="form-control" id="serialNumber" name="serialNumber">
+                    </div>
+                    <div class="form-group align-content-center">
+                        <label for="exampleColorInput" class="form-label">Цвет</label>
+                        <input type="color" name="color"   id="exampleColorInput" value="#ffffff"
+                               title="Choose your color">
+                    </div>
 
-                            <option value="Москва">Москва</option>
-                            <option value="Красноярск">Красноярск</option>
-                            <option value="Казань">Казань</option>
-
+                    <div class="form-group">
+                        <label for="name">Производитель</label>
+                        <select id="maker" required name="maker.name" class="form-control">
+                            <option value="">Производитель</option>
+                            <option value="Польша">Польша</option>
+                            <option value="Беларусь">Беларусь</option>
+                            <option value="Германия">Германия</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="name">Тип продукта</label>
+                        <select id="productType" required name="productType.name" class="form-control">
+                            <option value="">Тип продукта</option>
+                            <option value="Лампочки">Лампочки</option>
+                            <option value="Автоматы">Автоматы</option>
+                            <option value="Кабель">Кабель</option>
+                            <option value="Гофра">КабГофраель</option>
+                            <option value="Распаечная коробка">Распаечная коробка</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="description">Описание товара</label>
                         <textarea required class="form-control" id="description" name="description"></textarea>
                     </div>
                     <div class="form-group">
-                        <div class="custom-file">
-                            <input required type="file" name="file1" id="file1">
-                            <label class="custom-file-label" for="file1">Первая фотография к товару</label>
+                        <div class="mb-3">
+                            <label for="file1" class="form-label">Первая фотография к товару</label>
+                            <input class="form-control" required name="file1" type="file" id="file1">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="custom-file">
-                            <input type="file" name="file2" id="file2">
-                            <label class="custom-file-label" for="file2">Вторая фотография к товару</label>
+                        <div class="mb-3">
+                            <label for="file2" class="form-label">Первая фотография к товару</label>
+                            <input class="form-control" name="file2" type="file" id="file2">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="custom-file">
-                            <input type="file" name="file3" id="file3">
-                            <label class="custom-file-label" for="file3">Третья фотография к товару</label>
+                        <div class="mb-3">
+                            <label for="file3" class="form-label">Первая фотография к товару</label>
+                            <input class="form-control" name="file3" type="file" id="file3">
                         </div>
                     </div>
                     <%--                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>--%>
@@ -89,7 +118,7 @@
             </div>
             <h1 style="text-align: center">Не найдено</h1>
             <div class="card-columns">
-                <c:forEach items="${products}" var="product" >
+                <c:forEach items="${products}" var="product">
                     <a href="/product/${product.id}" class="product-link">
                         <div class="card text-white bg-dark my-3 product">
                             <div class="card-top nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
