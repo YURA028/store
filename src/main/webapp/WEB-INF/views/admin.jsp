@@ -18,10 +18,10 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<jsp:include page="blocks/header.jsp"/>
+<%@include file="blocks/header.jsp"%>
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="blocks/aside.jsp"/>
+        <%@include file="blocks/aside.jsp"%>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
@@ -30,7 +30,8 @@
             <table class="table table-sm table-bordered">
                 <tr>
                     <th>Email</th>
-                    <th>Логин</th>
+                    <th>username</th>
+                    <th>имя</th>
                     <th>Активность</th>
                     <th>Бан</th>
                     <th>Роль</th>
@@ -40,7 +41,8 @@
                 <c:forEach items="${users}" var="user">
                     <tr>
                         <td>${user.email}</td>
-                        <td>${user.login}</td>
+                        <td>${user.username}</td>
+                        <td>${user.firstName}</td>
                         <td>${user.state}</td>
                         <td>
                             <c:choose>
@@ -110,7 +112,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="blocks/footer.jsp"/>
+<%@include file="blocks/footer.jsp"%>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

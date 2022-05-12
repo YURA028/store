@@ -20,10 +20,10 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<jsp:include page="blocks/header.jsp"/>
+<%@include file="blocks/header.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="blocks/aside.jsp"/>
+        <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <%--                        <div id="myCarousel" class="carousel "  data-ride="carousel">--%>
             <%--                            <ol class="carousel-indicators">--%>
@@ -67,21 +67,50 @@
             <%--                        </div>--%>
             <div class="card-header nav">
                 <br>
-                <div class="m-3">
+                <div class="p-4 flex-column position-static" >
                     <c:forEach items="${images}" var="image">
                         <img src="/images/${image.id}" height="200px" alt="${image.name}"><br>
                     </c:forEach>
                 </div>
-<hr>
-                <div class="m-3">
+                <hr>
+<%--                <div class="m-3">--%>
+                <div class="col p-4 flex-column position-static">
                     <h1>Описание</h1>
-                    <p>Название товара: ${product.name}</p>
-                    <p>Цена товара: ${product.price} $</p>
-                    <p>Цвет товара: ${product.color}</p>
-                    <p>Описание товара: ${product.description}</p>
-                    <p>Производитель товара: ${product.maker.name}</p>
-                    <p>Тип товара: ${product.productType.name}</p>
-                    <p>Дата добавления товара: ${product.dateOfCreated}</p>
+<%--                    <p>Название товара: ${product.name}</p>--%>
+<%--                    <p>Цена товара: ${product.price} $</p>--%>
+<%--                    <p>Цвет товара: ${product.color}</p>--%>
+<%--                    <p class="card-text mb-auto">Описание товара: ${product.description}</p><br>--%>
+<%--                    <p>Производитель товара: ${product.maker.name}</p><br>--%>
+<%--                    <p>Тип товара: ${product.productType.name}</p><br>--%>
+<%--                    <p>Дата добавления товара: ${product.dateOfCreated}</p><br>--%>
+
+                    <dl class="dl-horizontal">
+                        <dt>Название товара:</dt>
+                        <dd>${product.name}</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Цена товара:</dt>
+                        <dd>${product.price} $</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Цвет товара:</dt>
+                        <dd>${product.color}</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Описание товара:</dt>
+                        <dd>${product.description}</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Производитель товара:</dt>
+                        <dd>${product.maker.name}</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Тип товара:</dt>
+                        <dd>${product.productType.name}</dd>
+                    </dl>
+
+<%--                    <abbr title="${product.description}" class="initialism">HTML</abbr>--%>
+<%--                    <abbr title="${product.description}">attr</abbr>--%>
 
                     <%--            <p>--%>
                     <%--            <h1 style="text-align: center">--%>
@@ -99,31 +128,34 @@
                     <%--                </div>--%>
 
                     <hr>
-                    <p style="text-align: center">
+
+                </div><br><br>
+                <hr>
+                <br>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h4>Продавец</h4>
+                    <p style="text-align: left">
                         <a href="/user/${authorProduct.id}">
                             <img src="../resources/images/avatar.png" alt="mdo" width="32" height="32"
-                                 class="rounded-circle"> ${authorProduct.firstName}
+                                 class="rounded-circle"> ${authorProduct.username}
                         </a>
                     </p>
+                    <div>
+
+                    </div>
+                    <div>
+                        <span sec:authentication="${userPrincipal.username}">Bill</span>
+                    </div>
                 </div>
+                <hr>
             </div>
 
         </main>
 
-
-        <div class="goog-te-spinner-pos">
-            <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
-                     viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
-                            cy="33" r="30"></circle>
-                </svg>
-            </div>
-        </div>
     </div>
 </div>
 <div>
-    <jsp:include page="blocks/footer.jsp"/>
+    <%@include file="blocks/footer.jsp" %>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

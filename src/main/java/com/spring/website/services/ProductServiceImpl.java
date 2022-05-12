@@ -1,28 +1,37 @@
 package com.spring.website.services;
 
-import com.spring.website.models.ImageProduct;
-import com.spring.website.models.Maker;
-import com.spring.website.models.Product;
-import com.spring.website.models.User;
+import com.spring.website.mapper.ProductMapper;
+import com.spring.website.models.*;
 import com.spring.website.repositories.ProductRepository;
 import com.spring.website.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
+import com.spring.website.services.dto.ProductDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Collections;
 import java.util.List;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
+    private final ProductMapper mapper = ProductMapper.MAPPER;
     private final ProductRepository productRepository;
-
     private final UserRepository userRepository;
+    private final UserService userService;
+    private final BasketService basketService;
+
+    @Autowired
+    public ProductServiceImpl(ProductRepository productRepository, UserRepository userRepository, UserService userService, BasketService basketService) {
+        this.productRepository = productRepository;
+        this.userRepository = userRepository;
+        this.userService = userService;
+        this.basketService = basketService;
+    }
 
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
@@ -92,5 +101,27 @@ public class ProductServiceImpl implements ProductService {
                 productRepository.delete(product);
                 log.info("Product with id = {} was deleted", id);
 
+    }
+
+    @Override
+    public List<ProductDTO> getAll() {
+        return mapper.formProductList(productRepository.findAll());
+    }
+
+    @Override
+    public void addToUserBasket(Long productId, Principal principal) {
+        User user = getUserByPrincipal(principal);
+        if (user == null){
+            throw new RuntimeException("User not found ----- " +principal.getName());
+        }
+
+        Basket basket = user.getBasket();
+        if (basket == null){
+            Basket newBasket = basketService.createBasket(user, Collections.singletonList(productId));
+            user.setBasket(newBasket);
+            userService.save(user);
+        }else {
+            basketService.addProducts(basket, Collections.singletonList(productId));
+        }
     }
 }

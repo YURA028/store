@@ -23,10 +23,10 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<jsp:include page="blocks/header.jsp"/>
+<%@include file="blocks/header.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="blocks/aside.jsp"/>
+        <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <h1 style="text-align: center">Личный кабинет</h1>
             <hr>
@@ -36,13 +36,14 @@
                      style="border:2px solid black; border-radius: 20px" height="120">
                 <br>
                 <br>
-                <h2>${userPrincipal.firstName}</h2>
+                <h2>${users.firstName}</h2>
                 <br>
-                Электоронная почта: <b>${userPrincipal.email}</b>
+                Электоронная почта: <b>${users.email}</b>
                 <br>
-                Логин: <b>${userPrincipal.login}</b>
+                Логин: <b>${users.username}</b>
                 <br>
                 <br>
+
                 <c:if test="${userPrincipal.role.name() == 'ADMIN'}">
                     <a class="btn btn-dark mb-3" style="text-align: center; width: 100%"
                        href="/admin">
@@ -64,7 +65,7 @@
 
     </div>
 </div>
-<jsp:include page="blocks/footer.jsp"/>
+<%@include file="blocks/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

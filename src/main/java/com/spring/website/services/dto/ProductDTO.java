@@ -1,16 +1,25 @@
 package com.spring.website.services.dto;
 
-import lombok.Data;
+import com.spring.website.models.User;
+import lombok.*;
 
 
-@Data
-public class ProductFormDto {
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ProductDTO {
+    private Long id;
     private String name;
     private int price;
     private int quantity;
     private String color;
     private String description;
     private String serialNumber;
+    private Long previewImageId;
+    private User user;
 
 
 

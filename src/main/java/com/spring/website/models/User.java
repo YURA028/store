@@ -3,10 +3,7 @@ package com.spring.website.models;
 
 import com.spring.website.models.enums.Role;
 import com.spring.website.models.enums.State;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,12 +14,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +29,7 @@ public class User {
     @Column(unique = true)
     private String email;
     @Column(unique = true)
-    private String login;
+    private String username;
     @Column(length = 1000)
     @NotNull
     private String hashPassword;
@@ -49,19 +48,19 @@ public class User {
     }
     @Enumerated(value = EnumType.STRING)
     private Role role;
-//    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-//    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-//    @Enumerated(EnumType.STRING)
-//    private Set<Role> roles = new HashSet<>();
     @Enumerated(value = EnumType.STRING)
     private State state;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Address address;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Basket> basket;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Set<Basket> basket;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private Basket basket;
 
     public boolean isAdmin() {
         return role.equals(Role.ADMIN);
     }
+
 }

@@ -4,12 +4,17 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="5">
+          <list size="10">
             <item index="0" class="java.lang.String" itemvalue="insert" />
             <item index="1" class="java.lang.String" itemvalue="c:insert" />
             <item index="2" class="java.lang.String" itemvalue="text" />
             <item index="3" class="java.lang.String" itemvalue="src" />
             <item index="4" class="java.lang.String" itemvalue="value" />
+            <item index="5" class="java.lang.String" itemvalue="cols" />
+            <item index="6" class="java.lang.String" itemvalue="rows" />
+            <item index="7" class="java.lang.String" itemvalue="wrap" />
+            <item index="8" class="java.lang.String" itemvalue="utext" />
+            <item index="9" class="java.lang.String" itemvalue="sec:authentication" />
           </list>
         </value>
       </option>

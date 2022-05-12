@@ -18,12 +18,12 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<jsp:include page="blocks/header.jsp"/>
+<%@include file="blocks/header.jsp"%>
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="blocks/aside.jsp"/>
+        <%@include file="blocks/aside.jsp"%>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="py-5 text-center">
+            <div class="py-2 text-center">
                 <h2>
                 <span style="vertical-align: inherit;">
                     <span
@@ -36,25 +36,36 @@
                 <form class="p-4 p-md-5 border rounded-3 bg-light" action="${pageContext.request.contextPath}/signUp"
                       method="post">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="login" name="login" placeholder="Login">
-                        <label for="login">Логин</label>
+                        <input type="text" required value="${formUser.username}" checked class="form-control" id="username" name="username" placeholder="username">
+                        <label for="username">Логин</label>
+                        <c:if test="${errorMessageUsername != null}">
+                            <small class="form-text text-danger">${errorMessageUsername}</small>
+                        </c:if>
 <%--                        <small class="form-text text-danger">Validation error</small>--%>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="FirstName">
+                        <input type="text" required value="${formUser.firstName}" class="form-control" id="firstName" name="firstName" placeholder="FirstName">
                         <label for="firstName">Имя</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="email" required value="${formUser.email}" class="form-control" id="email" name="email" placeholder="Email">
                         <label for="email">email</label>
-                        <c:if test="${errorMessage != null}">
-                            <small class="form-text text-danger">${errorMessage}</small>
+                        <c:if test="${errorMessageEmail != null}">
+                            <small class="form-text text-danger">${errorMessageEmail}</small>
                         </c:if>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="password" name="password"
+                        <input type="password" required value="${formUser.password}" class="form-control" id="password" name="password"
                                placeholder="Password">
                         <label for="password">Password</label>
+                        <c:if test="${errorMessagePassword != null}">
+                            <small class="form-text text-danger">${errorMessagePassword}</small>
+                        </c:if>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" required value="${formUser.matchingPassword}" class="form-control" id="matchingPassword" name="matchingPassword"
+                               placeholder="matchingPassword">
+                        <label for="matchingPassword">matchingPassword</label>
 <%--                        <small class="form-text text-danger">Validation error</small>--%>
                     </div>
 <%--                    <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
@@ -67,18 +78,10 @@
         </main>
 
 
-        <div class="goog-te-spinner-pos">
-            <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
-                     viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
-                            cy="33" r="30"></circle>
-                </svg>
-            </div>
-        </div>
+
     </div>
 </div>
-<jsp:include page="blocks/footer.jsp"/>
+<%@include file="blocks/footer.jsp"%>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

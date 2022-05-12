@@ -1,31 +1,31 @@
 package com.spring.website.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "product")
+@Table(name = "products")
 @Builder
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    @Column
     private String name;
     @Column
-    private Integer price;
+    private BigDecimal price;
     @Column
     private Integer quantity;
     @Column
@@ -35,8 +35,14 @@ public class Product {
     @Column(name = "serial_number")
     private String serialNumber;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private Set<BasketProduct> basketProducts;
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    private Set<BasketProduct> basketProducts;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "products_categories",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "maker_id")

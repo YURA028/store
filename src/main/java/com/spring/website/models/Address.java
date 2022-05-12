@@ -1,10 +1,15 @@
 package com.spring.website.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "address")
 public class Address {

@@ -2,7 +2,9 @@ package com.spring.website.services;
 
 
 import com.spring.website.models.User;
-import com.spring.website.services.dto.UserFormDto;
+
+import com.spring.website.services.dto.UserDTO;
+import com.spring.website.services.dto.UserFormDTO;
 
 import java.security.Principal;
 import java.util.List;
@@ -11,13 +13,20 @@ public interface UserService {
 
     User getUserByPrincipal(Principal principal);
 
-    boolean emailVerification(UserFormDto userForm);
+    boolean emailVerification(UserFormDTO userForm);
 
-    void signUp(UserFormDto userForm);
+    void signUp(UserFormDTO userForm);
 
 //    User findByEmail(String email);
 
-    List<User> getUserList();
+//    List<User> getUserList();
+    List<UserDTO> getAll();
+
+    User findByEmail(String email);
+    User findByUsername(String username);
+    void save(User user);
+
+    void updateProfile(UserDTO userDTO);
 
     void banUser(Long id);
 

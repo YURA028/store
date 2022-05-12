@@ -23,29 +23,30 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<jsp:include page="blocks/header.jsp"/>
+<%@include file="blocks/header.jsp"%>
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="blocks/aside.jsp"/>
+        <%@include file="blocks/aside.jsp"%>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="container mt-4">
+            <div class="container mt-4 ">
                 <hr>
-                <div class="card-columns">
+<%--                <div class="card-columns row">--%>
+                <div class="row product-item-detail-bigdata" data-entity="parent-container">
                     <c:forEach items="${products}" var="product">
                         <%--                        <a href="/product/${product.id}" class="product-link">--%>
-                        <div class="card text-dark bg-white my-3 product">
-                            <a href="/product/${product.id}" class="product-link">
+                        <div class="card text-dark bg-white my-3 product col-xs-4 col-md-3">
+                            <a href="/product/${product.id}"  class="product-link">
                                 <img src="/images/${product.previewImageId}"
                                      class="card-img-top">
-
-                                <div class="card-body">
+                            </a>
+                                <div class="card-body text-center align-items-center">
                                     <h5 class="card-title">${product.name}</h5>
                                     <p class="card-text">Цена: ${product.price} $</p>
                                 </div>
-                            </a>
+
                             <a href="/user/${product.user.id}" class="product-link text-white">
-                                <div class="card-footer bg-dark">
-                                    хозяин
+                                <div class="text-center card-footer bg-dark">
+                                    <a href="/product/${product.id}/basket">Добавить в корзину</a>
                                 </div>
                             </a>
                         </div>
@@ -60,7 +61,7 @@
 
     </div>
 </div>
-<jsp:include page="blocks/footer.jsp"/>
+<%@include file="blocks/footer.jsp"%>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

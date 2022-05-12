@@ -1,7 +1,7 @@
 package com.spring.website.controllers;
 
 import com.spring.website.services.UserService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,21 +12,28 @@ import java.security.Principal;
 
 
 @Controller
-@RequiredArgsConstructor
 //@PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController {
 
     private final UserService userService;
 
+    @Autowired
+    public AdminController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/admin")
-    public String admin(Model model, Principal principal){
-        model.addAttribute("users", userService.getUserList());
+    public String admin(Model model, Principal principal) {
+//        if (1 == 1){
+//            throw new RuntimeException("error error error error");
+//        }
+        model.addAttribute("users", userService.getAll());
         model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
         return "admin";
     }
 
     @PostMapping("/admin/user/ban/{id}")
-    private String userBan(@PathVariable("id") Long id){
+    private String userBan(@PathVariable("id") Long id) {
         userService.banUser(id);
         return "redirect:/admin";
     }
