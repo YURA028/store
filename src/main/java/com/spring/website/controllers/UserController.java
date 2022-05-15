@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -111,7 +112,11 @@ public class UserController {
     }
 
     @PostMapping("/signUp")
-    public String signUp(UserFormDTO userForm, Model model) {
+    public String signUp(UserFormDTO userForm, Model model, BindingResult result) {
+        if (result.hasErrors()) {
+            return "signUp";
+        }
+
         if (!userService.emailVerification(userForm)) {
             model.addAttribute("errorMessageEmail", "Пользователь с email: " + userForm.getEmail() + " уже существует");
             model.addAttribute("formUser", userForm);

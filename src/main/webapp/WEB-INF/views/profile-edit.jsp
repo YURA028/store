@@ -14,7 +14,7 @@
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../resources/css/style.css">
-    <title>user-info</title>
+    <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -30,48 +30,41 @@
     <div class="row">
         <%@include file="blocks/aside.jsp"%>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <h1 style="text-align: center">Информация о пользователе</h1>
-            <hr>
-            <div style="text-align: center">
-                <img src="../resources/images/avatar.png"
-                     style="border:2px solid black; border-radius: 20px" height="120">
-                <br>
-                <br>
-                <h2>${user.firstName}</h2>
-                <br>
-                Data: <b>${user.dateOfCreated}</b>
-            </div>
-            <br>
-            <hr>
-            <h1 style="text-align: center">Товары пользователя ${user.firstName}</h1>
-            <br>
-            <div class="card-columns">
-                <c:forEach items="${products}" var="product">
-                <a href="/product/${product.id}" class="product-link">
-                    <div class="card text-white bg-dark my-3 product">
+            <h1 style="text-align: center">Личный кабинет</h1>
 
-                        <img src="/images/${product.previewImageId}"
-                             class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">${product.name}</h5>
-                            <p class="card-text">${product.price} ₽</p>
-                        </div>
-                        <div class="card-footer">
-                            ${product.user.firstName}
-                        </div>
-                    </div>
-                </a>
-                    <c:if test="${user.products == null}">
-                    <h1 style="text-align: center">Не найдено</h1>
-                    </c:if>
 
-                </c:forEach>
-    </div>
+
+                <form action="/profile/edit" value="${user}" method="post">
+                    <label> username:
+                        <input type="text" value="${users.username}" name="username" placeholder="username "
+                               class="form-control">
+                    </label><br>
+                    <label>email:
+                        <input type="text" value="${users.email}" name="email" placeholder="email "
+                               class="form-control">
+                    </label><br>
+                    <label>firstName:
+                        <input  type="text" value="${users.firstName}" name="firstName"
+                                placeholder="firstName " class="form-control">
+                    </label><br>
+                    <label>firstName:
+                        <input  type="password" value="${users.password}" name="password"
+                                placeholder="password " class="form-control">
+                    </label><br>
+                    <label>firstName:
+                        <input  type="password" value="${users.matchingPassword}" name="matchingPassword"
+                                placeholder="matchingPassword " class="form-control">
+                    </label><br>
+                        <%--                                <label>--%>
+                        <%--                                <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control" >${thePosts.serialNumber}</textarea>--%>
+                        <%--                                </label><br>--%>
+                    <button type="submit" class="btn btn-success">Обновить</button>
+                </form>
         </main>
 
     </div>
 </div>
-<%@include file="blocks/footer.jsp"%>
+<%@include file="blocks/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

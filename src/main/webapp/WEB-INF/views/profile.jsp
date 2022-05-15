@@ -1,7 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <html>
 <head>
 
@@ -43,15 +45,15 @@
                 Логин: <b>${users.username}</b>
                 <br>
                 <br>
-
                 <c:if test="${userPrincipal.role.name() == 'ADMIN'}">
                     <a class="btn btn-dark mb-3" style="text-align: center; width: 100%"
                        href="/admin">
                         Панель администратора
                     </a><br>
                 </c:if>
-                <a class="btn btn-dark mb-3" style="text-align: center; width: 100%"
-                   href="/my/products">
+                <a href="/profile/edit" class="btn btn-dark mb-3" style="text-align: center; width: 100%"><spring:message code="label.edit"/></a>
+
+                <a class="btn btn-dark mb-3" style="text-align: center; width: 100%" href="/my/products">
                     Мои товары
                 </a>
                 <form action="/logout" method="post">

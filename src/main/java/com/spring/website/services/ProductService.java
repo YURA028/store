@@ -1,6 +1,7 @@
 package com.spring.website.services;
 
 
+import com.spring.website.models.Maker;
 import com.spring.website.models.Product;
 import com.spring.website.models.User;
 import com.spring.website.services.dto.ProductDTO;
@@ -16,7 +17,7 @@ public interface ProductService {
 
     Product getProductById(Long id);
 
-    List<Product> getProductName(String name);
+    List<Product> getProductName();
 
     User getUserByPrincipal(Principal principal);
 
@@ -25,6 +26,7 @@ public interface ProductService {
                      MultipartFile file1,
                      MultipartFile file2,
                      MultipartFile file3) throws IOException;
+
 
     Product editProduct(Long id);
 
@@ -35,4 +37,10 @@ public interface ProductService {
     void addToUserBasket(Long productId, Principal principal);
 
 
+    List<Product> getFilter(String filter);
+
+    List<Product> getByMaker(String maker);
+
+
+    List<Product> getByProductType(String productType);
 }

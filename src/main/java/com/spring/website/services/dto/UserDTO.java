@@ -3,6 +3,8 @@ package com.spring.website.services.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 
 @Getter
@@ -15,6 +17,8 @@ public class UserDTO {
 
     private Long id;
     private String username;
+    @Min(5)
+    @Max(10)
     private String firstName;
     private String email;
     private String role;

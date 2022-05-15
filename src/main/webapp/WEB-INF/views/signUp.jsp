@@ -1,7 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="false"%>
 <html>
 <head>
 
@@ -10,9 +12,14 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
@@ -36,8 +43,9 @@
                 <form class="p-4 p-md-5 border rounded-3 bg-light" action="${pageContext.request.contextPath}/signUp"
                       method="post">
                     <div class="form-floating mb-3">
-                        <input type="text" required value="${formUser.username}" checked class="form-control" id="username" name="username" placeholder="username">
-                        <label for="username">Логин</label>
+                        <input type="text" checked class="form-control" id="username" name="username" placeholder="username">
+                        <label for="username"><c:out value="${userPrincipal.username}">Логин</c:out></label>
+
                         <c:if test="${errorMessageUsername != null}">
                             <small class="form-text text-danger">${errorMessageUsername}</small>
                         </c:if>

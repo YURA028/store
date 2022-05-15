@@ -8,8 +8,10 @@ import com.spring.website.services.dto.ProductDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Collections;
@@ -38,8 +40,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductName(String name) {
-        if (name != null) return productRepository.findByName(name);
+    public List<Product> getProductName() {
         return productRepository.findAll();
     }
 
@@ -50,6 +51,7 @@ public class ProductServiceImpl implements ProductService {
         }
         return userRepository.findByEmail(principal.getName());
     }
+
 
     @Override
     public void saveProduct(Principal principal,
@@ -91,8 +93,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public Product editProduct(Long id) {
-        return null;
+        return productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -123,5 +126,20 @@ public class ProductServiceImpl implements ProductService {
         }else {
             basketService.addProducts(basket, Collections.singletonList(productId));
         }
+    }
+
+    @Override
+    public List<Product> getFilter(String filter) {
+        return productRepository.getFilter(filter);
+    }
+
+    @Override
+    public List<Product> getByMaker(String maker) {
+        return productRepository.getByMaker(maker);
+    }
+
+    @Override
+    public List<Product> getByProductType(String productType) {
+        return productRepository.getByProductType(productType);
     }
 }

@@ -10,6 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
@@ -34,7 +36,7 @@
                 Добавить новый товар
             </a>
             <div class="collapse mb-3" id="collapseExample" style="">
-                <form action="/product/create" method="post" enctype="multipart/form-data">
+                <form action="/product/create/user" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">Название товара</label>
                         <input type="text" required class="form-control"
@@ -70,7 +72,7 @@
 
                     <div class="form-group">
                         <label for="name">Производитель</label>
-                        <select id="maker" required name="maker.name" class="form-control">
+                        <select id="maker"  name="maker.name" class="form-control">
                             <option value="">Производитель</option>
                             <option value="Польша">Польша</option>
                             <option value="Беларусь">Беларусь</option>

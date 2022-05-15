@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page session="false"%>
 <html>
 <head>
 
@@ -28,25 +30,19 @@
     <div class="row">
         <%@include file="blocks/aside.jsp"%>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <h1 style="text-align: center">Мои товары</h1>
-            <hr>
-            <a class="btn btn-dark mt-3 mb-3" style="text-align: center; width: 100%"
-               data-toggle="collapse" href="#collapseExample" role="button"
-               aria-expanded="true" aria-controls="collapseExample">
-                Добавить новый товар
-            </a>
-            <div class="collapse mb-3" id="collapseExample" style="">
-                <c:forEach var="product" items="${post}">
-                    <form action="/product/create" method="post" enctype="multipart/form-data">
+
+                <c:forEach var="products" items="${post}">
+                    <form action="/product/create" method="post"  enctype="multipart/form-data">
+
                         <div class="form-group">
                             <label for="name">Название товара</label>
-                            <input type="text" value="${product.name}" required class="form-control"
+                            <input type="text" value="${products.name}"  class="form-control"
                                    id="name" name="name">
                         </div>
                         <div class="form-group">
                             <label for="price">Цена товара</label>
                             <div class="input-group mb-3">
-                                <input type="number" value="${product.price}" required class="form-control" id="price"
+                                <input type="number" value="${products.price}"  class="form-control" id="price"
                                        name="price">
                                 <div class="input-group-append">
                                     <span class="input-group-text">₽</span>
@@ -55,9 +51,13 @@
                         </div>
                         <div class="form-group">
                             <label for="searchCity">Город</label>
-                            <select id="searchCity" value="${product.maker.name}" required name="city"
+                            <select id="searchCity" value="${products.maker.name}"  name="city"
                                     class="form-control">
-                                <option value="">Производитель</option>
+                                <option selected disabled >Производитель</option>
+                                    <option value="${products.maker.name}"
+                                            <c:if test="${products.maker.name != null}">
+                                                selected
+                                            </c:if>>${products.maker.name}</option>
 
                                 <option value="Польша">Польша</option>
                                 <option value="Беларусь">Беларусь</option>
@@ -67,69 +67,43 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Описание товара</label>
-                            <textarea class="form-control" role="textbox" value="${product.description}"
+                            <textarea class="form-control" role="textbox" value="${products.description}"
                                       id="description" name="description"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <div class="custom-file">
+<%--                        <div class="form-group">--%>
+<%--                            <div class="custom-file">--%>
 
-                                <input required type="file" name="file1" id="file1">
-                                <label class="custom-file-label" for="file1">Первая фотография к товару</label>
-                            </div>
-                        </div>
+<%--                                <input required type="file" name="file1" id="file1">--%>
+<%--                                <label class="custom-file-label" for="file1">Первая фотография к товару</label>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
-                        <div class="form-group">
-                            <div class="custom-file">
-                                    <%--                            <img src="/images/${product.imageProducts.get(1)}" height="60px" /><br>--%>
-                                <input type="file" name="file2" id="file2">
-                                <label class="custom-file-label" for="file2">Вторая фотография к товару</label>
-                            </div>
-                        </div>
+<%--                        <div class="form-group">--%>
+<%--                            <div class="custom-file">--%>
+<%--                                    &lt;%&ndash;                            <img src="/images/${product.imageProducts.get(1)}" height="60px" /><br>&ndash;%&gt;--%>
+<%--                                <input type="file" name="file2" id="file2">--%>
+<%--                                <label class="custom-file-label" for="file2">Вторая фотография к товару</label>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
-                        <div class="form-group">
-                            <div class="custom-file">
-                                    <%--                <img src="/images/${product.imageProducts.get(2)}" height="60px"/><br>--%>
-                                <input type="file" name="file3" id="file3">
-                                <label class="custom-file-label" for="file3">Третья фотография к товару</label>
-                            </div>
-                        </div>
+<%--                        <div class="form-group">--%>
+<%--                            <div class="custom-file">--%>
+<%--                                    &lt;%&ndash;                <img src="/images/${product.imageProducts.get(2)}" height="60px"/><br>&ndash;%&gt;--%>
+<%--                                <input type="file" name="file3" id="file3">--%>
+<%--                                <label class="custom-file-label" for="file3">Третья фотография к товару</label>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                             <%--        <input type="hidden" name="_csrf" value="${_csrf.token}"/>--%>
 
                         <button type="submit" style="width: 100%" class="btn btn-dark">Добавить</button>
                     </form>
                 </c:forEach>
-            </div>
+
             <%--    <c:forEach items="${images}" var="image" step="1" varStatus="status">--%>
-            <%--        <img src="/images/${image.id}"  height="60px"/><br>--%>
+<%--                    <img src="/images/${image.id}"  height="60px"/><br>--%>
             <%--        ${status.index}--%>
             <%--    </c:forEach>--%>
-            /////////////////////////////////////////////////////////////////////////////////////////////
-            <%--            <div class="container mt-5 mb-5">--%>
-            <%--                <h1>Редоктирование статьи</h1>--%>
-            <%--                <div>--%>
-            <%--                    <c:forEach items="${post}" var="thePosts">--%>
-            <%--                        <form method="post">--%>
-            <%--                            <label> Название товара:--%>
-            <%--                                <input type="text" value="${thePosts.name}" name="name" placeholder="Name "--%>
-            <%--                                       class="form-control">--%>
-            <%--                            </label><br>--%>
-            <%--                            <label>Цвет:--%>
-            <%--                                <input type="text" value="${thePosts.color}" name="color" placeholder="Color "--%>
-            <%--                                       class="form-control">--%>
-            <%--                            </label><br>--%>
-            <%--                            <label>Серийный номер:--%>
-            <%--                                <input  type="number" value="${thePosts.serialNumber}" name="serialNumber"--%>
-            <%--                                        placeholder="SerialNumber " class="form-control">--%>
-            <%--                            </label><br>--%>
-            <%--                                &lt;%&ndash;                                <label>&ndash;%&gt;--%>
-            <%--                                &lt;%&ndash;                                <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control" >${thePosts.serialNumber}</textarea>&ndash;%&gt;--%>
-            <%--                                &lt;%&ndash;                                </label><br>&ndash;%&gt;--%>
-            <%--                            <button type="submit" class="btn btn-success">Обновить</button>--%>
-            <%--                        </form>--%>
-            <%--                    </c:forEach>--%>
-            <%--                </div>--%>
-            <%--            </div>--%>
 
         </main>
 

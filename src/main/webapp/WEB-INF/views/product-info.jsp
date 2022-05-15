@@ -1,14 +1,19 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <html>
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
@@ -25,64 +30,18 @@
     <div class="row">
         <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <%--                        <div id="myCarousel" class="carousel "  data-ride="carousel">--%>
-            <%--                            <ol class="carousel-indicators">--%>
-            <%--                                <c:forEach items="${images}" var="image">--%>
-            <%--                                    <li data-target="myCarousel" data-slide-to="0" class=""></li>--%>
-            <%--                                </c:forEach>--%>
-            <%--                            </ol>--%>
-            <%--                            <br>--%>
-            <%--                            <div class="carousel-inner">--%>
-            <%--                                <c:forEach items="${images}" var="image">--%>
-            <%--                                    <div class="carousel-item <c:if test="${image.previewImage}" >active</c:if>">--%>
-            <%--                                        <svg class="bd-placeholder-img " width="100%" height="50%"--%>
-            <%--                                             xmlns="http://www.w3.org/2000/svg"--%>
-            <%--                                             role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false">--%>
-            <%--                                            <title></title>--%>
-            <%--                                            <rect width="100%" height="100%" fill="#7777"></rect>--%>
-            <%--                                            <text x="50%" y="50%" fill="#777" dy=".3em"></text>--%>
-            <%--                                        </svg>--%>
 
-            <%--                                        <div class="container">--%>
-            <%--                                            <div class="carousel-caption">--%>
-            <%--                                                <a href="/images/${image.id}">--%>
-            <%--                                                    <img class="product" style="height: 200px" src="/images/${image.id}"--%>
-            <%--                                                         height="100px">--%>
-            <%--                                                </a>--%>
-            <%--                                            </div>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                </c:forEach>--%>
-
-
-            <%--                            </div>--%>
-            <%--                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">--%>
-            <%--                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
-            <%--                                <span class="sr-only">Previous</span>--%>
-            <%--                            </a>--%>
-            <%--                            <a class="carousel-control-next " href="#myCarousel" role="button" data-slide="next">--%>
-            <%--                                <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
-            <%--                                <span class="sr-only ">Next</span>--%>
-            <%--                            </a>--%>
-            <%--                        </div>--%>
             <div class="card-header nav">
                 <br>
-                <div class="p-4 flex-column position-static" >
+                <div class="p-4 flex-column position-static">
                     <c:forEach items="${images}" var="image">
                         <img src="/images/${image.id}" height="200px" alt="${image.name}"><br>
                     </c:forEach>
                 </div>
                 <hr>
-<%--                <div class="m-3">--%>
+                <%--                <div class="m-3">--%>
                 <div class="col p-4 flex-column position-static">
-                    <h1>Описание</h1>
-<%--                    <p>Название товара: ${product.name}</p>--%>
-<%--                    <p>Цена товара: ${product.price} $</p>--%>
-<%--                    <p>Цвет товара: ${product.color}</p>--%>
-<%--                    <p class="card-text mb-auto">Описание товара: ${product.description}</p><br>--%>
-<%--                    <p>Производитель товара: ${product.maker.name}</p><br>--%>
-<%--                    <p>Тип товара: ${product.productType.name}</p><br>--%>
-<%--                    <p>Дата добавления товара: ${product.dateOfCreated}</p><br>--%>
+                    <h1><spring:message code="label.description"/></h1>
 
                     <dl class="dl-horizontal">
                         <dt>Название товара:</dt>
@@ -108,43 +67,31 @@
                         <dt>Тип товара:</dt>
                         <dd>${product.productType.name}</dd>
                     </dl>
-
-<%--                    <abbr title="${product.description}" class="initialism">HTML</abbr>--%>
-<%--                    <abbr title="${product.description}">attr</abbr>--%>
-
-                    <%--            <p>--%>
-                    <%--            <h1 style="text-align: center">--%>
-                    <%--                 | ${product.price} ₽--%>
-                    <%--            </h1>--%>
-                    <%--            </p>--%>
-                    <%--            <p style="text-align: center">${product.description}</p>--%>
-                    <%--            <p style="text-align: center">Номер Имя продавца:--%>
-                    <%--                <b>${authorProduct.firstName}</b>--%>
-                    <%--            </p>--%>
-                    <%--                <div class="form-group align-content-center">--%>
-                    <%--                    <label type="color" value="${product.color}"  class="form-label">Цвет--%>
-                    <%--                        <input type="color" value="${product.color}">--%>
-                    <%--                    </label>--%>
-                    <%--                </div>--%>
-
                     <hr>
 
-                </div><br><br>
+                </div>
+                <br><br>
                 <hr>
                 <br>
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h4>Продавец</h4>
-                    <p style="text-align: left">
-                        <a href="/user/${authorProduct.id}">
-                            <img src="../resources/images/avatar.png" alt="mdo" width="32" height="32"
-                                 class="rounded-circle"> ${authorProduct.username}
-                        </a>
-                    </p>
-                    <div>
-
+                    <div >
+                        <h4>Все товары пользователя</h4>
+                        <p style="text-align: left">
+                            <a href="/user/${authorProduct.id}" >
+                                <img src="../resources/images/avatar.png" alt="mdo" width="32" height="32"
+                                     class="rounded-circle">
+                                <button type="submit" class="btn btn-success">${authorProduct.firstName}</button>
+                            </a>
+                        </p>
                     </div>
-                    <div>
-                        <span sec:authentication="${userPrincipal.username}">Bill</span>
+                    <br>
+                    <%--                    <div>--%>
+                    <%--                        <span sec:authentication="${userPrincipal.username}">${userPrincipal.username}</span>--%>
+                    <%--                    </div>--%>
+                    <div class="bd-example">
+                        <a href="/product/${product.id}/basket">
+                            <button type="submit" class="btn btn-success">Добавить в корзину</button>
+                        </a>
                     </div>
                 </div>
                 <hr>
