@@ -1,7 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <html>
 <head>
 
@@ -12,7 +14,7 @@
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../resources/css/style.css">
-    <title>Пример оформления заказа · Bootstrap v5.1</title>
+    <title><spring:message code="title.home"/></title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -30,7 +32,7 @@
         <main class="col-md-9 ms-sm-auto bg-white col-lg-10 px-md-4">
             <div class="py-3 text-center">
                 <span style="vertical-align: inherit;">
-                    <span style="vertical-align: inherit;"><h1>ИНТЕРНЕТ-МАГАЗИН ЭЛЕКТРИКИ</h1></span>
+                    <span style="vertical-align: inherit;"><h1><spring:message code="title.home"/></h1></span>
                 </span>
             </div>
 
@@ -107,15 +109,16 @@
                 </a>
             </div>
             <hr>
-            <h3>Товары магазина:</h3>
+            <h3><spring:message code="title.home.two"/> </h3>
             <hr>
             <div class="card-columns ">
                 <%--                <div class="card-columns text-dark bg-white my-lg-0 my-md-0 product col">--%>
                 <c:forEach items="${products}" begin="1" step="1" end="10" var="product">
+
                     <a href="/product/${product.id}" class="product-link">
                         <div class="card  bg-white my-1 product"  style="border:1px solid black">
                             <img src="/images/${product.previewImageId}"
-                                 class="card-img-top img-fluid img-thumbnail">
+                                 class=" card-img-top img-fluid img-thumbnail" height="100px">
                             <div class="text-black text-center d-md-block col ">
                                 <h5>
                                     <h5 class="card-title">${product.name}</h5>
@@ -195,7 +198,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-
-
 </body>
 </html>

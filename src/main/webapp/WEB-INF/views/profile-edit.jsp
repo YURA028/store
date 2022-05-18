@@ -31,30 +31,32 @@
         <%@include file="blocks/aside.jsp"%>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <h1 style="text-align: center">Личный кабинет</h1>
-
-
-
-                <form action="/profile/edit" value="${user}" method="post">
+                <form action="/profile/edit" value="${users}" method="post">
                     <label> username:
                         <input type="text" value="${users.username}" name="username" placeholder="username "
                                class="form-control">
-                    </label><br>
+                    </label>
+                    <br>
                     <label>email:
                         <input type="text" value="${users.email}" name="email" placeholder="email "
                                class="form-control">
-                    </label><br>
+                    </label>
+                    <br>
                     <label>firstName:
                         <input  type="text" value="${users.firstName}" name="firstName"
                                 placeholder="firstName " class="form-control">
-                    </label><br>
+                    </label>
+                    <br>
                     <label>firstName:
                         <input  type="password" value="${users.password}" name="password"
                                 placeholder="password " class="form-control">
-                    </label><br>
+                    </label>
+                    <br>
                     <label>firstName:
                         <input  type="password" value="${users.matchingPassword}" name="matchingPassword"
                                 placeholder="matchingPassword " class="form-control">
-                    </label><br>
+                    </label>
+                    <br>
                         <%--                                <label>--%>
                         <%--                                <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control" >${thePosts.serialNumber}</textarea>--%>
                         <%--                                </label><br>--%>

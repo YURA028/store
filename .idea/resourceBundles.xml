@@ -4,8 +4,8 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/i18n/messages_be.properties" />
     <file url="file://$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" />
     <file url="file://$PROJECT_DIR$/src/main/resources/i18n/messages_ru.properties" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/messages_messages_fr.properties" />
     <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/main/resources/i18n/basket_be.properties" />
       <file value="file://$PROJECT_DIR$/src/main/resources/i18n/messages_be.properties" />
       <file value="file://$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" />
       <file value="file://$PROJECT_DIR$/src/main/resources/i18n/messages_ru.properties" />

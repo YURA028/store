@@ -14,7 +14,7 @@
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../resources/css/style.css">
-    <title>Пример оформления заказа · Bootstrap v5.1</title>
+    <title><spring:message code="title.product"/></title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -37,205 +37,193 @@
             <%--                </span>--%>
             <%--            </div>--%>
             <sec:authorize access="hasAnyAuthority('ADMIN')">
+
                 <div>
                     <a class="btn  mt-3 mb-3 btn-outline-success" style="text-align: center; width: 100%"
                        data-toggle="collapse" href="#collapseExample" role="button"
                        aria-expanded="true" aria-controls="collapseExample">
-                        Добавить новый товар
+                        <spring:message code="label.addNewProduct"/>
                     </a>
-                    <div class="collapse mb-3" id="collapseExample" style="">
-                        <form action="/product/create" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="name">Название товара</label>
+                    <div class="collapse mb-3" id="collapseExample">
+                        <form class="col-sm-10 col-sm offset-1" action="/product/create/0" method="post" enctype="multipart/form-data">
+                            <div class="form-floating mb-1">
                                 <input type="text" required class="form-control"
-                                       id="name" name="name">
+                                       id="name" name="name" placeholder="name">
+                                <label for="name"><spring:message code="basket.title"/></label>
                             </div>
-                            <div class="form-group">
-                                <label for="price">Цена товара</label>
-                                <div class="input-group mb-3">
-                                    <input type="number" required class="form-control" id="price" name="price">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">$</span>
-                                    </div>
-                                </div>
+                            <div class="form-floating mb-1">
+                                <input type="number" required class="form-control" placeholder="price" id="price"
+                                       name="price">
+                                <label for="price"><spring:message code="basket.price"/> р.</label>
                             </div>
-                            <div class="form-group">
-                                <label for="quantity">Количество на складе товара</label>
-                                <div class="input-group mb-3">
-                                    <input type="number" required class="form-control" id="quantity" name="quantity">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">шт</span>
-                                    </div>
-                                </div>
+                            <div class="form-floating mb-1">
+                                <input type="number" required class="form-control" placeholder="quantity" id="quantity"
+                                       name="quantity">
+                                <label for="quantity"><spring:message code="product.quantity"/></label>
                             </div>
-                            <div class="form-group">
-                                <label for="serialNumber">Серийный номер товара</label>
-                                <input type="number" required class="form-control" id="serialNumber"
-                                       name="serialNumber">
+                            <div class="form-floating mb-1">
+                                <select id="serialNumber" name="serialNumber" class="form-control">
+                                    <option value=""><spring:message code="product.serialNumber"/></option>
+                                    <option value="112345">112345</option>
+                                    <option value="212345">212345</option>
+                                    <option value="312345">312345</option>
+                                    <option value="412345">412345</option>
+                                    <option value="512345">512345</option>
+                                    <option value="612345">612345</option>
+                                    <option value="712345">712345</option>
+                                    <option value="812345">812345</option>
+                                    <option value="912345">912345</option>
+                                </select>
+                                <label for="serialNumber"><spring:message code="product.serialNumber"/></label>
                             </div>
-                            <div class="form-group align-content-center">
-                                <label for="exampleColorInput" class="form-label">Цвет</label>
-                                <input type="color" name="color" id="exampleColorInput" value="#ffffff"
-                                       title="Choose your color">
+                            <div class="form-floating mb-1">
+                                <select id="color" name="color" class="form-control">
+                                    <option value=""><spring:message code="color.title"/></option>
+                                    <option value="white"><spring:message code="color.white"/></option>
+                                    <option value="black"><spring:message code="color.black"/></option>
+                                    <option value="grey"><spring:message code="color.grey"/></option>
+                                    <option value="beige"><spring:message code="color.beige"/></option>
+                                    <option value="red"><spring:message code="color.red"/></option>
+                                    <option value="blue"><spring:message code="color.blue"/></option>
+                                </select>
+                                <label for="color"><spring:message code="color.title"/></label>
                             </div>
-
-                            <div class="form-group">
-                                <label for="name">Производитель</label>
+                            <div class="form-floating mb-1">
                                 <select id="maker.name" name="maker.name" class="form-control">
-                                    <option value="">Производитель</option>
-                                    <option value="Польша">Польша</option>
-                                    <option value="Беларусь">Беларусь</option>
-                                    <option value="Германия">Германия</option>
+                                    <option value=""><spring:message code="title.maker"/></option>
+                                    <option value="Энергомера">Энергомера</option>
+                                    <option value="Schneider">Schneider</option>
+                                    <option value="Eaton">Eaton</option>
+                                    <option value="ABB">ABB</option>
+                                    <option value="EKF">EKF</option>
+                                    <option value="ETP">ETP</option>
+                                    <option value="IEK">IEK</option>
                                 </select>
+                                <label for="maker.name"><spring:message code="title.maker"/></label>
                             </div>
-                            <div class="form-group">
-                                <label for="name">Тип продукта</label>
-                                <select id="productType.name" required name="productType.name" class="form-control">
-                                    <option value="">Тип продукта</option>
-                                    <option value="Лампочки">Лампочки</option>
-                                    <option value="Автоматы">Автоматы</option>
-                                    <option value="Кабель">Кабель</option>
-                                    <option value="Гофра">КабГофраель</option>
-                                    <option value="Распаечная коробка">Распаечная коробка</option>
+                            <div class="form-floating mb-1">
+                                <select id="productType.name" required name="productType.name" class="form-control  btn-outline-secondary">
+                                    <option value=""><spring:message code="productType.title"/></option>
+                                    <option value="cableWire"><spring:message code="productType.cableWire"/></option>
+                                    <option value="corrugatedPipe"><spring:message
+                                            code="productType.corrugatedPipe"/></option>
+                                    <option value="metalSleeve"><spring:message
+                                            code="productType.metalSleeve"/></option>
+                                    <option value="cableChannel"><spring:message
+                                            code="productType.cableChannel"/></option>
+                                    <option value="wiringBoxes"><spring:message
+                                            code="productType.wiringBoxes"/></option>
+                                    <option value="enclosuresBoxes"><spring:message
+                                            code="productType.enclosuresBoxes"/></option>
+                                    <option value="automata"><spring:message code="productType.automata"/></option>
+                                    <option value="socketsSwitches"><spring:message
+                                            code="productType.socketsSwitches"/></option>
+                                    <option value="lightingTechnology"><spring:message
+                                            code="productType.lightingTechnology"/></option>
+                                    <option value="electricityMeters"><spring:message
+                                            code="productType.electricityMeters"/></option>
                                 </select>
+                                <label for="name"><spring:message code="productType.title"/></label>
+                            </div>
+
+                            <div class="form-floating mb-1">
+                        <textarea required rows="2" class="form-control"
+                                  placeholder="description" id="description" name="description"></textarea>
+                                <label for="description"><spring:message code="label.description"/></label>
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Описание товара</label>
-                                <textarea required rows="2" class="form-control" id="description"
-                                          name="description"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="mb-3">
-                                    <label for="file1" class="form-label">Первая фотография к товару</label>
-                                    <input class="form-control" required name="file1" type="file" id="file1">
+                                <div class="mb-3 ">
+                                    <label for="file1" class="form-label"><spring:message code="product.photo"/>
+                                        №1</label>
+                                    <input class="form" required name="file1" type="file" id="file1">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="mb-3">
-                                    <label for="file2" class="form-label">Первая фотография к товару</label>
-                                    <input class="form-control" name="file2" type="file" id="file2">
+                                    <label for="file2" class="form-label"><spring:message code="product.photo"/>
+                                        №2</label>
+                                    <input class="form" name="file2" type="file" id="file2">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="mb-3">
-                                    <label for="file3" class="form-label">Первая фотография к товару</label>
-                                    <input class="form-control" name="file3" type="file" id="file3">
-                                </div>
-                            </div>
-                                <%--                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>--%>
-
-                            <button type="submit" style="width: 100%" class="btn btn-dark">Добавить</button>
+                            <button type="submit" style="width: 100%" class="btn btn-outline-success">
+                                <spring:message code="product.add.item"/>
+                            </button>
                         </form>
                     </div>
                 </div>
-
             </sec:authorize>
-
-<%--            <div>--%>
-<%--                <div class="bd-example p-2">--%>
-
-<%--                    <a href="/filter1/Лампочки">--%>
-<%--                        <button type="button" class="btn btn-success">Лампочки</button>--%>
-<%--                    </a>--%>
-<%--                    <a href="/filter1/Автоматы">--%>
-<%--                        <button type="button" class="btn btn-success">Автоматы</button>--%>
-<%--                    </a>--%>
-<%--                    <a href="/filter1/Кабель">--%>
-<%--                        <button type="button" class="btn btn-success">Кабель</button>--%>
-<%--                    </a>--%>
-<%--                    <a href="/filter1/Гофра">--%>
-<%--                        <button type="button" class="btn btn-success">Гофра</button>--%>
-<%--                    </a>--%>
-<%--                    <a href="/filter1/Распаечная коробка">--%>
-<%--                        <button type="button" class="btn btn-success">Распаечная коробка</button>--%>
-<%--                    </a>--%>
-<%--                    <a href="/filter2/Беларусь">--%>
-<%--                        <button type="button" class="btn btn-danger">Беларусь</button>--%>
-<%--                    </a>--%>
-<%--                    <a href="/filter2/Германия">--%>
-<%--                        <button type="button" class="btn btn-danger">Германия</button>--%>
-<%--                    </a>--%>
-<%--                    <a href="/filter2/Польша">--%>
-<%--                        <button type="button" class="btn btn-danger">Польша</button>--%>
-<%--                    </a>--%>
-
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-secondary">Secondary</button>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-success">Success</button>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-danger">Danger</button>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-warning">Warning</button>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-info">Info</button>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-light">Light</button>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-dark">Dark</button>&ndash;%&gt;--%>
-
-<%--                    &lt;%&ndash;            <button type="button" class="btn btn-link">Link</button>&ndash;%&gt;--%>
-<%--                </div>--%>
-<%--            </div>--%>
-
             <div class="container-xxl m3">
-                <form method="post" action="/filter">
-                    <h5>Сортировать по:</h5>
-                    <select class="selective my-1  bg-opacity-100 btn btn-outline-success" id="maker" name="maker">
-                        <option disabled selected style="color: black">Производитель</option>
-                        <option value="Беларусь">Беларусь</option>
-                        <option value="Германия">Германия</option>
-                        <option value="Польша">Польша</option>
+                <form action="/filter">
+                    <h5><spring:message code="label.sortBy"/></h5>
+                    <select class="selective my-1 bg-white text-center text-success  bg-opacity-100 btn btn-outline-success"
+                            id="maker" name="maker">
+                        <option disabled selected value=""><spring:message code="title.maker"/></option>
+                        <option value="Энергомера">Энергомера</option>
+                        <option value="Schneider">Schneider</option>
+                        <option value="Eaton">Eaton</option>
+                        <option value="ABB">ABB</option>
+                        <option value="EKF">EKF</option>
+                        <option value="ETP">ETP</option>
+                        <option value="IEK">IEK</option>
                     </select>
 
-                    <select class="selective  my-1  bg-opacity-100 btn btn-outline-success" id="productType" name="productType">
-                        <option disabled selected style="color: black">Тип продукта</option>
-                        <option value="Лампочки">Лампочки</option>
-                        <option value="Автоматы">Автоматы</option>
-                        <option value="Кабель">Кабель</option>
-                        <option value="Гофра">КабГофраель</option>
-                        <option value="Распаечная коробка">Распаечная коробка</option>
+                    <select class="selective  my-1 bg-white text-center text-success  bg-opacity-100 btn btn-outline-success"
+                            id="productType" name="productType">
+                        <option disabled selected value=""><spring:message code="productType.title"/></option>
+                        <option value="cableWire"><spring:message code="productType.cableWire"/></option>
+                        <option value="corrugatedPipe"><spring:message code="productType.corrugatedPipe"/></option>
+                        <option value="metalSleeve"><spring:message
+                                code="productType.metalSleeve"/></option>
+                        <option value="cableChannel"><spring:message
+                                code="productType.cableChannel"/></option>
+                        <option value="wiringBoxes"><spring:message
+                                code="productType.wiringBoxes"/></option>
+                        <option value="enclosuresBoxes"><spring:message
+                                code="productType.enclosuresBoxes"/></option>
+                        <option value="automata"><spring:message code="productType.automata"/></option>
+                        <option value="socketsSwitches"><spring:message
+                                code="productType.socketsSwitches"/></option>
+                        <option value="lightingTechnology"><spring:message
+                                code="productType.lightingTechnology"/></option>
+                        <option value="electricityMeters"><spring:message
+                                code="productType.electricityMeters"/></option>
                     </select>
-                    <input class=" selectpicker m-1  bg-opacity-100 btn btn-outline-success" type="submit" style="color: #000000"
-                           value="Поиск"/>
-                    <input class=" selectpicker m-1  bg-opacity-100 btn btn-outline-success" type="button" style="color: #000000"
-                           value="Обновить"
+                    <input class=" selective m-1  bg-opacity-100 btn btn-outline-success" type="submit"
+                           style="color: #000000"
+                           value="<spring:message code="label.search"/>"/>
+                    <input class=" selective m-1  bg-opacity-100 btn btn-outline-success" type="button"
+                           style="color: #000000"
+                           value="<spring:message code="label.refresh"/>"
                            onclick="clearFilter()"/>
                 </form>
             </div>
-
-
             <div class="container mt-4 ">
-                <%--                <div class="card-columns row">--%>
                 <div class="row product-item-detail-bigdata " data-entity="parent-container">
                     <c:forEach items="${products}" var="product">
                         <%--                        <a href="/product/${product.id}" class="product-link">--%>
                         <div class="card text-dark btn btn-outline-success bg-white my-3 product col-xs-4 col-md-3">
                             <a href="/product/${product.id}" class="product-link">
                                 <img src="/images/${product.previewImageId}"
-                                     class="card-img-top" height="200px">
+                                    <%--                                     class="card rounded mx-auto d-block" height="150">--%>
+                                     class=" img-fluid rounded mx-auto d-block" height="150">
                             </a>
-                            <div class="card-body text-center align-items-center">
-                                <h5 class="card-title">${product.name}</h5>
-                                <p class="card-text">Цена: ${product.price} $</p>
+                            <div class="card-body  text-center align-items-center">
+                                <h5 class="card-title ">${product.name}</h5>
+                                <p class="card-text ">Цена: ${product.price} $</p>
                             </div>
-
-                                <%--                            <a href="/user/${product.user.id}" class="product-link text-white">--%>
                             <div class="text-center ">
-
-<%--                                <button type="submit" href="/product/${product.id}/basket" class="btn btn-outline-danger">Добавить в корзину</button>--%>
-
                                 <form action="/product/${product.id}/basket" method="get">
                                     <button type="submit" class="btn btn-outline-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                             fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
                                             <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                                         </svg>
-                                        Добавить в корзину
+                                        <spring:message code="basket.add"/>
                                     </button>
                                 </form>
-                                    <%--                                        <c:url var="addLink" value="/basket222/addBasket">--%>
-                                    <%--                                            <c:param name="productId" value="${product.id}"/>--%>
-                                    <%--                                        </c:url>--%>
-                                    <%--                                        <a href="${addLink}">AddBasket</a>--%>
                             </div>
-                                <%--                            </a>--%>
                         </div>
-                        <%--                        </a>--%>
                     </c:forEach>
                     <c:if test="${products == null}">
                         <h1 style="text-align: center">Не найдено</h1>
@@ -260,7 +248,6 @@
                 </nav>
             </div>
         </main>
-
     </div>
 </div>
 <%@include file="blocks/footer.jsp" %>

@@ -14,9 +14,12 @@ import java.util.Optional;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserRepository usersRepository;
+    private final UserRepository usersRepository;
 
+    @Autowired
+    public UserDetailsServiceImpl(UserRepository usersRepository) {
+        this.usersRepository = usersRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -24,7 +27,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (userCandidate.isPresent()){
             return new UserDetailsImpl(userCandidate.get());
         }else throw new IllegalArgumentException("User not found");
-
 //        return new
 //                UserDetailsImpl(usersRepository.findOneByEmail(email)
 //                .orElseThrow(IllegalArgumentException::new));

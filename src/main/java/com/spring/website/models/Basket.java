@@ -1,16 +1,12 @@
 package com.spring.website.models;
 
 import lombok.*;
-import org.hibernate.Hibernate;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
-import java.util.Objects;
+
 
 @Getter
 @Setter
-@ToString
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -54,21 +50,8 @@ public class Basket {
         products.remove(product);
 //        product.getBaskets().remove(this);
     }
-    public void removeProduct2(List<Product> product) {
-        products.removeAll(product);
+    public void removeProduct2(Product product) {
+        products.removeIf(product1 -> product.getId().equals(product1.getId()));
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Basket basket = (Basket) o;
-        return id != null && Objects.equals(id, basket.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

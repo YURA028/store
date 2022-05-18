@@ -24,81 +24,104 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 </head>
-<body class="bg-light">
+<body class="bg-white">
 <%@include file="blocks/header.jsp" %>
 <div class="container-fluid">
     <div class="row">
         <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-            <div class="card-header nav">
+            <div class="py-3 text-start">
+                <span style="vertical-align: inherit;">
+                   <h1> <span style="vertical-align: inherit;">${product.name}</span></h1>
+                </span>
+            </div>
+            <div class="card-header bg-white nav">
                 <br>
                 <div class="p-4 flex-column position-static">
                     <c:forEach items="${images}" var="image">
-                        <img src="/images/${image.id}" height="200px" alt="${image.name}"><br>
+                        <%--                        <img src="/images/${image.id}" class=" img-fluid rounded mx-auto d-block" height="150" alt="${image.name}"><br>--%>
+                        <img src="/images/${image.id}"
+                             class="  rounded  d-block"
+                             height="200px"
+                             alt="${image.name}"><br>
                     </c:forEach>
                 </div>
                 <hr>
                 <%--                <div class="m-3">--%>
                 <div class="col p-4 flex-column position-static">
-                    <h1><spring:message code="label.description"/></h1>
-
                     <dl class="dl-horizontal">
-                        <dt>Название товара:</dt>
-                        <dd>${product.name}</dd>
+                        <dt><spring:message code="productType.title"/>:</dt>
+                        <dd><spring:message code="productType.${product.productType.name}"/></dd>
                     </dl>
                     <dl class="dl-horizontal">
-                        <dt>Цена товара:</dt>
-                        <dd>${product.price} $</dd>
-                    </dl>
-                    <dl class="dl-horizontal">
-                        <dt>Цвет товара:</dt>
-                        <dd>${product.color}</dd>
-                    </dl>
-                    <dl class="dl-horizontal">
-                        <dt>Описание товара:</dt>
-                        <dd>${product.description}</dd>
-                    </dl>
-                    <dl class="dl-horizontal">
-                        <dt>Производитель товара:</dt>
+                        <dt><spring:message code="title.maker"/>:</dt>
                         <dd>${product.maker.name}</dd>
                     </dl>
                     <dl class="dl-horizontal">
-                        <dt>Тип товара:</dt>
-                        <dd>${product.productType.name}</dd>
+                        <dt><spring:message code="basket.price"/>:</dt>
+                        <dd>${product.price} руб.</dd>
                     </dl>
-                    <hr>
-
+                    <dl class="dl-horizontal">
+                        <dt><spring:message code="color.title"/>:</dt>
+                        <dd><spring:message code="color.${product.color}"/></dd>
+                    </dl>
+<%--                    <dl class="dl-horizontal">--%>
+<%--                        <dt><spring:message code="label.description"/>:</dt>--%>
+<%--                        <div class="  text-wrap text-dark" style="width: 30rem;">--%>
+<%--                        <dd>${product.description}</dd>--%>
+<%--                        </div>--%>
+<%--                    </dl>--%>
+<%--                    <hr>--%>
                 </div>
                 <br><br>
                 <hr>
                 <br>
                 <div class="col p-4 d-flex flex-column position-static">
-                    <div >
+                    <div class="text-center">
                         <h4>Все товары пользователя</h4>
-                        <p style="text-align: left">
-                            <a href="/user/${authorProduct.id}" >
+                    </div>
+                    <div class="text-end">
+                        <form action="/user/${product.user.id}" method="get">
+                            <button type="submit" class="btn btn-outline-success">
                                 <img src="../resources/images/avatar.png" alt="mdo" width="32" height="32"
                                      class="rounded-circle">
-                                <button type="submit" class="btn btn-success">${authorProduct.firstName}</button>
-                            </a>
-                        </p>
+                                ${authorProduct.firstName}
+                            </button>
+                        </form>
                     </div>
-                    <br>
-                    <%--                    <div>--%>
-                    <%--                        <span sec:authentication="${userPrincipal.username}">${userPrincipal.username}</span>--%>
-                    <%--                    </div>--%>
-                    <div class="bd-example">
-                        <a href="/product/${product.id}/basket">
-                            <button type="submit" class="btn btn-success">Добавить в корзину</button>
-                        </a>
+                    <div class="text-end ">
+                        <form action="/product/${product.id}/basket" method="get">
+                            <button type="submit" class="btn btn-outline-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                     fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                                </svg>
+                                <spring:message code="basket.add"/>
+                            </button>
+                        </form>
                     </div>
+                    <c:if test="${userPrincipal.role == 'ADMIN'}">
+                        <div class="text-end ">
+<%--                            <form action="/product/edit/${product.id}" method="get">--%>
+                            <form action="/product/${product.id}/edit" method="get">
+                                <button type="submit" class="btn btn-outline-success">
+                                    <spring:message code="label.edit"/>
+                                </button>
+                            </form>
+                        </div>
+                    </c:if>
                 </div>
                 <hr>
             </div>
-
+            <div>
+                <dl class="dl-horizontal">
+                    <h3><dt><spring:message code="label.description"/>:</dt></h3>
+                    <div class="  text-wrap text-dark" style="width: 40rem;">
+                        <dd>${product.description}</dd>
+                    </div>
+                </dl>
+            </div>
         </main>
-
     </div>
 </div>
 <div>

@@ -30,7 +30,7 @@
     <div class="row">
         <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <h1 style="text-align: center">Личный кабинет</h1>
+            <h1 style="text-align: center"><spring:message code="profile.title"/></h1>
             <hr>
             <br>
             <div style="text-align: center">
@@ -46,12 +46,12 @@
                 <br>
                 <br>
                 <c:if test="${userPrincipal.role.name() == 'ADMIN'}">
-                    <a class="btn btn-dark mb-3" style="text-align: center; width: 100%"
-                       href="/admin">
-                        Панель администратора
+                    <a class="btn btn-dark mb-3" style="text-align: center; width: 100%" href="/admin">
+                        <spring:message code="title.admin.panel"/>
                     </a><br>
                 </c:if>
-                <a href="/profile/edit" class="btn btn-dark mb-3" style="text-align: center; width: 100%"><spring:message code="label.edit"/></a>
+                <a href="/profile/edit" class="btn btn-dark mb-3" style="text-align: center; width: 100%">
+                    <spring:message code="label.edit"/></a>
 
                 <a class="btn btn-dark mb-3" style="text-align: center; width: 100%" href="/my/products">
                     Мои товары

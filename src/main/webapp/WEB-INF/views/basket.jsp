@@ -30,108 +30,108 @@
     <div class="row">
         <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <h2>Корзина</h2>
+            <%--            <h1><spring:message code="label.description"/> </h1>--%>
+            <div class="py-3 p-4  text-start">
+                <h3>
+                <span style="vertical-align: inherit;">
+                    <span style="vertical-align: inherit;"><spring:message code="basket.userCart"/></span>
+                </span>
+                </h3>
+            </div>
             <%--            <table class="table table-sm border-success">--%>
             <%--            <table class="table table-striped table-warning">--%>
-            <div class="card-header nav">
-                <div class="p-3 flex-column position-static">
+            <div class="bg-white card-header nav">
+                <div class="p-1 flex-column position-static">
                     <table class="table table-bordered border-primary   ">
                         <tr class="text-center">
                             <td>№</td>
-                            <th>Фото</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Sum</th>
-                            <th>Amount</th>
-
+                            <th><spring:message code="basket.photo"/></th>
+                            <th><spring:message code="basket.title"/></th>
+                            <th><spring:message code="basket.price"/></th>
+                            <th><spring:message code="basket.sum"/></th>
+                            <th><spring:message code="basket.quantity"/></th>
                         </tr>
                         <c:forEach items="${baskets.basketDetails}" varStatus="status" var="basket">
                             <tr class="text-center text-start">
                                 <td width="30px">${status.count}</td>
                                 <td width="100px" class="text-center">
-                                    <img src="/images/${basket.previewImageId}" height="100px"/>
+                                    <a href="/product/${basket.productId}" class="product-link">
+                                        <img class="img-fluid" src="/images/${basket.previewImageId}" height="100px"/>
+                                    </a>
                                 </td>
-                                <td width="100px">${basket.name}</td>
-                                <td width="100px">${basket.price}</td>
-                                <td width="100px">${basket.sum}</td>
-                                <td width="100px">${basket.amount}</td>
+                                <td width="70px">
+                                    <div class="  text-wrap text-dark" style="width: 6rem;">
+                                            ${basket.name}
+                                    </div>
+                                </td>
+                                <td width="70px">${basket.price}</td>
+                                <td width="70px">${basket.sum}</td>
+                                <td width="70px">${basket.amount}</td>
                                 <td>
-                                        <%--                                    <div class="nav col-6 mb-md-0">--%>
                                     <form action="/basket/product/${basket.productId}" method="get">
                                         <button type="submit" class="btn btn-outline-success">+</button>
                                     </form>
                                     <form action="/basket/delete/${basket.productId}" method="post">
-                                        <button type="submit" class="btn btn-outline-danger">-</button>
+                                        <c:if test="${basket.amount > 1}">
+                                            <button type="submit" class="btn btn-outline-danger">-</button>
+                                        </c:if>
                                     </form>
-                                        <%--                                </td>--%>
-                                        <%--                                <td>--%>
-                                        <%--                                        <a type="text"--%>
-                                        <%--                                           class="btn bg-white text-dark btn-outline-light">${basket.amount}</a>--%>
-
-                                        <%--                                    </div>--%>
                                 </td>
-                                    <%--                        <td>--%>
-                                    <%--                            <form action="/basket/delete/${basket.productId}" method="post">--%>
-                                    <%--                                    &lt;%&ndash;                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;%&gt;--%>
-                                    <%--                                <button type="submit" class="btn btn-outline-danger">-</button>--%>
-                                    <%--                            </form>--%>
-                                    <%--                        </td>--%>
-                                    <%--                        <td>--%>
-                                    <%--                            <form action="/basket/deleteAll/${basket.productId}" method="post">--%>
-                                    <%--                                <button type="submit" class="btn btn-outline-dark">Удалить товар</button>--%>
-                                    <%--                            </form>--%>
-                                    <%--                        </td>--%>
+                                <td>
+                                    <form action="/basket/delete2/${basket.productId}" method="post">
+                                        <button type="submit" class="btn btn-outline-dark">Удалить</button>
+                                    </form>
+                                </td>
                             </tr>
                         </c:forEach>
-                        <%--                        <tr>--%>
-                        <%--                            <td colspan="5"><h3>Сумма заказа:</h3></td>--%>
-                        <%--                            <td><h3>${baskets.sum} $</h3></td>--%>
-                        <%--                        </tr>--%>
-
-
                     </table>
                 </div>
-                <div class="col p-3  flex-column position-static">
+                <div class="col p-1  flex-column position-static">
                     <div class="col">
                         <div class="card mb-4 rounded-3 shadow-sm border-dark">
                             <div class="card-header py-3 text-dark btn btn-outline-light border-dark">
-                                <h4 class="my-0 fw-normal">Заказа:</h4>
+                                <h4 class="my-0 fw-normal"><spring:message code="basket.order"/></h4>
                             </div>
                             <div class="card-body">
-                                                                <h3>Сумма заказа:</h3>
+                                <h3><spring:message code="basket.orderPrice"/></h3>
                                 <h3>${baskets.sum} $</h3>
                                 <ul class="list-unstyled mt-3 mb-4">
-                                    <li>30 users included</li>
-                                    <li>15 GB of storage</li>
-                                    <li>Phone and email support</li>
-                                    <li>Help center access</li>
+                                    <li><spring:message code="basket.managerMail"/></li>
+                                    <li><a href="#">manager@mail.com</a></li>
+                                    <li><spring:message code="basket.managerNumber"/></li>
+                                    <li><a href="#">8-029-888-88-88</a></li>
                                 </ul>
                                 <form action="/basket/deleteAll/${userPrincipal.basket.id}" method="post">
                                     <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>--%>
-                                    <button type="submit" class="w-100 btn btn-outline-danger">Очистить корзину</button>
+                                    <button type="submit" class="w-100 btn btn-outline-danger"
+                                            onclick="if (!(confirm('Вы действительно хотите изменить Status'))) return false">
+                                        <spring:message code="basket.emptyTrash"/>
+                                    </button>
                                 </form>
-                                <button type="submit" class="w-100 text-dark btn btn-lg btn-outline-success">Оформить заказ</button>
+                                <button type="submit" class="w-100 text-dark btn btn-lg btn-outline-success">
+                                    <spring:message code="basket.checkout"/>
+                                </button>
                             </div>
                         </div>
                     </div>
-<%--                    <br>--%>
-<%--                    <br>--%>
-<%--                    <br>--%>
-<%--                    <br>--%>
-<%--                    <br>--%>
-<%--                    <br>--%>
-<%--                    <div>--%>
-<%--                        <h3>Сумма заказа:</h3>--%>
-<%--                        <h3>${baskets.sum} $</h3>--%>
-<%--                    </div>--%>
-<%--                    <form action="#" method="post">--%>
-<%--                        &lt;%&ndash;                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;%&gt;--%>
-<%--                        <button type="submit" class="btn btn-outline-dark">Оформить заказ</button>--%>
-<%--                    </form>--%>
-<%--                    <form action="/basket/deleteAll/${userPrincipal.basket.id}" method="post">--%>
-<%--                        &lt;%&ndash;                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;%&gt;--%>
-<%--                        <button type="submit" class="btn btn-outline-dark">Очистить корзину</button>--%>
-<%--                    </form>--%>
+                    <%--                    <br>--%>
+                    <%--                    <br>--%>
+                    <%--                    <br>--%>
+                    <%--                    <br>--%>
+                    <%--                    <br>--%>
+                    <%--                    <br>--%>
+                    <%--                    <div>--%>
+                    <%--                        <h3>Сумма заказа:</h3>--%>
+                    <%--                        <h3>${baskets.sum} $</h3>--%>
+                    <%--                    </div>--%>
+                    <%--                    <form action="#" method="post">--%>
+                    <%--                        &lt;%&ndash;                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;%&gt;--%>
+                    <%--                        <button type="submit" class="btn btn-outline-dark">Оформить заказ</button>--%>
+                    <%--                    </form>--%>
+                    <%--                    <form action="/basket/deleteAll/${userPrincipal.basket.id}" method="post">--%>
+                    <%--                        &lt;%&ndash;                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;%&gt;--%>
+                    <%--                        <button type="submit" class="btn btn-outline-dark">Очистить корзину</button>--%>
+                    <%--                    </form>--%>
                 </div>
             </div>
         </main>

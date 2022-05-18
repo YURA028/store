@@ -59,8 +59,6 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Basket basket;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private Basket222 basket222;
 
     public boolean isAdmin() {
         return role.equals(Role.ADMIN);

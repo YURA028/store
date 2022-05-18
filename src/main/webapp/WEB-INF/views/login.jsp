@@ -58,7 +58,7 @@
                                                 пароль</small>
                                         </c:when>
                                         <c:when test="${!error}">
-                                            <small class="form-text text-primary">Введите имя пользователя или
+                                            <small class="form-text text-primary">Введите имя пользователя и
                                                 пароль</small>
                                         </c:when>
                                         <c:otherwise>Если нету подходящего значения</c:otherwise>

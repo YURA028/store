@@ -38,7 +38,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-
     @PostMapping("/admin/user/edit/{id}")
     public String userEdit(@PathVariable("id") Long id) {
         userService.roleUser(id);

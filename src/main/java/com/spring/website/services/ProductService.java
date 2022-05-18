@@ -24,23 +24,17 @@ public interface ProductService {
     void saveProduct(Principal principal,
                      Product product,
                      MultipartFile file1,
-                     MultipartFile file2,
-                     MultipartFile file3) throws IOException;
-
-
-    Product editProduct(Long id);
+                     MultipartFile file2) throws IOException;
 
     void deleteProduct(Long id);
-
     ////////////////////////////////////
-    List<ProductDTO> getAll();
     void addToUserBasket(Long productId, Principal principal);
-
 
     List<Product> getFilter(String filter);
 
     List<Product> getByMaker(String maker);
 
-
     List<Product> getByProductType(String productType);
+
+    void updateProduct(ProductDTO productDTO, Long id);
 }

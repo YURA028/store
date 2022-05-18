@@ -1,7 +1,13 @@
 package com.spring.website.services.dto;
 
+import com.spring.website.models.ImageProduct;
+import com.spring.website.models.Product;
+import com.spring.website.models.ProductType;
 import com.spring.website.models.User;
 import lombok.*;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 
 @Getter
@@ -13,27 +19,29 @@ import lombok.*;
 public class ProductDTO {
     private Long id;
     private String name;
-    private int price;
-    private int quantity;
+    private BigDecimal price;
+    private Integer quantity;
     private String color;
     private String description;
     private String serialNumber;
     private Long previewImageId;
-    private User user;
+    private String nameProductType;
+    private String nameMaker;
+    private List<ImageProduct> imageProducts;
 
 
-
-//    public static ProductFormDto form(Product product){
-//        return ProductFormDto.builder()
-//                .name(product.getName())
-//                .price(product.getPrice())
-//                .quantity(product.getQuantity())
-//                .color(product.getColor())
-//                .description(product.getDescription())
-//                .serialNumber(product.getSerialNumber())
-//                .nameProductType(product.getProductType().getName())
-//                .nameMaker(product.getMaker().getName())
-//                .build();
-//
-//    }
+    public static ProductDTO form(Product product){
+        return ProductDTO.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .price(product.getPrice())
+                .quantity(product.getQuantity())
+                .color(product.getColor())
+                .description(product.getDescription())
+                .serialNumber(product.getSerialNumber())
+                .nameProductType(product.getProductType().getName())
+                .nameMaker(product.getMaker().getName())
+                .imageProducts(product.getImageProducts())
+                .build();
+    }
 }

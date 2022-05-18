@@ -61,7 +61,6 @@ public class UserController {
         if (principal == null) {
             throw new RuntimeException("You are not authorize1");
         }
-
         User user = userService.getUserByPrincipal(principal);
         UserDTO userDTO = UserDTO.builder()
                 .firstName(user.getFirstName())
@@ -70,7 +69,6 @@ public class UserController {
                 .build();
         model.addAttribute("users", userDTO);
         model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
-
         return "profile-edit";
     }
 
@@ -82,7 +80,7 @@ public class UserController {
         if (userDTO.getPassword() != null
                 && !userDTO.getPassword().isEmpty()
                 && !Objects.equals(userDTO.getPassword(), userDTO.getMatchingPassword())) {
-            model.addAttribute("user", userDTO);
+            model.addAttribute("users", userDTO);
             return "profile-edit";
         }
         userService.updateProfile(userDTO);
@@ -116,7 +114,6 @@ public class UserController {
         if (result.hasErrors()) {
             return "signUp";
         }
-
         if (!userService.emailVerification(userForm)) {
             model.addAttribute("errorMessageEmail", "Пользователь с email: " + userForm.getEmail() + " уже существует");
             model.addAttribute("formUser", userForm);

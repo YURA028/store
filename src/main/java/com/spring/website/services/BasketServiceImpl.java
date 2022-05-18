@@ -1,16 +1,12 @@
 package com.spring.website.services;
 
 import com.spring.website.models.Basket;
-import com.spring.website.models.Basket222;
 import com.spring.website.models.Product;
 import com.spring.website.models.User;
-import com.spring.website.repositories.Basket222Repo;
 import com.spring.website.repositories.BasketRepository;
 import com.spring.website.repositories.ProductRepository;
 import com.spring.website.services.dto.BasketDTO;
 import com.spring.website.services.dto.BasketDetailDTO;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,15 +22,13 @@ public class BasketServiceImpl implements BasketService{
     private final BasketRepository basketRepository;
     private final ProductRepository productRepository;
     private final UserService userService;
-    private final Basket222Repo basket222Repo;
 
 
     @Autowired
-    public BasketServiceImpl(BasketRepository basketRepository, ProductRepository productRepository, UserService userService, Basket222Repo basket222Repo) {
+    public BasketServiceImpl(BasketRepository basketRepository, ProductRepository productRepository, UserService userService) {
         this.basketRepository = basketRepository;
         this.productRepository = productRepository;
         this.userService = userService;
-        this.basket222Repo = basket222Repo;
     }
 
 
@@ -101,6 +95,19 @@ public class BasketServiceImpl implements BasketService{
         basketRepository.delete(basket);
         basketRepository.save(basket);
     }
+
+    @Override
+    public void deleteBasket2(Long id, Principal principal) {
+        User user = userService.getUserByPrincipal(principal);
+        if (user == null){
+            throw new RuntimeException("User not found ----- " +principal.getName());
+        }
+        Basket basket = user.getBasket();
+        basket.removeProduct2(productRepository.getById(id));
+        basketRepository.delete(basket);
+        basketRepository.save(basket);
+    }
+
     @Override
     public void deleteBasketAll(Long id, Principal principal) {
         User user = userService.getUserByPrincipal(principal);
@@ -111,60 +118,5 @@ public class BasketServiceImpl implements BasketService{
         basketRepository.delete(basket);
         basketRepository.save(basket);
     }
-//    @Override
-//    public void deleteBasketAll(Long id, Principal principal) {
-//        User user = userService.getUserByPrincipal(principal);
-//        if (user == null){
-//            throw new RuntimeException("User not found ----- " +principal.getName());
-//        }
-//        Basket basket = user.getBasket();
-//        List<Product> products = basket.getProducts();
-//        List<Product> newProductList2 = products == null ? new ArrayList<>() : new ArrayList<>(products);
-//        newProductList2.addAll(getCollectRefProductsByIds(Collections.singletonList(id)));
-//        basket.removeProduct2(newProductList2);
-//        basketRepository.delete(basket);
-//        basketRepository.save(basket);
-//    }
-
-
-    @Override
-    @Transactional
-    public List<Basket222> getPropertyBasket() {
-        return basket222Repo.findAll();
-    }
-
-    @Override
-    @Transactional
-    public void addPropertyToBasket(Long productId){
-
-        Optional<Product> product = productRepository.findById(productId);
-        long count = 1L;
-
-        Basket222 basket222 = new Basket222();
-        basket222.setProductId(product.get().getId());
-        basket222.setName(product.get().getName());
-        basket222.setPrice(product.get().getPrice());
-        basket222.setSum(product.get().getPrice());
-        basket222.setQuantity(count);
-
-
-        List<Basket222> list = basket222Repo.findAll();
-        for (Basket222 newBascet : list){
-            if (newBascet.getProductId().equals(basket222.getProductId())){
-                basket222.setQuantity(newBascet.getQuantity()+count);
-                basket222.setSum(newBascet.getPrice().add(newBascet.getSum()));
-                basket222Repo.deleteById(newBascet.getId());
-            }
-        }
-        basket222Repo.save(basket222);
-    }
-
-    @Override
-    @Transactional
-    public void deleteBasketProperty(Long productId){
-        basket222Repo.delById(productId);
-    }
-
-
 
 }

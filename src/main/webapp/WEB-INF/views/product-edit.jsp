@@ -1,9 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ page session="false"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <html>
 <head>
 
@@ -24,92 +24,158 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 </head>
-<body class="bg-light">
-<%@include file="blocks/header.jsp"%>
+<body class="bg-white">
+<%@include file="blocks/header.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@include file="blocks/aside.jsp"%>
+        <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-                <c:forEach var="products" items="${post}">
-                    <form action="/product/create" method="post"  enctype="multipart/form-data">
-
-                        <div class="form-group">
-                            <label for="name">Название товара</label>
-                            <input type="text" value="${products.name}"  class="form-control"
-                                   id="name" name="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Цена товара</label>
-                            <div class="input-group mb-3">
-                                <input type="number" value="${products.price}"  class="form-control" id="price"
-                                       name="price">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">₽</span>
-                                </div>
+            <div class="py-3 text-center">
+                <span style="vertical-align: inherit;">
+                    <span style="vertical-align: inherit;"><h1><spring:message code="title.edit"/></h1></span>
+                </span>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col text-center">
+                        <form  class="col-sm-10 col-sm offset-1" action="/product/${productDTO.id}/edit" method="post" value="${productDTO}"
+                              enctype="multipart/form-data">
+                            <div class="form-floating mb-1">
+                                <input type="text" required class="form-control"
+                                       id="name" name="name" value="${productDTO.name}" placeholder="name">
+                                <label for="name"><spring:message code="basket.title"/></label>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="searchCity">Город</label>
-                            <select id="searchCity" value="${products.maker.name}"  name="city"
-                                    class="form-control">
-                                <option selected disabled >Производитель</option>
-                                    <option value="${products.maker.name}"
-                                            <c:if test="${products.maker.name != null}">
-                                                selected
-                                            </c:if>>${products.maker.name}</option>
+                            <div class="form-floating mb-1">
+                                <input type="number" value="${productDTO.price}" required class="form-control"
+                                       placeholder="price" id="price"
+                                       name="price">
+                                <label for="price"><spring:message code="basket.price"/> р.</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <input type="number" value="${productDTO.quantity}" required class="form-control"
+                                       placeholder="quantity" id="quantity"
+                                       name="quantity">
+                                <label for="quantity"><spring:message code="product.quantity"/> </label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <select id="serialNumber" name="serialNumber" value="${productDTO.serialNumber}"
+                                        class="form-control">
+                                    <option value="${productDTO.serialNumber}">${productDTO.serialNumber}</option>
+                                    <option value="112345">112345</option>
+                                    <option value="212345">212345</option>
+                                    <option value="312345">312345</option>
+                                    <option value="412345">412345</option>
+                                    <option value="512345">512345</option>
+                                    <option value="612345">612345</option>
+                                    <option value="712345">712345</option>
+                                    <option value="812345">812345</option>
+                                    <option value="912345">912345</option>
+                                </select>
+                                <label for="serialNumber"><spring:message code="product.serialNumber"/></label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <select id="color" name="color" value="${productDTO.color}" class="form-control">
+                                    <option value="${productDTO.color}"><spring:message
+                                            code="color.${productDTO.color}"/></option>
+                                    <option value="white"><spring:message code="color.white"/></option>
+                                    <option value="black"><spring:message code="color.black"/></option>
+                                    <option value="grey"><spring:message code="color.grey"/></option>
+                                    <option value="beige"><spring:message code="color.beige"/></option>
+                                    <option value="red"><spring:message code="color.red"/></option>
+                                    <option value="blue"><spring:message code="color.blue"/></option>
+                                </select>
+                                <label for="color"><spring:message code="color.title"/></label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <select id="nameMaker" name="nameMaker" value="${productDTO.nameMaker}"
+                                        class="form-control">
+                                    <option value="${productDTO.nameMaker}">${productDTO.nameMaker}</option>
+                                    <option value="Энергомера">Энергомера</option>
+                                    <option value="Schneider">Schneider</option>
+                                    <option value="Eaton">Eaton</option>
+                                    <option value="ABB">ABB</option>
+                                    <option value="EKF">EKF</option>
+                                    <option value="ETP">ETP</option>
+                                    <option value="IEK">IEK</option>
+                                </select>
+                                <label for="nameMaker"><spring:message code="title.maker"/></label>
+                            </div>
 
-                                <option value="Польша">Польша</option>
-                                <option value="Беларусь">Беларусь</option>
-                                <option value="Германия">Германия</option>
+                            <div class="form-floating mb-1">
+                                <select id="nameProductType" type="text" value="${productDTO.nameProductType}"
+                                        name="nameProductType" class="form-control">
+                                    <option value="${productDTO.nameProductType}"><spring:message
+                                            code="productType.${productDTO.nameProductType}"/></option>
+                                    <option value="cableWire"><spring:message code="productType.cableWire"/></option>
+                                    <option value="corrugatedPipe"><spring:message
+                                            code="productType.corrugatedPipe"/></option>
+                                    <option value="metalSleeve"><spring:message
+                                            code="productType.metalSleeve"/></option>
+                                    <option value="cableChannel"><spring:message
+                                            code="productType.cableChannel"/></option>
+                                    <option value="wiringBoxes"><spring:message
+                                            code="productType.wiringBoxes"/></option>
+                                    <option value="enclosuresBoxes"><spring:message
+                                            code="productType.enclosuresBoxes"/></option>
+                                    <option value="automata"><spring:message code="productType.automata"/></option>
+                                    <option value="socketsSwitches"><spring:message
+                                            code="productType.socketsSwitches"/></option>
+                                    <option value="lightingTechnology"><spring:message
+                                            code="productType.lightingTechnology"/></option>
+                                    <option value="electricityMeters"><spring:message
+                                            code="productType.electricityMeters"/></option>
+                                </select>
+                                <label for="nameProductType"><spring:message code="productType.title"/></label>
+                            </div>
 
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Описание товара</label>
-                            <textarea class="form-control" role="textbox" value="${products.description}"
-                                      id="description" name="description"></textarea>
-                        </div>
-
-<%--                        <div class="form-group">--%>
-<%--                            <div class="custom-file">--%>
-
-<%--                                <input required type="file" name="file1" id="file1">--%>
-<%--                                <label class="custom-file-label" for="file1">Первая фотография к товару</label>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-
-<%--                        <div class="form-group">--%>
-<%--                            <div class="custom-file">--%>
-<%--                                    &lt;%&ndash;                            <img src="/images/${product.imageProducts.get(1)}" height="60px" /><br>&ndash;%&gt;--%>
-<%--                                <input type="file" name="file2" id="file2">--%>
-<%--                                <label class="custom-file-label" for="file2">Вторая фотография к товару</label>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-
-<%--                        <div class="form-group">--%>
-<%--                            <div class="custom-file">--%>
-<%--                                    &lt;%&ndash;                <img src="/images/${product.imageProducts.get(2)}" height="60px"/><br>&ndash;%&gt;--%>
-<%--                                <input type="file" name="file3" id="file3">--%>
-<%--                                <label class="custom-file-label" for="file3">Третья фотография к товару</label>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-                            <%--        <input type="hidden" name="_csrf" value="${_csrf.token}"/>--%>
-
-                        <button type="submit" style="width: 100%" class="btn btn-dark">Добавить</button>
-                    </form>
-                </c:forEach>
-
-            <%--    <c:forEach items="${images}" var="image" step="1" varStatus="status">--%>
-<%--                    <img src="/images/${image.id}"  height="60px"/><br>--%>
-            <%--        ${status.index}--%>
-            <%--    </c:forEach>--%>
-
+                            <div class="form-floating mb-1">
+                        <textarea required rows="3" value="${productDTO.description}" class="form-control"
+                                  placeholder="description" id="description" name="description">
+                            ${productDTO.description}
+                        </textarea>
+                                <label for="description">
+                                    <spring:message code="label.description"/>
+                                </label>
+                            </div>
+                            <%--                    <div>--%>
+                            <%--                        <c:forEach items="${productDTO.imageProducts}" var="imeg">--%>
+                            <%--                            <img src="/images/${imeg.id}" height="60px">--%>
+                            <%--                            <div >--%>
+                            <%--                                <div >--%>
+                            <%--                                    <input   value="${imeg.contentType}" name="originalFileName" type="file" id="originalFileName">--%>
+                            <%--                                    <label value="${imeg.originalFileName}" >${imeg.originalFileName}</label>--%>
+                            <%--                                </div>--%>
+                            <%--                            </div>--%>
+                            <%--                        </c:forEach>--%>
+                            <%--                    </div>--%>
+                            <%--                              <div class="form-group">--%>
+                            <%--                                <div class="mb-3">--%>
+                            <%--                                  <label for="file1" class="form-label"><spring:message code="product.photo"/> №1</label>--%>
+                            <%--                                  <input class="form" required name="file1" type="file" id="file1">--%>
+                            <%--                                </div>--%>
+                            <%--                              </div>--%>
+                            <%--                              <div class="form-group">--%>
+                            <%--                                <div class="mb-3">--%>
+                            <%--                                  <label for="file2" class="form-label"><spring:message code="product.photo"/> №2</label>--%>
+                            <%--                                  <input class="form" name="file2" type="file" id="file2">--%>
+                            <%--                                </div>--%>
+                            <%--                              </div>--%>
+                            <br>
+                            <button type="submit" style="width: 100%" class="btn btn-dark">
+                                <spring:message code="label.refresh"/>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </main>
 
     </div>
 </div>
-<%@include file="blocks/footer.jsp"%>
+<div>
+    <%@include file="blocks/footer.jsp" %>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

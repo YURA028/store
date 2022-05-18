@@ -22,14 +22,12 @@ public class BasketController {
     private final ProductService productService;
     private final UserService userService;
 
-    private final BasketRepository basketRepository;
-
     @Autowired
-    public BasketController(BasketService basketService, ProductService productService, UserService userService, BasketRepository basketRepository) {
+    public BasketController(BasketService basketService, ProductService productService, UserService userService) {
         this.basketService = basketService;
         this.productService = productService;
         this.userService = userService;
-        this.basketRepository = basketRepository;
+
     }
 
     @GetMapping("/basket1")
@@ -72,15 +70,16 @@ public class BasketController {
         basketService.deleteBasket(id, principal);
         return "redirect:/basket";
     }
+    @PostMapping("/basket/delete2/{id}")
+    public String deleteProduct2(@PathVariable Long id, Principal principal) {
+        basketService.deleteBasket2(id, principal);
+        return "redirect:/basket";
+    }
     @PostMapping("/basket/deleteAll/{id}")
     public String deleteAllProduct(@PathVariable Long id, Principal principal) {
         basketService.deleteBasketAll(id, principal);
-        return "redirect:/basket";
+        return "redirect:/home";
     }
-//    @PostMapping("/basket/delete/{id}")
-//    public String deleteProduct2(@PathVariable Long id, Principal principal) {
-//        basketRepository.removeByPOrderByProductsId(id);
-//        return "redirect:/";
-//    }
+
 
 }

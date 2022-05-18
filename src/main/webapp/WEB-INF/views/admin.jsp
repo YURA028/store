@@ -1,9 +1,9 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page session="false"%>
+<%@ page session="false" %>
 <html>
 <head>
 
@@ -24,7 +24,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 </head>
-<body class="bg-light">
+<body class="bg-white">
 <%@include file="blocks/header.jsp"%>
 <div class="container-fluid">
     <div class="row">
@@ -32,7 +32,7 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
-            <h3>Панель администратора </h3>
+            <h3><spring:message code="title.admin.panel"/> </h3>
 
             <table class="table table-sm table-bordered">
                 <tr>
@@ -100,7 +100,7 @@
                             </c:choose>
 
                         </td>
-                        <td><a href="/user/${user.id}">Подробнее</a></td>
+                        <td><a href="/user/${user.id}"><spring:message code="label.detail"/></a></td>
                     </tr>
                 </c:forEach>
             </table>

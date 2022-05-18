@@ -21,11 +21,8 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //    @Autowired
     private final UserDetailsService userDetailsService;
-    //    @Autowired
     private final PasswordEncoder passwordEncoder;
-    //    @Autowired
     private final DataSource dataSource;
 
     @Autowired
@@ -58,10 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true)
-                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
+//                .invalidateHttpSession(true)
+//                .and()
                 .rememberMe()
                 .rememberMeParameter("remember-me")
                 .tokenRepository(tokenRepository())

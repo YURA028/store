@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-//@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -61,15 +60,6 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-//    @Override
-//    public User findByEmail(String email) {
-//        return userRepository.findByEmail(email);
-//    }
-
-    //    @Override
-//    public List<User> getUserList() {
-//        return userRepository.findAll();
-//    }
     @Override
     public List<UserDTO> getAll() {
         return userRepository

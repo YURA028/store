@@ -1,8 +1,8 @@
 package com.spring.website.services;
 
-import com.spring.website.mapper.ProductMapper;
 import com.spring.website.models.*;
 import com.spring.website.repositories.ProductRepository;
+import com.spring.website.repositories.ProductTypeRepository;
 import com.spring.website.repositories.UserRepository;
 import com.spring.website.services.dto.ProductDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Collections;
@@ -21,7 +20,6 @@ import java.util.List;
 @Slf4j
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductMapper mapper = ProductMapper.MAPPER;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
     private final UserService userService;
@@ -57,12 +55,10 @@ public class ProductServiceImpl implements ProductService {
     public void saveProduct(Principal principal,
                             Product product,
                             MultipartFile file1,
-                            MultipartFile file2,
-                            MultipartFile file3) throws IOException {
+                            MultipartFile file2) throws IOException {
         product.setUser(getUserByPrincipal(principal));
         ImageProduct image1;
         ImageProduct image2;
-        ImageProduct image3;
         if (file1.getSize() != 0) {
             image1 = toImageEntity(file1);
             image1.setPreviewImage(true);
@@ -71,10 +67,6 @@ public class ProductServiceImpl implements ProductService {
         if (file2.getSize() != 0) {
             image2 = toImageEntity(file2);
             product.addImageToProduct(image2);
-        }
-        if (file3.getSize() != 0) {
-            image3 = toImageEntity(file3);
-            product.addImageToProduct(image3);
         }
         log.info("Saving new Product. Name: {}; Color: {}", product.getName(), product.getUser().getEmail());
         Product productFromDb = productRepository.save(product);
@@ -93,23 +85,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional
-    public Product editProduct(Long id) {
-        return productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-    }
-
-    @Override
     public void deleteProduct(Long id) {
         Product product = productRepository.findById(id).orElseThrow();
                 productRepository.delete(product);
                 log.info("Product with id = {} was deleted", id);
-
     }
 
-    @Override
-    public List<ProductDTO> getAll() {
-        return mapper.formProductList(productRepository.findAll());
-    }
 
     @Override
     public void addToUserBasket(Long productId, Principal principal) {
@@ -141,5 +122,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getByProductType(String productType) {
         return productRepository.getByProductType(productType);
+    }
+
+    @Override
+    @Transactional
+    public void updateProduct(ProductDTO productDTO, Long id) {
+        Product product = productRepository.getById(id);
+        product.setName(productDTO.getName());
+        product.setPrice(productDTO.getPrice());
+        product.setQuantity(productDTO.getQuantity());
+        product.setColor(productDTO.getColor());
+        product.setDescription(productDTO.getDescription());
+        product.setSerialNumber(productDTO.getSerialNumber());
+        product.getProductType().setName(productDTO.getNameProductType());
+        product.getMaker().setName(productDTO.getNameMaker());
+        productRepository.save(product);
     }
 }
