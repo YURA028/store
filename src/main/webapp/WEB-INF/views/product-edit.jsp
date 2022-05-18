@@ -13,7 +13,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
@@ -24,7 +24,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 </head>
-<body class="bg-white">
+<body class="bg-light">
 <%@include file="blocks/header.jsp" %>
 <div class="container-fluid">
     <div class="row">
@@ -52,10 +52,10 @@
                                 <label for="price"><spring:message code="basket.price"/> р.</label>
                             </div>
                             <div class="form-floating mb-1">
-                                <input type="number" value="${productDTO.quantity}" required class="form-control"
-                                       placeholder="quantity" id="quantity"
-                                       name="quantity">
-                                <label for="quantity"><spring:message code="product.quantity"/> </label>
+                                <input type="number" value="${productDTO.amount}" required class="form-control"
+                                       placeholder="amount" id="amount"
+                                       name="amount">
+                                <label for="amount"><spring:message code="product.amount"/> </label>
                             </div>
                             <div class="form-floating mb-1">
                                 <select id="serialNumber" name="serialNumber" value="${productDTO.serialNumber}"
@@ -161,7 +161,7 @@
                             <%--                                </div>--%>
                             <%--                              </div>--%>
                             <br>
-                            <button type="submit" style="width: 100%" class="btn btn-dark">
+                            <button type="submit" style="width: 100%" class="btn btn-outline-success">
                                 <spring:message code="label.refresh"/>
                             </button>
                         </form>

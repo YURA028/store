@@ -65,7 +65,6 @@ public class BasketServiceImpl implements BasketService{
         if (user == null){
             return new BasketDTO();
         }
-
         BasketDTO basketDTO = new BasketDTO();
         Map<Long, BasketDetailDTO> mapProductId = new HashMap<>();
 

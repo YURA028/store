@@ -158,4 +158,19 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+    @Override
+    public void deleteUserStatus(Principal principal) {
+        User user = getUserByPrincipal(principal);
+        if (user != null){
+            user.setState(State.DELETED);
+            userRepository.save(user);
+        }
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+
 }

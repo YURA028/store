@@ -8,8 +8,8 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light collapse ">
     <div class="position-sticky pt-3 ">
         <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active text-black" aria-current="page" href="/filter1/cableWire">
+            <li class="nav-item product">
+                <a class="nav-link active text-black product-link" aria-current="page" href="/filterType/cableWire">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -17,8 +17,8 @@
                     <spring:message code="productType.cableWire"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/corrugatedPipe">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/corrugatedPipe">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -26,8 +26,8 @@
                     <spring:message code="productType.corrugatedPipe"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/metalSleeve">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/metalSleeve">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -35,8 +35,8 @@
                     <spring:message code="productType.metalSleeve"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/cableChannel">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/cableChannel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -44,8 +44,8 @@
                     <spring:message code="productType.cableChannel"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/wiringBoxes">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/wiringBoxes">
                     <svg  width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -53,8 +53,8 @@
                     <spring:message code="productType.wiringBoxes"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/enclosuresBoxes">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/enclosuresBoxes">
                     <svg  width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -62,8 +62,8 @@
                     <spring:message code="productType.enclosuresBoxes"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/automata">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/automata">
                     <svg  width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -71,8 +71,8 @@
                     <spring:message code="productType.automata"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/socketsSwitches">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/socketsSwitches">
                     <svg  width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -80,8 +80,8 @@
                     <spring:message code="productType.socketsSwitches"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/lightingTechnology">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/lightingTechnology">
                     <svg  width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
@@ -89,8 +89,8 @@
                     <spring:message code="productType.lightingTechnology"/>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-black" href="/filter1/electricityMeters">
+            <li class="nav-item product">
+                <a class="nav-link text-black product-link" href="/filterType/electricityMeters">
                     <svg  width="20" height="20" fill="currentColor"
                          class="bi bi-lightning" viewBox="0 0 16 16">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>

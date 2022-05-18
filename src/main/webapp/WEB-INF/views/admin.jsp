@@ -13,7 +13,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
@@ -25,14 +25,14 @@
           crossorigin="anonymous">
 </head>
 <body class="bg-white">
-<%@include file="blocks/header.jsp"%>
+<%@include file="blocks/header.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@include file="blocks/aside.jsp"%>
+        <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
-            <h3><spring:message code="title.admin.panel"/> </h3>
+            <h3><spring:message code="title.admin.panel"/></h3>
 
             <table class="table table-sm table-bordered">
                 <tr>
@@ -71,7 +71,7 @@
                                                value="ACTIVE">
                                     </form>
                                 </c:when>
-<%--                                <c:otherwise>Если нету подходящего значения</c:otherwise>--%>
+                                <%--                                <c:otherwise>Если нету подходящего значения</c:otherwise>--%>
                             </c:choose>
                         </td>
                         <td>${user.role}</td>
@@ -101,6 +101,16 @@
 
                         </td>
                         <td><a href="/user/${user.id}"><spring:message code="label.detail"/></a></td>
+                        <td>
+                            <c:if test="${user.role != 'ADMIN'}">
+                            <form action="/admin/user/delete/${user.id}" method="post">
+                                    <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
+                                <input type="submit"
+                                       onclick="if (!(confirm('Вы действительно хотите изменить Role на ADMIN'))) return false"
+                                       value="удалть">
+                            </form>
+                            </c:if>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
@@ -119,7 +129,7 @@
         </div>
     </div>
 </div>
-<%@include file="blocks/footer.jsp"%>
+<%@include file="blocks/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

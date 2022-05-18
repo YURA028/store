@@ -13,7 +13,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <title><spring:message code="title.product"/></title>
 
     <!-- Bootstrap CSS -->
@@ -44,7 +44,7 @@
                        aria-expanded="true" aria-controls="collapseExample">
                         <spring:message code="label.addNewProduct"/>
                     </a>
-                    <div class="collapse mb-3" id="collapseExample">
+                    <div class="collapse bg-light mb-3" id="collapseExample">
                         <form class="col-sm-10 col-sm offset-1" action="/product/create/0" method="post" enctype="multipart/form-data">
                             <div class="form-floating mb-1">
                                 <input type="text" required class="form-control"
@@ -57,9 +57,9 @@
                                 <label for="price"><spring:message code="basket.price"/> р.</label>
                             </div>
                             <div class="form-floating mb-1">
-                                <input type="number" required class="form-control" placeholder="quantity" id="quantity"
-                                       name="quantity">
-                                <label for="quantity"><spring:message code="product.quantity"/></label>
+                                <input type="number" required class="form-control" placeholder="amount" id="amount"
+                                       name="amount">
+                                <label for="amount"><spring:message code="product.amount"/></label>
                             </div>
                             <div class="form-floating mb-1">
                                 <select id="serialNumber" name="serialNumber" class="form-control">
@@ -102,7 +102,7 @@
                                 <label for="maker.name"><spring:message code="title.maker"/></label>
                             </div>
                             <div class="form-floating mb-1">
-                                <select id="productType.name" required name="productType.name" class="form-control  btn-outline-secondary">
+                                <select id="productType.name" required name="productType.name" class="form-control">
                                     <option value=""><spring:message code="productType.title"/></option>
                                     <option value="cableWire"><spring:message code="productType.cableWire"/></option>
                                     <option value="corrugatedPipe"><spring:message
@@ -209,8 +209,10 @@
                                      class=" img-fluid rounded mx-auto d-block" height="150">
                             </a>
                             <div class="card-body  text-center align-items-center">
+                                <a href="/product/${product.id}" class="product-link">
                                 <h5 class="card-title ">${product.name}</h5>
                                 <p class="card-text ">Цена: ${product.price} $</p>
+                                </a>
                             </div>
                             <div class="text-center ">
                                 <form action="/product/${product.id}/basket" method="get">
@@ -230,23 +232,23 @@
                     </c:if>
                 </div>
             </div>
-            <div class="bd-example">
-                <nav aria-label="Another pagination example">
-                    <ul class="pagination pagination-lg flex-wrap">
-                        <li class="page-item disabled">
-                            <a class="page-link">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+<%--            <div class="bd-example">--%>
+<%--                <nav aria-label="Another pagination example">--%>
+<%--                    <ul class="pagination pagination-lg flex-wrap">--%>
+<%--                        <li class="page-item disabled">--%>
+<%--                            <a class="page-link">Previous</a>--%>
+<%--                        </li>--%>
+<%--                        <li class="page-item"><a class="page-link" href="#">1</a></li>--%>
+<%--                        <li class="page-item active" aria-current="page">--%>
+<%--                            <a class="page-link" href="#">2</a>--%>
+<%--                        </li>--%>
+<%--                        <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+<%--                        <li class="page-item">--%>
+<%--                            <a class="page-link" href="#">Next</a>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </nav>--%>
+<%--            </div>--%>
         </main>
     </div>
 </div>

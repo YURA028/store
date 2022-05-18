@@ -50,15 +50,13 @@ public class User {
     private Role role;
     @Enumerated(value = EnumType.STRING)
     private State state;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Address address;
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 //    private Set<Basket> basket;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Basket basket;
-
 
     public boolean isAdmin() {
         return role.equals(Role.ADMIN);

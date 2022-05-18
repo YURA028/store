@@ -1,14 +1,15 @@
 package com.spring.website.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "address")
 public class Address {
@@ -25,7 +26,6 @@ public class Address {
     private int building;
 
     @OneToOne
-    @MapsId
     @JoinColumn(name = "user_id")
     private User user;
 }

@@ -147,7 +147,7 @@ public class ProductController {
         return "products";
     }
 
-    @GetMapping("/filter1/{productType}")
+    @GetMapping("/filterType/{productType}")
     public String getFilter1(@PathVariable String productType, Principal principal, Model model) {
         List<Product> productTypes = productService.getByProductType(productType);
         model.addAttribute("products", productTypes);

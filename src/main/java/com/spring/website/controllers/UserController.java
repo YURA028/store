@@ -33,6 +33,7 @@ public class UserController {
         if (authentication != null) {
             return "redirect:/";
         }
+
         if (request.getParameterMap().containsKey("error")) {
             model.addAttribute("error", true);
         }
@@ -140,5 +141,16 @@ public class UserController {
         model.addAttribute("products", user.getProducts());
         model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
         return "user-info";
+    }
+    @PostMapping("/user/delete")
+    public String deleteUserPage(Principal principal){
+        userService.deleteUserStatus(principal);
+        return "redirect:/logout";
+    }
+
+    @GetMapping("/contacts")
+    public String getContactPage(Model model, Principal principal){
+        model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
+        return "contacts";
     }
 }

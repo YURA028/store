@@ -13,7 +13,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
@@ -38,8 +38,6 @@
                 </span>
                 </h3>
             </div>
-            <%--            <table class="table table-sm border-success">--%>
-            <%--            <table class="table table-striped table-warning">--%>
             <div class="bg-white card-header nav">
                 <div class="p-1 flex-column position-static">
                     <table class="table table-bordered border-primary   ">
@@ -49,7 +47,7 @@
                             <th><spring:message code="basket.title"/></th>
                             <th><spring:message code="basket.price"/></th>
                             <th><spring:message code="basket.sum"/></th>
-                            <th><spring:message code="basket.quantity"/></th>
+                            <th><spring:message code="basket.amount"/></th>
                         </tr>
                         <c:forEach items="${baskets.basketDetails}" varStatus="status" var="basket">
                             <tr class="text-center text-start">

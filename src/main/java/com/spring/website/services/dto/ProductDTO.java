@@ -20,7 +20,7 @@ public class ProductDTO {
     private Long id;
     private String name;
     private BigDecimal price;
-    private Integer quantity;
+    private BigDecimal amount;
     private String color;
     private String description;
     private String serialNumber;
@@ -35,7 +35,7 @@ public class ProductDTO {
                 .id(product.getId())
                 .name(product.getName())
                 .price(product.getPrice())
-                .quantity(product.getQuantity())
+                .amount(product.getAmount())
                 .color(product.getColor())
                 .description(product.getDescription())
                 .serialNumber(product.getSerialNumber())

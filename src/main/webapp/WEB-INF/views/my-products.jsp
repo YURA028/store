@@ -13,7 +13,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
@@ -52,9 +52,9 @@
                             <label for="price"><spring:message code="basket.price"/> р.</label>
                         </div>
                         <div class="form-floating mb-1">
-                            <input type="number" required class="form-control" placeholder="quantity" id="quantity"
-                                   name="quantity">
-                            <label for="quantity"><spring:message code="product.quantity"/> </label>
+                            <input type="number" required class="form-control" placeholder="amount" id="amount"
+                                   name="amount">
+                            <label for="amount"><spring:message code="product.amount"/> </label>
                         </div>
                         <div class="form-floating mb-1">
                             <select id="serialNumber" name="serialNumber" class="form-control">
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <br>
-                        <button type="submit" style="width: 100%" class="btn btn-dark">
+                        <button type="submit" style="width: 100%" class="btn btn-outline-success">
                             <spring:message code="product.add.item"/>
                         </button>
                     </form>
@@ -154,9 +154,10 @@
                     <th>Фото</th>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Sum</th>
                     <th>Amount</th>
-
+                    <th>Color</th>
+                    <th>Maker</th>
+                    <th>ProductType</th>
                 </tr>
                 <c:forEach items="${products}" varStatus="status" var="product">
                     <tr class="text-center text-start">
@@ -170,22 +171,23 @@
                             </div>
                         </td>
                         <td width="70px">${product.price}</td>
+                        <td width="70px">${product.amount}</td>
                         <td width="70px"><spring:message code="color.${product.color}"/></td>
                         <td width="70px"><spring:message code="productType.${product.productType.name}"/></td>
                         <td width="70px">${product.maker.name}</td>
                         <td>
                             <form action="/product/${product.id}/edit">
-                                <button type="submit" class="btn btn-outline-success">
+                                <button type="submit" class="btn btn-outline-success col-sm-5 col-sm offset-1">
                                     <spring:message code="label.edit"/>
                                 </button>
                             </form>
                             <form action="/product/${product.id}">
-                                <button type="submit" class="btn btn-outline-dark">
+                                <button type="submit" class="btn btn-outline-dark col-sm-5 col-sm offset-1">
                                     <spring:message code="label.detail"/>
                                 </button>
                             </form>
                             <form action="/product/delete/${product.id}" method="post">
-                                <button type="submit" class="btn btn-outline-danger">
+                                <button type="submit" class="btn btn-outline-danger col-sm-5 col-sm offset-1">
                                     <spring:message code="label.delete"/>
                                 </button>
                             </form>
@@ -196,15 +198,7 @@
         </main>
 
 
-        <div class="goog-te-spinner-pos">
-            <div class="goog-te-spinner-animation">
-                <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px"
-                     viewBox="0 0 66 66">
-                    <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
-                            cy="33" r="30"></circle>
-                </svg>
-            </div>
-        </div>
+
     </div>
 </div>
 <%@include file="blocks/footer.jsp" %>

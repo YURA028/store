@@ -13,7 +13,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <title>Пример оформления заказа · Bootstrap v5.1</title>
 
     <!-- Bootstrap CSS -->
@@ -40,10 +40,11 @@
                 <div class="p-4 flex-column position-static">
                     <c:forEach items="${images}" var="image">
                         <%--                        <img src="/images/${image.id}" class=" img-fluid rounded mx-auto d-block" height="150" alt="${image.name}"><br>--%>
+                       <div class="p-1">
                         <img src="/images/${image.id}"
-                             class="  rounded  d-block"
+                             class=" p-1 rounded  d-block"
                              height="200px"
-                             alt="${image.name}"><br>
+                             alt="${image.name}" style="border:1px solid #9198A1FF"></div>
                     </c:forEach>
                 </div>
                 <hr>
@@ -83,7 +84,7 @@
                     <div class="text-end">
                         <form action="/user/${product.user.id}" method="get">
                             <button type="submit" class="btn btn-outline-success">
-                                <img src="../resources/images/avatar.png" alt="mdo" width="32" height="32"
+                                <img src="/resources/images/avatar.png" alt="mdo" width="32" height="32"
                                      class="rounded-circle">
                                 ${authorProduct.firstName}
                             </button>
@@ -102,7 +103,6 @@
                     </div>
                     <c:if test="${userPrincipal.role == 'ADMIN'}">
                         <div class="text-end ">
-<%--                            <form action="/product/edit/${product.id}" method="get">--%>
                             <form action="/product/${product.id}/edit" method="get">
                                 <button type="submit" class="btn btn-outline-success">
                                     <spring:message code="label.edit"/>

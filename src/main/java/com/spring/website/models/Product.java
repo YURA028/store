@@ -24,14 +24,13 @@ public class Product {
     @Column
     private BigDecimal price;
     @Column
-    private Integer quantity;
+    private BigDecimal amount;
     @Column
     private String color;
     @Column(name = "description", columnDefinition = "text")
     private String description;
     @Column(name = "serial_number")
     private String serialNumber;
-
 
     //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(name = "products_categories",
@@ -67,12 +66,4 @@ public class Product {
         imageProduct.setProduct(this);
         imageProducts.add(imageProduct);
     }
-
-
-    public Product(String name, String color, String serialNumber) {
-        this.name = name;
-        this.color = color;
-        this.serialNumber = serialNumber;
-    }
-
 }
