@@ -1,0 +1,9 @@
+.product:hover {
+    transition: 0.1s;
+    transform: scale(1.12);
+}
+
+.product-link {
+    color: #000 !important;
+    text-decoration: none
+}
