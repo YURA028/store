@@ -49,7 +49,7 @@
                         <div class="form-floating mb-1">
                             <input type="number" required class="form-control" placeholder="price" id="price"
                                    name="price">
-                            <label for="price"><spring:message code="basket.price"/> р.</label>
+                            <label for="price"><spring:message code="basket.price"/> $</label>
                         </div>
                         <div class="form-floating mb-1">
                             <input type="number" required class="form-control" placeholder="amount" id="amount"

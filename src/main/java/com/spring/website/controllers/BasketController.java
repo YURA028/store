@@ -30,13 +30,16 @@ public class BasketController {
 
     }
 
-    @GetMapping("/basket1")
-    public String getBasketUser(){
+    @GetMapping("/order")
+    public String getBasketUser(Model model, Principal principal){
+        BasketDTO basketDTO = basketService.getBasketByUser(principal.getName());
+        model.addAttribute("baskets", basketDTO);
+        model.addAttribute("userPrincipal", productService.getUserByPrincipal(principal));
         return "orderItem";
     }
 
     @GetMapping("/basket")
-    public String aboutBasket(Model model, Principal principal, Basket basket){
+    public String aboutBasket(Model model, Principal principal){
 
         User user = userService.getUserByPrincipal(principal);
         if (user.getBasket() == null){

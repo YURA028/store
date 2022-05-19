@@ -31,6 +31,11 @@
         <%@include file="blocks/aside.jsp"%>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
+            <div class="py-3 text-center">
+                <span style="vertical-align: inherit;">
+                    <span style="vertical-align: inherit;"><h1><spring:message code="title.authorization"/></h1></span>
+                </span>
+            </div>
 <%--            <div id="rememberry__extension__root" style="all: unset;"></div>--%>
 
             <div class="container col-xl-13 col-xxl-8 px-1 py-1">
@@ -77,10 +82,12 @@
                                     <input type="checkbox" id="remember-me" name="remember-me"> Remember me
                                 </label>
                             </div>
-                            <button class="w-100 btn btn-lg btn-outline-primary" type="submit" value="login">Войти
+                            <button class="w-100 btn btn-lg btn-outline-primary" type="submit" value="login">
+                                <spring:message code="label.to.come.in"/>
                             </button>
                             <a href="/signUp">
-                                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Регистрация</button>
+                                <button type="button" class="w-100 btn btn-lg btn-outline-primary">
+                                    <spring:message code="label.signUp"/></button>
                             </a>
                             <hr class="my-4">
                             <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>

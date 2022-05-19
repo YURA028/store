@@ -34,7 +34,7 @@
                 <h2>
                 <span style="vertical-align: inherit;">
                     <span
-                            style="vertical-align: inherit;">Регистрация</span>
+                            style="vertical-align: inherit;"><spring:message code="title.registration"/></span>
                 </span>
                 </h2>
             </div>
@@ -77,7 +77,8 @@
 <%--                        <small class="form-text text-danger">Validation error</small>--%>
                     </div>
 <%--                    <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
-                    <button class="w-100 btn btn-lg btn-primary" type="submit" value="signUp">Sign up</button>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" value="signUp">
+                        <spring:message code="label.signUp"/></button>
                     <hr class="my-4">
                     <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
                 </form>

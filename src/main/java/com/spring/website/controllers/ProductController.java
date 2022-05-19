@@ -56,7 +56,7 @@ public class ProductController {
         return "product-info";
     }
 
-////////////////////////////////////////////
+
     @PostMapping("/product/create/{number}")
     public String createProduct(@PathVariable int number,
                                 @RequestParam("file1") MultipartFile file1,
@@ -70,13 +70,12 @@ public class ProductController {
         return "redirect:/";
     }
 
-    ////////////////////////////////////////////
     @PostMapping("/product/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return "redirect:/my/products";
     }
-////////////////////////////////////////////
+
     @GetMapping("/my/products")
     public String getUserProducts(Principal principal, Model model) {
         User user = productService.getUserByPrincipal(principal);
@@ -84,7 +83,7 @@ public class ProductController {
         model.addAttribute("products", user.getProducts());
         return "my-products";
     }
-///////////////////////////////////////////////////
+
     @GetMapping("/product/{id}/edit")
     public String getProductEdit(@PathVariable Long id, Model model, Principal principal){
         Product product = productService.getProductById(id);
@@ -99,7 +98,7 @@ public class ProductController {
         productService.updateProduct(productDTO, id);
         return "redirect:/my/products";
     }
-    ////////////////////////////////////////////
+
     @GetMapping("/product/{id}/basket")
     public String getAddBasket(@PathVariable Long id, Principal principal, Model model) {
         if (principal == null) {
@@ -109,7 +108,7 @@ public class ProductController {
         productService.addToUserBasket(id, principal);
         return "redirect:/";
     }
-////////////////////////////////////////////
+
     @GetMapping("/filter")
     public String filterPage(@Param("filter") String filter,
                              @Param("productType") String productType,

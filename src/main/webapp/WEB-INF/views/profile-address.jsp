@@ -32,33 +32,35 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="py-3 text-center">
                 <span style="vertical-align: inherit;">
-                    <span style="vertical-align: inherit;"><h1><spring:message code="title.edit"/></h1></span>
+                    <span style="vertical-align: inherit;"><h1><spring:message code="label.edit.address"/></h1></span>
                 </span>
             </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col text-center">
-                        <form  class="col-sm-10 col-sm offset-1" action="/user/address/add" method="post" value="${address}"
-                               enctype="multipart/form-data">
+
+                        <form class="col-sm-10 col-sm offset-1"
+                              action="/user/address/add" method="post" value="${address}"
+                              enctype="multipart/form-data">
                             <div class="form-floating mb-1">
-                                <input type="text"  class="form-control"
-                                       id="city" name="city" value="${address.city}" placeholder="city">
-                                <label for="city">city</label>
-                            </div>
-                            <div class="form-floating mb-1">
-                                <input type="number" value="${address.phone}"  class="form-control"
+                                <input type="number" value="${address.phone}" class="form-control"
                                        placeholder="phone" id="phone"
                                        name="phone">
                                 <label for="phone">phone</label>
                             </div>
                             <div class="form-floating mb-1">
-                                <input type="text" value="${address.street}"  class="form-control"
+                                <input type="text" class="form-control"
+                                       id="city" name="city" value="${address.city}" placeholder="city">
+                                <label for="city">city</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <input type="text" value="${address.street}" class="form-control"
                                        placeholder="street" id="street"
                                        name="street">
                                 <label for="street">street</label>
                             </div>
                             <div class="form-floating mb-1">
-                                <input type="number" value="${address.building}"  class="form-control"
+                                <input type="number" value="${address.building}" class="form-control"
                                        placeholder="building" id="building"
                                        name="building">
                                 <label for="building">building</label>
@@ -73,7 +75,7 @@
                 </div>
             </div>
             <div>
-<%--                <p>${address.city}</p>--%>
+                <%--                <p>${address.city}</p>--%>
             </div>
         </main>
 

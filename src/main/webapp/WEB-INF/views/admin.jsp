@@ -30,9 +30,11 @@
     <div class="row">
         <%@include file="blocks/aside.jsp" %>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-
-            <h3><spring:message code="title.admin.panel"/></h3>
+            <div class="py-3 text-center">
+                <span style="vertical-align: inherit;">
+                    <span style="vertical-align: inherit;"><h3><spring:message code="title.admin.panel"/></h3></span>
+                </span>
+            </div>
 
             <table class="table table-sm table-bordered">
                 <tr>
@@ -42,8 +44,7 @@
                     <th>Активность</th>
                     <th>Бан</th>
                     <th>Роль</th>
-                    <th>Редактирование</th>
-                    <th>Подробнее</th>
+
                 </tr>
                 <c:forEach items="${users}" var="user">
                     <tr>
@@ -57,7 +58,7 @@
                                     <c:if test="${user.id != 1}">
                                         <form action="/admin/user/ban/${user.id}" method="post">
                                                 <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
-                                            <input type="submit"
+                                            <input type="submit" class="btn-outline-danger"
                                                    onclick="if (!(confirm('Вы действительно хотите изменить Status'))) return false"
                                                    value="BANNED">
                                         </form>
@@ -66,7 +67,7 @@
                                 <c:when test="${user.state == 'BANNED'}">
                                     <form action="/admin/user/ban/${user.id}" method="post">
                                             <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
-                                        <input type="submit"
+                                        <input type="submit" class="btn-outline-success"
                                                onclick="if (!(confirm('Вы действительно хотите изменить Status'))) return false"
                                                value="ACTIVE">
                                     </form>
@@ -74,6 +75,8 @@
                                 <%--                                <c:otherwise>Если нету подходящего значения</c:otherwise>--%>
                             </c:choose>
                         </td>
+
+
                         <td>${user.role}</td>
                         <td>
                             <c:choose>
@@ -81,7 +84,7 @@
                                     <c:if test="${user.id != 1}">
                                         <form action="/admin/user/edit/${user.id}" method="post">
                                                 <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
-                                            <input type="submit"
+                                            <input type="submit" class="btn-outline-danger"
                                                    onclick="if (!(confirm('Вы действительно хотите изменить Role на USER'))) return false"
                                                    value="USER">
                                         </form>
@@ -91,7 +94,7 @@
                                 <c:when test="${user.role == 'USER'}">
                                     <form action="/admin/user/edit/${user.id}" method="post">
                                             <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
-                                        <input type="submit"
+                                        <input type="submit" class="btn-outline-success"
                                                onclick="if (!(confirm('Вы действительно хотите изменить Role на ADMIN'))) return false"
                                                value="ADMIN">
                                     </form>
@@ -100,15 +103,22 @@
                             </c:choose>
 
                         </td>
-                        <td><a href="/user/${user.id}"><spring:message code="label.detail"/></a></td>
                         <td>
                             <c:if test="${user.role != 'ADMIN'}">
-                            <form action="/admin/user/delete/${user.id}" method="post">
-                                    <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
-                                <input type="submit"
-                                       onclick="if (!(confirm('Вы действительно хотите изменить Role на ADMIN'))) return false"
-                                       value="удалть">
-                            </form>
+                                <form action="/user/${user.id}" method="post">
+                                    <input type="submit" class="btn-outline-primary"
+                                           value="<spring:message code="label.detail"/>">
+                                </form>
+                            </c:if>
+                        </td>
+                        <td>
+                            <c:if test="${user.role != 'ADMIN'}">
+                                <form action="/admin/user/delete/${user.id}" method="post">
+                                        <%--                                <input type="hidden" name="_csrf" value="${_csrf.token}">--%>
+                                    <input type="submit" class="btn-outline-danger"
+                                           onclick="if (!(confirm('Вы действительно хотите изменить Role на ADMIN'))) return false"
+                                           value="<spring:message code="label.delete.profile"/>">
+                                </form>
                             </c:if>
                         </td>
                     </tr>

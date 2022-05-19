@@ -13,8 +13,6 @@ import javax.validation.constraints.*;
 @Builder
 public class UserFormDTO {
 
-    @Min(5)
-    @Max(10)
     private String firstName;
     private String username;
     private String password;

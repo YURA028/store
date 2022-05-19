@@ -3,8 +3,10 @@ package com.spring.website.services.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 
 @Getter
@@ -16,10 +18,13 @@ import javax.validation.constraints.Min;
 public class UserDTO {
 
     private Long id;
+
     private String username;
-    @Min(5)
-    @Max(10)
+
     private String firstName;
+
+    @NotEmpty(message = "Email should not be empty")
+    @Email(message = "Email should be valid")
     private String email;
     private String role;
     private String state;

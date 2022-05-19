@@ -15,9 +15,11 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "product_type")
 public class ProductType {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String name;
 

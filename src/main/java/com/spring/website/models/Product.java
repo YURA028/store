@@ -19,24 +19,24 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String name;
+
     @Column
     private BigDecimal price;
+
     @Column
     private BigDecimal amount;
+
     @Column
     private String color;
+
     @Column(name = "description", columnDefinition = "text")
     private String description;
+
     @Column(name = "serial_number")
     private String serialNumber;
-
-    //    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "products_categories",
-//            joinColumns = @JoinColumn(name = "product_id"),
-//            inverseJoinColumns = @JoinColumn(name = "category_id"))
-//    private List<Category> categories;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "maker_id")

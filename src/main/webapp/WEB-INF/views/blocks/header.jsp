@@ -25,15 +25,15 @@
             </div>
 
             <ul class="nav col-12 product-link col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 text-white text-uppercase product">Product</a></li>
-                <li><a href="/basket1" class="nav-link px-2 text-white text-uppercase product">Order</a>
-                <li><a href="/contacts" class="nav-link px-2 text-white text-uppercase product">contacts</a>
+                <li><a href="/" class="nav-link px-2 text-white product">
+                    <spring:message
+                            code="header.catalog"/></a></li>
+                <li><a href="/order" class="nav-link px-2 text-white  product">
+                <spring:message
+                        code="header.paymentAndDelivery"/></a>
                 </li>
-                <sec:authorize access="hasAnyAuthority('ADMIN')">
-                    <li>
-                        <a href="/admin" class="nav-link px-2 text-white product">admin</a>
-                    </li>
-                </sec:authorize>
+                <li><a href="/contacts" class="nav-link px-2 text-white  product">
+                    <spring:message code="header.communications"/></a>
             </ul>
             <div id="header-languages-bar" class="me-lg-1 btn btn-dark product">
                 <a target="_self" class="text-white btn-outline-danger product-link" href="?lang=en" hreflang="en" title="English">

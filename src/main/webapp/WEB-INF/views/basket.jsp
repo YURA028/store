@@ -89,11 +89,18 @@
                         <div class="card mb-4 rounded-3 shadow-sm border-dark">
                             <div class="card-header py-3 text-dark btn btn-outline-light border-dark">
                                 <h4 class="my-0 fw-normal"><spring:message code="basket.order"/></h4>
+
                             </div>
                             <div class="card-body">
                                 <h3><spring:message code="basket.orderPrice"/></h3>
                                 <h3>${baskets.sum} $</h3>
                                 <ul class="list-unstyled mt-3 mb-4">
+                                    <li><spring:message code="basket.amount"/> :
+                                        <span class="badge bg-dark rounded-pill">
+                                            <span style="vertical-align: inherit;"><span
+                                            style="vertical-align: inherit;">${baskets.amountProducts}</span></span>
+                    </span> шт.
+                                    </li>
                                     <li><spring:message code="basket.managerMail"/></li>
                                     <li><a href="#">manager@mail.com</a></li>
                                     <li><spring:message code="basket.managerNumber"/></li>
@@ -106,30 +113,14 @@
                                         <spring:message code="basket.emptyTrash"/>
                                     </button>
                                 </form>
-                                <button type="submit" class="w-100 text-dark btn btn-lg btn-outline-success">
-                                    <spring:message code="basket.checkout"/>
-                                </button>
+                                <form action="/order" method="get">
+                                    <button type="submit" class="w-100 text-dark btn btn-lg btn-outline-success">
+                                        <spring:message code="basket.checkout"/>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <%--                    <br>--%>
-                    <%--                    <br>--%>
-                    <%--                    <br>--%>
-                    <%--                    <br>--%>
-                    <%--                    <br>--%>
-                    <%--                    <br>--%>
-                    <%--                    <div>--%>
-                    <%--                        <h3>Сумма заказа:</h3>--%>
-                    <%--                        <h3>${baskets.sum} $</h3>--%>
-                    <%--                    </div>--%>
-                    <%--                    <form action="#" method="post">--%>
-                    <%--                        &lt;%&ndash;                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;%&gt;--%>
-                    <%--                        <button type="submit" class="btn btn-outline-dark">Оформить заказ</button>--%>
-                    <%--                    </form>--%>
-                    <%--                    <form action="/basket/deleteAll/${userPrincipal.basket.id}" method="post">--%>
-                    <%--                        &lt;%&ndash;                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;%&gt;--%>
-                    <%--                        <button type="submit" class="btn btn-outline-dark">Очистить корзину</button>--%>
-                    <%--                    </form>--%>
                 </div>
             </div>
         </main>

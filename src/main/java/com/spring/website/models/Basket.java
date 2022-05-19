@@ -18,23 +18,6 @@ public class Basket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column
-//    private Long product_id;
-//    @Column
-//    private Date date;
-//    @Column
-//    private int price;
-//    @Column
-//    private boolean status;
-//    @Column
-//    private String comment;
-
-//    @OneToMany(mappedBy = "basket")
-//    private Set<BasketProduct> basketProducts;
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -50,6 +33,7 @@ public class Basket {
         products.remove(product);
 //        product.getBaskets().remove(this);
     }
+
     public void removeProduct2(Product product) {
         products.removeIf(product1 -> product.getId().equals(product1.getId()));
     }

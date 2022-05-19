@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Objects;
 
@@ -106,15 +108,16 @@ public class UserController {
             return "redirect:/profile";
         }
         model.addAttribute("formUser", new UserFormDTO());
-        model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
+//        model.addAttribute("userPrincipal", userService.getUserByPrincipal(null));
         return "signUp";
     }
 
     @PostMapping("/signUp")
-    public String signUp(UserFormDTO userForm, Model model, BindingResult result) {
-        if (result.hasErrors()) {
-            return "signUp";
-        }
+    public String signUp(UserFormDTO userForm,
+                         Model model, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return "signUp";
+//        }
         if (!userService.emailVerification(userForm)) {
             model.addAttribute("errorMessageEmail", "Пользователь с email: " + userForm.getEmail() + " уже существует");
             model.addAttribute("formUser", userForm);
@@ -142,14 +145,15 @@ public class UserController {
         model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
         return "user-info";
     }
+
     @PostMapping("/user/delete")
-    public String deleteUserPage(Principal principal){
+    public String deleteUserPage(Principal principal) {
         userService.deleteUserStatus(principal);
         return "redirect:/logout";
     }
 
     @GetMapping("/contacts")
-    public String getContactPage(Model model, Principal principal){
+    public String getContactPage(Model model, Principal principal) {
         model.addAttribute("userPrincipal", userService.getUserByPrincipal(principal));
         return "contacts";
     }

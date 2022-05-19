@@ -44,7 +44,7 @@
                         <img src="/images/${image.id}"
                              class=" p-1 rounded  d-block"
                              height="200px"
-                             alt="${image.name}" style="border:1px solid #9198A1FF"></div>
+                             alt="${image.name}" style="border:0px solid #9198A1FF"></div>
                     </c:forEach>
                 </div>
                 <hr>
@@ -60,7 +60,7 @@
                     </dl>
                     <dl class="dl-horizontal">
                         <dt><spring:message code="basket.price"/>:</dt>
-                        <dd>${product.price} руб.</dd>
+                        <dd>${product.price} $</dd>
                     </dl>
                     <dl class="dl-horizontal">
                         <dt><spring:message code="color.title"/>:</dt>
